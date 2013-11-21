@@ -1,0 +1,1013 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass amsart
+\begin_preamble
+\hypersetup{colorlinks=true,citecolor=red}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "Graph Isomorphism"
+\pdf_author "Nils Wisiol"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Definition of algebra operators
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Sym}{\operatorname{Sym}}
+{\mathrm{Sym\text{ }}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Aut}{\operatorname{Aut}}
+{\mathrm{Aut\text{ }}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sgn}{\operatorname{sgn}}
+{\mathrm{sgn}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Definition of complexity classes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\complexityclass}[1]{\mathrm{#1}}
+{\mathrm{#1}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\P}{\complexityclass P}
+{\complexityclass P}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\NP}{\complexityclass{NP}}
+{\complexityclass{NP}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\GI}{\complexityclass{GI}}
+{\complexityclass{GI}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\GNI}{\complexityclass{GNI}}
+{\complexityclass{GNI}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\AM}{\complexityclass{AM}}
+{\complexityclass{AM}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\coAM}{\complexityclass{coAM}}
+{\complexityclass{coAM}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Graph Isomorphism
+\end_layout
+
+\begin_layout Author
+Nils Wisiol
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+Let 
+\begin_inset Formula $G_{1}=(V_{1},E_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $G_{2}=(V_{2},E_{2})$
+\end_inset
+
+ be graphs.
+ 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ are called isomorphic, if there is a one-to-one mapping 
+\begin_inset Formula $\sigma:V_{1}\to V_{2}$
+\end_inset
+
+ that preserves the basic structure of the graph.
+ More formally, 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is called an isomorphism, if for all 
+\begin_inset Formula $v,w\in V_{1}$
+\end_inset
+
+ it holds 
+\begin_inset Formula $(v,w)\in E_{1}\iff(\sigma(v),\sigma(w))\in E_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Abstract
+While in gerneral it is not known whether there is a polynomial time algorithm
+ to decide whether two given graphs are isomorphic, there are polynomial-time
+ algorithms for certain subsets of graphs, including but not limited to
+ planar graphs and graphs with bounded valence.
+\end_layout
+
+\begin_layout Abstract
+In this thesis, we will give a brief introduction on the Graph Isomorphism
+ Problem and its relations to complexity theory, followed by a number of
+ algebraic preliminaries.
+ After this, we proof that graphs with valence bounded by 3 can be checked
+ for isomorphism in polynomial time.
+\end_layout
+
+\begin_layout Abstract
+With these preparations, we will be able to show that isomorphism can be
+ decided in polynomial time even for graphs with valence bounded by an arbitrary
+ constant, following the proof given by Luks 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "journals/jcss/Luks82"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+Given two graphs 
+\begin_inset Formula $G_{1}=(V_{1},E_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $G_{2}=(V_{2},E_{2})$
+\end_inset
+
+, deciding whether they are isomorphic is deciding whether these graphs
+ are essentially the same.
+ More precisely, it is deciding whether there is a one-to-one mapping 
+\begin_inset Formula $\sigma:V_{1}\to V_{2}$
+\end_inset
+
+ such that 
+\begin_inset Formula $(v,w)\in E_{1}$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $(\sigma(v),\sigma(w))\in E_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+To demonstrate graph isomorphism, we present two different drawings of the
+ famous 
+\emph on
+Petersen Graph
+\emph default
+.
+\end_layout
+
+\begin_layout Example
+
+\end_layout
+
+\begin_layout Standard
+To decide whether or not two graphs are isomorphic is known as the 
+\emph on
+Graph Isomorphism Problem
+\emph default
+.
+ It belongs to the problems in 
+\begin_inset Formula $\NP$
+\end_inset
+
+, since one can guess and confirm mappings 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ nondeterministically, but it is not known to be 
+\begin_inset Formula $\NP$
+\end_inset
+
+-complete.
+ Moreover, it is known that the Graph Isomorphism Problem can only be 
+\begin_inset Formula $\NP$
+\end_inset
+
+-complete if the polynomial hierarchy collapses and it is thus believed
+ to be not 
+\begin_inset Formula $\NP$
+\end_inset
+
+-complete.
+ As no polynomial time algorithm is known for the general case as well,
+ the Graph Isomorphism is thought to be an intermediate problem in 
+\begin_inset Formula $\NP-\P$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "books/HomerSelman01"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Being thought to be in between 
+\begin_inset Formula $\P$
+\end_inset
+
+ and 
+\begin_inset Formula $\NP$
+\end_inset
+
+-complete, the Graph Isomorphism problem is related to the Integer Factorization
+ Problem, which is thought to be an intermediate problem as well.
+ In fact, it was shown that Graph Isomorphism and Integer Factorization
+ can be reduced to the problem of counting automorphisms for rings which
+ lies in 
+\begin_inset Formula $\AM\cap\coAM$
+\end_inset
+
+.
+ Thus, both problems cannot be 
+\begin_inset Formula $\NP$
+\end_inset
+
+-complete unless the polynomial hierarchy collapses 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "conf/coco/KayalS05"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+As opposed to the general Graph Isomorphism Problem, it is known that the
+ isomorphism problem is solvable in polynomial time for many subgroups of
+ graphs, including planar graphs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "journals/jacm/Hopcroft74"
+
+\end_inset
+
+.
+ In this thesis, we will show focus on graphs with bounded valence and give
+ a proof that these can be checked for Isomorphism in polynomial time as
+ well following the original paper by Luks
+\begin_inset CommandInset citation
+LatexCommand cite
+key "journals/jcss/Luks82"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Preliminaries
+\end_layout
+
+\begin_layout Subsection
+Algebra
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a group, and 
+\begin_inset Formula $S\subseteq G$
+\end_inset
+
+ be a subset of this group.
+ Let 
+\begin_inset Formula $\langle S\rangle$
+\end_inset
+
+ be the smallest subgroup of 
+\begin_inset Formula $G$
+\end_inset
+
+ that contains 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\langle S\rangle=G$
+\end_inset
+
+, 
+\begin_inset Formula $S$
+\end_inset
+
+ is called a 
+\emph on
+generator
+\emph default
+ for 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a group, 
+\begin_inset Formula $H$
+\end_inset
+
+ be a subgroup and 
+\begin_inset Formula $g\in G$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $gH=\{gh:h\in H\}$
+\end_inset
+
+ is called the 
+\emph on
+left coset of 
+\begin_inset Formula $H$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+
+\emph default
+, and 
+\begin_inset Formula $Hg=\{hg:h\in H\}$
+\end_inset
+
+ is called the 
+\emph on
+right coset of 
+\begin_inset Formula $H$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+
+\emph default
+.
+ Cosets can also be defined as equivalence classes of the relation 
+\begin_inset Formula $\sim$
+\end_inset
+
+ defined by 
+\begin_inset Formula $x\sim y$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\exists_{h\in H}xh=y$
+\end_inset
+
+.
+ Therefore, the left (right) cosets of 
+\begin_inset Formula $G$
+\end_inset
+
+ form a partition of 
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mw-coset"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a group and 
+\begin_inset Formula $N\subset G$
+\end_inset
+
+ be a subgroup.
+ We call 
+\begin_inset Formula $N$
+\end_inset
+
+ 
+\emph on
+normal
+\emph default
+, if and only if 
+\begin_inset Formula $gN=Ng$
+\end_inset
+
+ holds for all 
+\begin_inset Formula $g\in G$
+\end_inset
+
+.
+ For normal subgroups 
+\begin_inset Formula $N$
+\end_inset
+
+ of 
+\begin_inset Formula $G$
+\end_inset
+
+, we write 
+\begin_inset Formula $N\vartriangleleft G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a group.
+ 
+\begin_inset Formula $G$
+\end_inset
+
+ is called 
+\emph on
+simple
+\emph default
+ if and only if the only normal subgroups are the trivial group and 
+\begin_inset Formula $G$
+\end_inset
+
+ itself.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a group, and 
+\begin_inset Formula $N\vartriangleleft G$
+\end_inset
+
+.
+ We define the 
+\emph on
+quotient group of 
+\begin_inset Formula $N$
+\end_inset
+
+ modulo 
+\begin_inset Formula $G$
+\end_inset
+
+
+\emph default
+ as the set of all left cosets of 
+\begin_inset Formula $N$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+, 
+\begin_inset Formula $G/N=\{gN:g\in G\}$
+\end_inset
+
+.
+ Using the product of subsets, the quotient group is a group.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a group, and 
+\begin_inset Formula $H\subseteq G$
+\end_inset
+
+ be a subgroup of 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ The number of cosets of 
+\begin_inset Formula $H$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+ is called the 
+\emph on
+index of the subgroup 
+\begin_inset Formula $H$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+
+\emph default
+, written as 
+\begin_inset Formula $|G:H|$
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula $|G:H|=|\{gH:g\in G\}|=|\{Hg:g\in G\}|$
+\end_inset
+
+.
+ Since the quotient group is the set of cosets, we obtain for a normal subgroup
+ 
+\begin_inset Formula $N\vartriangleleft G$
+\end_inset
+
+ that 
+\begin_inset Formula $|G:N|=|G/N|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a group, and let 
+\begin_inset Formula $S\subset G$
+\end_inset
+
+.
+ We define 
+\begin_inset Formula $\langle S\rangle$
+\end_inset
+
+ to be the set of elements of 
+\begin_inset Formula $G$
+\end_inset
+
+ that can be generated by finite many elements of 
+\begin_inset Formula $S$
+\end_inset
+
+, 
+\begin_inset Formula $\langle S\rangle=\left\{ \sum_{i=1}^{k}a_{i}^{\alpha_{i}}\right\} $
+\end_inset
+
+, where 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{i}\in S$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{i}\in\{-1,1\}$
+\end_inset
+
+ and the sum refers to the group operation of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X=(V,E)$
+\end_inset
+
+ be a graph.
+ For any bijection 
+\begin_inset Formula $\sigma:V\to V$
+\end_inset
+
+ that satisfies 
+\begin_inset Formula $(v,w)\in V\iff(\sigma(v),\sigma(w))\in V$
+\end_inset
+
+ for all 
+\begin_inset Formula $v,w\in V$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is called an 
+\emph on
+automorphism
+\emph default
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ The set of all automorphisms for a graph 
+\begin_inset Formula $X$
+\end_inset
+
+ together with composition of functions is called the 
+\emph on
+automorphism group 
+\begin_inset Formula $\Aut(X)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Computational Complexity
+\end_layout
+
+\begin_layout Subsection
+Algorithms
+\end_layout
+
+\begin_layout Subsection
+Graphs / Graph Isomorphism
+\end_layout
+
+\begin_layout Standard
+Notation 
+\begin_inset Formula $(v,w)$
+\end_inset
+
+ even if graph is undirected.
+\end_layout
+
+\begin_layout Standard
+Definition of Graph Isomorphism.
+\end_layout
+
+\begin_layout Standard
+Testing isomorphism is polynomially reducible to finding generators; finding
+ generators is polynomially reducible to the 
+\emph on
+Color Automorphism Problem
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "journals/jcss/Luks82"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Notes
+\end_layout
+
+\begin_layout Subsection
+Bounded Valence Graph Isomorphism 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "journals/jcss/Luks82"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Lemma 1.2(i)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a subgroup of 
+\begin_inset Formula $\Sym(A)$
+\end_inset
+
+, where 
+\begin_inset Formula $A=\{a_{1},...,a_{n}\}$
+\end_inset
+
+.
+ Denote by 
+\begin_inset Formula $G_{i}$
+\end_inset
+
+ the subgroup of 
+\begin_inset Formula $G$
+\end_inset
+
+ which fixes all of the points in 
+\begin_inset Formula $\{a_{1},...,a_{i}\}$
+\end_inset
+
+.
+ Thus we have a chain of subgroups 
+\begin_inset Formula $1=G_{n-1}\subseteq\cdots\subseteq G_{1}\subseteq G_{0}=G$
+\end_inset
+
+.
+ We now construct complete sets of coset representatives, 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ for 
+\begin_inset Formula $G_{i}/G_{i+1}$
+\end_inset
+
+ for 
+\begin_inset Formula $0\leq i\leq n-2$
+\end_inset
+
+.
+ That is, every 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ contains (an arbitrary number of) members of the sets 
+\begin_inset Formula $gG_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $g\in G_{i+1}$
+\end_inset
+
+.
+ This yields 
+\begin_inset Formula $|G|=\Pi_{i=0}^{n-2}|C_{i}|$
+\end_inset
+
+, since all 
+\begin_inset Formula $G_{i}/G_{i+1}$
+\end_inset
+
+ are simple.
+\end_layout
+
+\begin_layout Standard
+Why is 
+\begin_inset Formula $G_{i}\vartriangleleft G_{i+1}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $G_{i}/G_{i+1}=\{gG_{i}:g\in G_{i+1}\}$
+\end_inset
+
+.
+ While 
+\begin_inset Formula $G_{i}$
+\end_inset
+
+ fixes the elements 
+\begin_inset Formula $\{a_{1},...,a_{i}\}$
+\end_inset
+
+, every 
+\begin_inset Formula $g\in G_{i+1}$
+\end_inset
+
+ fixes the elements 
+\begin_inset Formula $\{a_{1},...,a_{i}\}\cup\{a_{i+1}\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Every Element in 
+\begin_inset Formula $G_{i}/G_{i+1}$
+\end_inset
+
+ is a left coset of 
+\begin_inset Formula $G_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+The Trivalent Case
+\end_layout
+
+\begin_layout Standard
+We show that testing isomorphism of trivalent graphs is polynomial-time
+ reducible to the Color Automorphism Problem for 2-groups by showing a reduction
+ from the isomorphism problem of trivalent graphs to determining generators
+ for 
+\begin_inset Formula $Aut_{e}(X)$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Section
+Graph Isomorphism for bounded valence is in 
+\begin_inset Formula $\P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintAll"
+bibfiles "ref"
+options "bibtotoc,plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
