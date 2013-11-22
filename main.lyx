@@ -3707,6 +3707,34 @@ Let
 .
 \end_layout
 
+\begin_layout Subsection
+Computational Complexity
+\end_layout
+
+\begin_layout Standard
+Polynomial time reduction means Turing-reduction.
+\end_layout
+
+\begin_layout Subsection
+Algorithms
+\end_layout
+
+\begin_layout Subsection
+Graphs / Graph Isomorphism
+\end_layout
+
+\begin_layout Standard
+Notation 
+\begin_inset Formula $(v,w)$
+\end_inset
+
+ even if graph is undirected.
+\end_layout
+
+\begin_layout Standard
+Definition of Graph Isomorphism.
+\end_layout
+
 \begin_layout Standard
 Let 
 \begin_inset Formula $X=(V,E)$
@@ -3751,30 +3779,6 @@ automorphism group
 .
 \end_layout
 
-\begin_layout Subsection
-Computational Complexity
-\end_layout
-
-\begin_layout Subsection
-Algorithms
-\end_layout
-
-\begin_layout Subsection
-Graphs / Graph Isomorphism
-\end_layout
-
-\begin_layout Standard
-Notation 
-\begin_inset Formula $(v,w)$
-\end_inset
-
- even if graph is undirected.
-\end_layout
-
-\begin_layout Standard
-Definition of Graph Isomorphism.
-\end_layout
-
 \begin_layout Standard
 Testing isomorphism is polynomially reducible to finding generators; finding
  generators is polynomially reducible to the 
@@ -3785,6 +3789,311 @@ Color Automorphism Problem
 \begin_inset CommandInset citation
 LatexCommand cite
 key "journals/jcss/Luks82"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+Two graphs 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ consisting of connected 
+\begin_inset Formula $n$
+\end_inset
+
+ respectively 
+\begin_inset Formula $m$
+\end_inset
+
+ connected components 
+\begin_inset Formula $X_{1,1},...,X_{1,n}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2,1},...,X_{2,m}$
+\end_inset
+
+ are isomorphic if and only if 
+\begin_inset Formula $n=m$
+\end_inset
+
+ and there is a one-to-one mapping 
+\begin_inset Formula $\rho:\{1,...,n\}\to\{1,...,m\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $X_{1,i}$
+\end_inset
+
+ is isomorphic to 
+\begin_inset Formula $X_{2,\rho(i)}$
+\end_inset
+
+ for every 
+\begin_inset Formula $1\leq i\leq n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:poly-time-reduction-connected-graphs"
+
+\end_inset
+
+The Graph Isomorphism Problem is polynomial time reducible to the Graph
+ Isomorphism Problem for connected graphs.
+ 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://cstheory.stackexchange.com/questions/19917/graph-isomorphism-polynomial-time-reduction-from-gi-for-disconnected-graphs-to"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With the justification given by Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:poly-time-reduction-connected-graphs"
+
+\end_inset
+
+, we assume from now on connected graphs.
+\end_layout
+
+\begin_layout Subsection
+On the Size of Group Representations
+\end_layout
+
+\begin_layout Standard
+A groups of order 
+\begin_inset Formula $n$
+\end_inset
+
+ can be represented by 
+\begin_inset Formula $O(\log n)$
+\end_inset
+
+ of it's members.
+\end_layout
+
+\begin_layout Section
+Graphs with Valence Bounded By Three
+\end_layout
+
+\begin_layout Standard
+In this section, we will show that testing isomorphism of graphs with valence
+ bounded by three is possible in polynomial time.
+ To see this, we construct the polynomial time reductions, connection the
+ following problems:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "pro:gi-trivalent-graphs"
+
+\end_inset
+
+Graph Isomorphism Problem for Trivalent Graphs.
+ Given two trivalent graphs, decide whether they are isomorphic.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "pro:automorphism-generator-trivalent-graphs"
+
+\end_inset
+
+Automorphism Generator Problem for Trivalent Graphs.
+ Given two trivalent graphs 
+\begin_inset Formula $X_{1},X_{2}$
+\end_inset
+
+, find generators for the group 
+\begin_inset Formula $\Aut_{e}(X)$
+\end_inset
+
+, where 
+\begin_inset Formula $X$
+\end_inset
+
+ is built of 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "pro:color-automorphism-2-groups"
+
+\end_inset
+
+Color Automorphism Problem for 2-groups.
+ Given a set of generators for a 2-subgroup 
+\begin_inset Formula $G$
+\end_inset
+
+ of 
+\begin_inset Formula $\Sym(A)$
+\end_inset
+
+ with 
+\begin_inset Formula $A$
+\end_inset
+
+ being a colored set, find generators for biggest color-preserving subgroup
+ of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:gi-trivalent-graphs-reduceto-automorphism-generator-trivalent-graphs"
+
+\end_inset
+
+The Graph Isomorphism Problem for Trivalent Graphs is polynomial-time reducible
+ to the Automorphism Generator Problem for Trivalent Graphs.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:automorphism-generator-trivalent-graphs-reduceto-color-automorphism-2-groups"
+
+\end_inset
+
+The Automorphism Generator Problem for Trivalent Graphs is polynomial-time
+ reducible to the Color Automorphism Problem for 2-groups.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:color-automorphism-2-groups-polynomial-time"
+
+\end_inset
+
+There is a polynomial-time algorithm for the Color Automorphism Problem
+ for 2-groups.
+\end_layout
+
+\begin_layout Corollary
+\begin_inset CommandInset label
+LatexCommand label
+name "cor:gi-trivalent-graphs-polynomial-time"
+
+\end_inset
+
+There is a polynomial-time algorithm for the Graph Isomorphism Problem for
+ Trivalent Graphs.
+\end_layout
+
+\begin_layout Proof
+With theorems 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:gi-trivalent-graphs-reduceto-automorphism-generator-trivalent-graphs"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:automorphism-generator-trivalent-graphs-reduceto-color-automorphism-2-groups"
+
+\end_inset
+
+ we obtain a polynomial time reduction from the Graph Isomorphism Problem
+ for Trivalent Graphs to the Color Automorphism Problem for 2-groups.
+ Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:color-automorphism-2-groups-polynomial-time"
+
+\end_inset
+
+ states the latter is solvable in polynomial time.
+ Therefore, we can decide the Graph Isomorphism Problem for Trivalent Graphs
+ in polynomial time.
+\end_layout
+
+\begin_layout Subsection
+Reduction to the Automorphism Generator Problem
+\end_layout
+
+\begin_layout Standard
+Lemmas in this subsection will prove Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:gi-trivalent-graphs-reduceto-automorphism-generator-trivalent-graphs"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Reduction to the Color Automorphism Problem for 2-groups
+\end_layout
+
+\begin_layout Standard
+Lemmas in this subsection will prove Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:automorphism-generator-trivalent-graphs-reduceto-color-automorphism-2-groups"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Solving the Color Automorphism Problem for 2-groups in polynomial time
+\end_layout
+
+\begin_layout Standard
+Lemmas in this subsection will prove Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:color-automorphism-2-groups-polynomial-time"
 
 \end_inset
 
