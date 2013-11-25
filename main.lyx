@@ -3867,6 +3867,10 @@ target "http://cstheory.stackexchange.com/questions/19917/graph-isomorphism-poly
 \end_layout
 
 \begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
 With the justification given by Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3900,10 +3904,14 @@ Graphs with Valence Bounded By Three
 \begin_layout Standard
 In this section, we will show that testing isomorphism of graphs with valence
  bounded by three is possible in polynomial time.
- To see this, we construct the polynomial time reductions, connection the
- following problems:
+ 
 \end_layout
 
+\begin_layout Definition
+We define the following problems.
+\end_layout
+
+\begin_deeper
 \begin_layout Enumerate
 \begin_inset CommandInset label
 LatexCommand label
@@ -3911,8 +3919,11 @@ name "pro:gi-trivalent-graphs"
 
 \end_inset
 
-Graph Isomorphism Problem for Trivalent Graphs.
- Given two trivalent graphs, decide whether they are isomorphic.
+Given two trivalent graphs, the 
+\emph on
+Graph Isomorphism Problem for Trivalent Graphs
+\emph default
+ is to decide whether or not they are isomorphic.
 \end_layout
 
 \begin_layout Enumerate
@@ -3922,25 +3933,28 @@ name "pro:automorphism-generator-trivalent-graphs"
 
 \end_inset
 
-Automorphism Generator Problem for Trivalent Graphs.
- Given two trivalent graphs 
-\begin_inset Formula $X_{1},X_{2}$
+ Given a trivalent graph 
+\begin_inset Formula $X$
 \end_inset
 
-, find generators for the group 
+, the 
+\emph on
+Automorphism Generator Problem for Trivalent Graphs (with respect to 
+\begin_inset Formula $e$
+\end_inset
+
+)
+\emph default
+ is to find generators for the group 
 \begin_inset Formula $\Aut_{e}(X)$
 \end_inset
 
 , where 
+\begin_inset Formula $e$
+\end_inset
+
+ is a fixed edge in 
 \begin_inset Formula $X$
-\end_inset
-
- is built of 
-\begin_inset Formula $X_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $X_{2}$
 \end_inset
 
 .
@@ -3953,8 +3967,7 @@ name "pro:color-automorphism-2-groups"
 
 \end_inset
 
-Color Automorphism Problem for 2-groups.
- Given a set of generators for a 2-subgroup 
+Given a set of generators for a 2-subgroup 
 \begin_inset Formula $G$
 \end_inset
 
@@ -3966,14 +3979,18 @@ Color Automorphism Problem for 2-groups.
 \begin_inset Formula $A$
 \end_inset
 
- being a colored set, find generators for biggest color-preserving subgroup
- of 
+ being a colored set, the 
+\emph on
+Color Automorphism Problem for 2-groups
+\emph default
+ is to find generators for the biggest color-preserving subgroup of 
 \begin_inset Formula $G$
 \end_inset
 
 .
 \end_layout
 
+\end_deeper
 \begin_layout Theorem
 \begin_inset CommandInset label
 LatexCommand label
@@ -4053,6 +4070,12 @@ reference "thm:color-automorphism-2-groups-polynomial-time"
  states the latter is solvable in polynomial time.
  Therefore, we can decide the Graph Isomorphism Problem for Trivalent Graphs
  in polynomial time.
+\end_layout
+
+\begin_layout Standard
+We will prove the theorems separately in the following subsections.
+ To ensure the integrity of the proofs, no reference is made to the Theorems
+ above.
 \end_layout
 
 \begin_layout Subsection
