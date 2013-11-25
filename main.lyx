@@ -3796,58 +3796,6 @@ key "journals/jcss/Luks82"
 \end_layout
 
 \begin_layout Lemma
-Two graphs 
-\begin_inset Formula $X_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $X_{2}$
-\end_inset
-
- consisting of connected 
-\begin_inset Formula $n$
-\end_inset
-
- respectively 
-\begin_inset Formula $m$
-\end_inset
-
- connected components 
-\begin_inset Formula $X_{1,1},...,X_{1,n}$
-\end_inset
-
- and 
-\begin_inset Formula $X_{2,1},...,X_{2,m}$
-\end_inset
-
- are isomorphic if and only if 
-\begin_inset Formula $n=m$
-\end_inset
-
- and there is a one-to-one mapping 
-\begin_inset Formula $\rho:\{1,...,n\}\to\{1,...,m\}$
-\end_inset
-
- such that 
-\begin_inset Formula $X_{1,i}$
-\end_inset
-
- is isomorphic to 
-\begin_inset Formula $X_{2,\rho(i)}$
-\end_inset
-
- for every 
-\begin_inset Formula $1\leq i\leq n$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout --Separator--
-
-\end_layout
-
-\begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
 name "lem:poly-time-reduction-connected-graphs"
@@ -3856,18 +3804,190 @@ name "lem:poly-time-reduction-connected-graphs"
 
 The Graph Isomorphism Problem is polynomial time reducible to the Graph
  Isomorphism Problem for connected graphs.
+\end_layout
+
+\begin_layout Proof
+Assume we have an algorithm that decides Graph Isomorphism for connected
+ graphs.
+ Let 
+\begin_inset Formula $X_{1}=(V_{1},E_{1})$
+\end_inset
+
+, 
+\begin_inset Formula $X_{2}=(V_{2},E_{2})$
+\end_inset
+
+ be two possible disconnected graphs.
+ For any given graph 
+\begin_inset Formula $X=(V,E)$
+\end_inset
+
+, let 
+\begin_inset Formula $\widetilde{X}=(\widetilde{V},\widetilde{E})$
+\end_inset
+
+ be the graph with one additional node 
+\begin_inset Formula $x$
+\end_inset
+
+ that is connected every other node in 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Using this operation, 
+\begin_inset Formula $\widetilde{X}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\widetilde{X}_{2}$
+\end_inset
+
+ are both connected.
+ Computing 
+\begin_inset Formula $\widetilde{X}$
+\end_inset
+
+ takes polynomial time, since only two nodes and 
+\begin_inset Formula $|V_{1}|+|V_{2}|$
+\end_inset
+
+ edges have to be added.
+ As 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ are isomorphic if and only if 
+\begin_inset Formula $\widetilde{X}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\widetilde{X}_{2}$
+\end_inset
+
+ are isomorphic, we can use the algorithm for Graph Isomorphism for connected
+ graphs to decide isomorphism for 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+.
  
-\begin_inset CommandInset href
-LatexCommand href
-target "http://cstheory.stackexchange.com/questions/19917/graph-isomorphism-polynomial-time-reduction-from-gi-for-disconnected-graphs-to"
+\end_layout
+
+\begin_layout Proof
+To see this equivalence, let 
+\begin_inset Formula $\widetilde{X}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\widetilde{X}_{2}$
+\end_inset
+
+ be isomorphic with 
+\begin_inset Formula $\sigma:\widetilde{X}_{1}\to\widetilde{X}_{2}$
+\end_inset
+
+ being an isomorphism.
+ Since 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ preserves the degree of every node, the additional node in 
+\begin_inset Formula $\widetilde{X}_{1}$
+\end_inset
+
+ must be mapped to the additional node in 
+\begin_inset Formula $\widetilde{X}_{2}$
+\end_inset
+
+.
+ Therefore, the restriction of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ to 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ is a one-to-one mapping onto 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $\sigma|_{X_{1}}$
+\end_inset
+
+ is an isomorphism on 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Now let 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ be isomorphic with 
+\begin_inset Formula $\sigma:X_{1}\to X_{2}$
+\end_inset
+
+ being an isomorphism.
+ Let 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ be the additional node in 
+\begin_inset Formula $\widetilde{X}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ be the additional node in 
+\begin_inset Formula $\widetilde{X}_{2}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\[
+\widetilde{\sigma}:\widetilde{X}_{1}\to\widetilde{X}_{2},x\mapsto\widetilde{\sigma}(x)=\begin{cases}
+\sigma(x) & x\in X_{1}\\
+x_{2} & x=x_{1}
+\end{cases}
+\]
 
 \end_inset
 
+is an isomorphism from 
+\begin_inset Formula $\widetilde{X}_{1}$
+\end_inset
 
-\end_layout
+ to 
+\begin_inset Formula $\widetilde{X}_{2}$
+\end_inset
 
-\begin_layout Standard
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -4080,6 +4200,175 @@ We will prove the theorems separately in the following subsections.
 
 \begin_layout Subsection
 Reduction to the Automorphism Generator Problem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X_{1}=(V_{1},E_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}=(V_{2},E_{2})$
+\end_inset
+
+ be two graphs.
+ We will state a polynomial-time algorithm to check whether 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ are isomorphic.
+\end_layout
+
+\begin_layout Standard
+Since, by Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:poly-time-reduction-connected-graphs"
+
+\end_inset
+
+, the Graph Isomorphism Problem is polynomial time reducible to the Graph
+ Isomorphism Problem for connected graphs, we assume 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ to be connected.
+\end_layout
+
+\begin_layout Standard
+For any two given graphs 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ and edges 
+\begin_inset Formula $e_{1}=(v_{1},w_{1})\in E_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $e_{2}=(v_{2},w_{2})$
+\end_inset
+
+ let 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+ be a graph with nodes 
+\begin_inset Formula $V_{1}\cup V_{2}\cup\{x_{1},x_{2}\}$
+\end_inset
+
+ and edges 
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+(E_{1}-e_{1}\cup\{(v_{1},x_{1}),(x_{1},w_{1})\})\,\,\cup\,\,(E_{2}-e_{2}\cup\{(v_{2},x_{2}),(x_{2},w_{2})\})\,\,\cup\,\,\{(x_{1},x_{2})\}.
+\]
+
+\end_inset
+
+As 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ are connected, and 
+\begin_inset Formula $(x_{1},x_{2})$
+\end_inset
+
+ connects two connected parts, 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+ is connected.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Graphs/trivalent-connect-aut.eps
+	width 80text%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The graph 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+, with 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ being on the left and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ on the right.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
