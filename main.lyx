@@ -3720,52 +3720,280 @@ Algorithms
 \end_layout
 
 \begin_layout Subsection
-Graphs / Graph Isomorphism
+Graphs
 \end_layout
 
 \begin_layout Standard
-Notation 
-\begin_inset Formula $(v,w)$
-\end_inset
-
- even if graph is undirected.
-\end_layout
-
-\begin_layout Standard
-Definition of Graph Isomorphism.
-\end_layout
-
-\begin_layout Standard
-Let 
+A ordered pair of two sets 
 \begin_inset Formula $X=(V,E)$
-\end_inset
-
- be a graph.
- For any bijection 
-\begin_inset Formula $\sigma:V\to V$
-\end_inset
-
- that satisfies 
-\begin_inset Formula $(v,w)\in V\iff(\sigma(v),\sigma(w))\in V$
-\end_inset
-
- for all 
-\begin_inset Formula $v,w\in V$
-\end_inset
-
-, 
-\begin_inset Formula $\sigma$
 \end_inset
 
  is called an 
 \emph on
-automorphism
+(undirected simple) graph
+\emph default
+, if 
+\begin_inset Formula $E$
+\end_inset
+
+ is a subset of the set of all two-sets of two different elements of 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ Elements of 
+\begin_inset Formula $V$
+\end_inset
+
+ are called 
+\emph on
+vertices
+\emph default
+ or 
+\emph on
+nodes
+\emph default
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+, members of 
+\begin_inset Formula $E$
+\end_inset
+
+ are called 
+\emph on
+edges
 \emph default
  of 
 \begin_inset Formula $X$
 \end_inset
 
 .
+ By 
+\begin_inset Formula $V(X)$
+\end_inset
+
+ and 
+\begin_inset Formula $E(X)$
+\end_inset
+
+, we refer to the set of nodes of any graph 
+\begin_inset Formula $X$
+\end_inset
+
+ and the set of edges of 
+\begin_inset Formula $X$
+\end_inset
+
+ respectively.
+ Although members of 
+\begin_inset Formula $E$
+\end_inset
+
+ are sets by definition, we often write 
+\begin_inset Formula $(v,w)$
+\end_inset
+
+ instead of 
+\begin_inset Formula $\{v,w\}$
+\end_inset
+
+ for the sake of simplicity.
+ As opposed to directed graphs, 
+\begin_inset Formula $(v,w)\in E$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $(w,v)\in E$
+\end_inset
+
+ for any graph in this thesis.
+ Moreover, all graphs in this thesis are simple, that is, they have no edges
+ 
+\begin_inset Formula $(v,v)$
+\end_inset
+
+ for any 
+\begin_inset Formula $v\in V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A list of edges 
+\begin_inset Formula $((s,v_{1}),(v_{1},v_{2}),...,(v_{n-1},v_{n}),(v_{n},t))$
+\end_inset
+
+ of a graph 
+\begin_inset Formula $X$
+\end_inset
+
+ is called a 
+\emph on
+path from 
+\begin_inset Formula $s$
+\end_inset
+
+ to 
+\begin_inset Formula $t$
+\end_inset
+
+
+\emph default
+.
+ A graph is called 
+\emph on
+connected
+\emph default
+, if for any pair of nodes 
+\begin_inset Formula $v,w\in V(X)$
+\end_inset
+
+, there is a path in 
+\begin_inset Formula $X$
+\end_inset
+
+ from 
+\begin_inset Formula $v$
+\end_inset
+
+ to 
+\begin_inset Formula $w$
+\end_inset
+
+.
+ Otherwise, 
+\begin_inset Formula $X$
+\end_inset
+
+ is called 
+\emph on
+disconnected
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+For any node 
+\begin_inset Formula $v\in V(X)$
+\end_inset
+
+ of a (simple) graph 
+\begin_inset Formula $X$
+\end_inset
+
+, we define the 
+\emph on
+degree of 
+\begin_inset Formula $v$
+\end_inset
+
+
+\emph default
+ to be 
+\begin_inset Formula $\deg v=|\{e\in E\,|\, v\in e\}|$
+\end_inset
+
+.
+ A graph 
+\begin_inset Formula $X$
+\end_inset
+
+ has 
+\emph on
+valence bounded by 
+\begin_inset Formula $k$
+\end_inset
+
+
+\emph default
+, if for any 
+\begin_inset Formula $v\in V(X)$
+\end_inset
+
+, 
+\begin_inset Formula $\deg v\leq k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For any two graphs 
+\begin_inset Formula $X_{1}=(V_{1},E_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}=(V_{2},E_{2})$
+\end_inset
+
+, we call a bijective function 
+\begin_inset Formula $\sigma:V_{1}\to V_{2}$
+\end_inset
+
+ a graph 
+\emph on
+isomorphism
+\emph default
+, if 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ preserves edge relations, that is, for any 
+\begin_inset Formula $v,w\in V_{1}$
+\end_inset
+
+ it holds that 
+\begin_inset Formula $(v,w)\in E_{1}\iff(\sigma(v),\sigma(w))\in E_{2}$
+\end_inset
+
+.
+ For isomorphisms 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ we can also write 
+\begin_inset Formula $\sigma:X_{1}\to X_{2}$
+\end_inset
+
+.
+ If there is an isomorphism, 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ are called 
+\emph on
+isomorphic
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a graph.
+ Any graph isomorphism 
+\begin_inset Formula $\sigma:X\to X$
+\end_inset
+
+ that maps 
+\begin_inset Formula $X$
+\end_inset
+
+ to itself is called a graph 
+\emph on
+automorphism
+\emph default
+.
+ The identity function is always an automorphism.
  The set of all automorphisms for a graph 
 \begin_inset Formula $X$
 \end_inset
@@ -3773,26 +4001,26 @@ automorphism
  together with composition of functions is called the 
 \emph on
 automorphism group 
-\begin_inset Formula $\Aut(X)$
+\begin_inset Formula $\Aut X$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Standard
-Testing isomorphism is polynomially reducible to finding generators; finding
- generators is polynomially reducible to the 
-\emph on
-Color Automorphism Problem
-\emph default
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "journals/jcss/Luks82"
-
+\begin_layout Definition
+Given two (connected) graphs 
+\begin_inset Formula $X_{1}$
 \end_inset
 
-.
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, the 
+\emph on
+Graph Isomorphism Problem (for connected graphs)
+\emph default
+ is to decide whether or not they are isomorphic.
 \end_layout
 
 \begin_layout Lemma
@@ -4211,7 +4439,7 @@ Let
 \begin_inset Formula $X_{2}=(V_{2},E_{2})$
 \end_inset
 
- be two graphs.
+ be two graphs with valence bounded by three.
  We will state a polynomial-time algorithm to check whether 
 \begin_inset Formula $X_{1}$
 \end_inset
@@ -4243,7 +4471,7 @@ reference "lem:poly-time-reduction-connected-graphs"
  to be connected.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Definition
 For any two given graphs 
 \begin_inset Formula $X_{1}$
 \end_inset
@@ -4252,7 +4480,7 @@ For any two given graphs
 \begin_inset Formula $X_{2}$
 \end_inset
 
- and edges 
+ with at least one edge respectively and edges 
 \begin_inset Formula $e_{1}=(v_{1},w_{1})\in E_{1}$
 \end_inset
 
@@ -4269,35 +4497,9 @@ For any two given graphs
 \end_inset
 
  and edges 
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+\begin_layout Definition
 \begin_inset Formula 
 \[
 (E_{1}-e_{1}\cup\{(v_{1},x_{1}),(x_{1},w_{1})\})\,\,\cup\,\,(E_{2}-e_{2}\cup\{(v_{2},x_{2}),(x_{2},w_{2})\})\,\,\cup\,\,\{(x_{1},x_{2})\}.
@@ -4305,7 +4507,19 @@ status open
 
 \end_inset
 
-As 
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:trivalent-connect-aut"
+
+\end_inset
+
+ shows 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+.
+ Notice that, since 
 \begin_inset Formula $X_{1}$
 \end_inset
 
@@ -4322,6 +4536,23 @@ As
 \end_inset
 
  is connected.
+ Furthermore, since the degree of 
+\begin_inset Formula $v_{1},v_{2},w_{1},w_{2}$
+\end_inset
+
+ remains unchanged and the degree of 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ is three, 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+ has still valence three.
 \end_layout
 
 \begin_layout Standard
@@ -4342,6 +4573,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:trivalent-connect-aut"
+
+\end_inset
+
 The graph 
 \begin_inset Formula $X_{1}\ast X_{2}$
 \end_inset
@@ -4355,6 +4592,17 @@ The graph
 \end_inset
 
  on the right.
+ Untouched edges of 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ are dashed, new edges are painted solid.
+ The two new nodes are shown as squares, whereas previously existing nodes
+ are shown as disks.
 \end_layout
 
 \end_inset
@@ -4371,12 +4619,221 @@ The graph
 
 \end_layout
 
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:equiv-auto-isomorphism"
+
+\end_inset
+
+Two graphs 
+\begin_inset Formula $X_{1}=(V_{1},E_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}=(V_{2},E_{2})$
+\end_inset
+
+ are isomorphic if and only if there is an automorphism of 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+ that switches 
+\begin_inset Formula $(x_{1},x_{2})$
+\end_inset
+
+, where 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ are the two additional nodes of 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\sigma:X_{1}\to X_{2}$
+\end_inset
+
+ be an isomorphism.
+ Then 
+\begin_inset Formula $\widetilde{\sigma}:(X_{1}\ast X_{2})\to(X_{1}\ast X_{2}),$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x\mapsto\widetilde{\sigma}(x)=\begin{cases}
+\sigma(x) & x\notin\{x_{1},x_{2}\}\\
+x_{1} & x=x_{2}\\
+x_{2} & x=x_{1}
+\end{cases}
+\]
+
+\end_inset
+
+is an automorphism on 
+\begin_inset Formula $(X_{1}\ast X_{2})$
+\end_inset
+
+ that switches 
+\begin_inset Formula $(x_{1},x_{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ be an automorphism on 
+\begin_inset Formula $(X_{1}\ast X_{2})$
+\end_inset
+
+ that switches 
+\begin_inset Formula $(x_{1},x_{2})$
+\end_inset
+
+, that is 
+\begin_inset Formula $\sigma(x_{1})=x_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma(x_{2})=x_{1}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be the set of edges of 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+.
+ Since the automorphism preserves edge relations, any neighbor of 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ (except for 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+) is mapped to some node in 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+.
+ By induction, 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ not only switches 
+\begin_inset Formula $(x_{1},x_{2})$
+\end_inset
+
+ but switches the 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ components of 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\sigma|_{X_{1}}$
+\end_inset
+
+ is a one-to-one mapping onto 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ are isomorphic.
+\end_layout
+
 \begin_layout Standard
-Lemmas in this subsection will prove Theorem 
+Using Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:equiv-auto-isomorphism"
+
+\end_inset
+
+, we can go ahead and proof theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:gi-trivalent-graphs-reduceto-automorphism-generator-trivalent-graphs"
 
+\end_inset
+
+ by stating a polynomial time reduction.
+\end_layout
+
+\begin_layout Proof
+Assume we have an algorithm 
+\begin_inset Formula $M$
+\end_inset
+
+ that decides the Automorphism Generator Problem for Trivalent Graphs.
+ Let 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ be two connected graphs.
+ Constructing 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+ involves adding and removing a constant number of edges and nodes and can
+ thus be done in polynomial time.
+ Due to Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:equiv-auto-isomorphism"
+
+\end_inset
+
+, 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ are isomorphic if and only if the algorithm 
+\begin_inset Formula $M$
+\end_inset
+
+ finds an automorphism that switches edge 
+\begin_inset Formula $(x_{1},x_{2})$
 \end_inset
 
 .
