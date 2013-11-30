@@ -108,9 +108,21 @@ Definition of algebra operators
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\sgn}{\operatorname{sgn}}
-{\mathrm{sgn}}
+\newcommand{\Ker}{\operatorname{Ker}}
+{\mathrm{Ker}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Img}{\operatorname{Im}}
+{\mathrm{Im}}
 \end_inset
 
 
@@ -3711,12 +3723,72 @@ Let
 .
 \end_layout
 
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:generating-set-kernel-image"
+
+\end_inset
+
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $H$
+\end_inset
+
+ be groups and 
+\begin_inset Formula $f:G\to H$
+\end_inset
+
+ be a group homomorphism.
+ If 
+\begin_inset Formula $K$
+\end_inset
+
+ is a generating set for 
+\begin_inset Formula $\Ker f$
+\end_inset
+
+ and 
+\begin_inset Formula $I$
+\end_inset
+
+ is a generating set for 
+\begin_inset Formula $\Img f$
+\end_inset
+
+, then 
+\begin_inset Formula $K\cup I$
+\end_inset
+
+ generates 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 Computational Complexity
 \end_layout
 
 \begin_layout Standard
-Polynomial time reduction means Turing-reduction.
+Definition of many-one-reduction and Turing-reduction.
+\end_layout
+
+\begin_layout Standard
+Definition of oracle.
+\end_layout
+
+\begin_layout Standard
+Reduction for function problems.
+\end_layout
+
+\begin_layout Standard
+In this thesis, polynomial time reduction means Turing-reduction if not
+ noted otherwise.
 \end_layout
 
 \begin_layout Subsection
@@ -5170,11 +5242,362 @@ Reduction to the Color Automorphism Problem for 2-groups
 \end_layout
 
 \begin_layout Standard
-Lemmas in this subsection will prove Theorem 
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a connected trivalent simple graph with 
+\begin_inset Formula $n$
+\end_inset
+
+ edges and 
+\begin_inset Formula $e=(e_{1},e_{2})\in E(X)$
+\end_inset
+
+ be a distinguished edge.
+ Let 
+\begin_inset Formula $M$
+\end_inset
+
+ be an algorithm that finds a generating set for the biggest color-preserving
+ subgroup of a 2-subgroup 
+\begin_inset Formula $G\leq\Sym A$
+\end_inset
+
+, where 
+\begin_inset Formula $A$
+\end_inset
+
+ is a colored set.
+ We will show that we can determine a generating set for 
+\begin_inset Formula $\Aut_{e}(X)$
+\end_inset
+
+ in polynomial time using polynomial-many calls to 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+For 
+\begin_inset Formula $r\in\{1,...,n\}$
+\end_inset
+
+, let 
+\begin_inset Formula $X_{r}$
+\end_inset
+
+ be the subgraph of 
+\begin_inset Formula $X$
+\end_inset
+
+ consisting of all edges and nodes that appear on paths of length 
+\begin_inset Formula $r$
+\end_inset
+
+ through 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\pi_{r}:\Aut_{e}(X_{r+1})\to\Aut_{e}(X_{r})$
+\end_inset
+
+ be defined by 
+\begin_inset Formula $\sigma\mapsto\pi_{r}(\sigma)=\sigma|_{X_{r}}$
+\end_inset
+
+, the restriction of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ to 
+\begin_inset Formula $X_{r}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We obtain that 
+\begin_inset Formula $X_{1}=(\{e_{1},e_{2}\},\{(e_{1},e_{2})\})$
+\end_inset
+
+, since there is only one path of length one through 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ Furthermore, it is 
+\begin_inset Formula $X_{n}=X$
+\end_inset
+
+, since the distance from 
+\begin_inset Formula $e$
+\end_inset
+
+ to any node in 
+\begin_inset Formula $X$
+\end_inset
+
+ is less or equal to 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+If 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is an automorphism on 
+\begin_inset Formula $X_{r+1}$
+\end_inset
+
+, then 
+\begin_inset Formula $\sigma|_{X_{r}}$
+\end_inset
+
+ is an automorphism on 
+\begin_inset Formula $X_{r}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Lemma
+The function 
+\begin_inset Formula $\pi_{r}$
+\end_inset
+
+ is a group homomorphism.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:determine-aut-r1"
+
+\end_inset
+
+It is 
+\begin_inset Formula $\Aut_{e}(X_{1})=\{\sigma,\tau\}$
+\end_inset
+
+ with 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ being the identity function and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ transposing 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:determine-aut-kernel"
+
+\end_inset
+
+Given a set of generators for 
+\begin_inset Formula $\Aut(X_{r})$
+\end_inset
+
+, a set of generators for 
+\begin_inset Formula $\Ker\pi_{r}$
+\end_inset
+
+ can be determined in polynomial time.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:determine-aut-image"
+
+\end_inset
+
+Given a set of generators for 
+\begin_inset Formula $\Aut(X_{r})$
+\end_inset
+
+, a set of generators for 
+\begin_inset Formula $\Img\pi_{r}$
+\end_inset
+
+ can be determined in polynomial time, using one call to 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
+\begin_inset CommandInset label
+LatexCommand label
+name "cor:determine-aut-r-plus-1"
+
+\end_inset
+
+Given a set of generators for 
+\begin_inset Formula $\Aut_{e}(X_{r})$
+\end_inset
+
+, we can determine a generating set for 
+\begin_inset Formula $\Aut_{e}(X_{r+1})$
+\end_inset
+
+ in polynomial time with one call to 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Since we know a set of generators for 
+\begin_inset Formula $\Aut_{e}(X_{r})$
+\end_inset
+
+, by Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:determine-aut-kernel"
+
+\end_inset
+
+, we can determine a generating set 
+\begin_inset Formula $K$
+\end_inset
+
+ for 
+\begin_inset Formula $\Ker\pi_{r}$
+\end_inset
+
+ in polynomial time and by Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:determine-aut-image"
+
+\end_inset
+
+, we can determine a generating 
+\begin_inset Formula $I$
+\end_inset
+
+ set for 
+\begin_inset Formula $\Img\pi_{r}$
+\end_inset
+
+ in polynomial time using one call to 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ By Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:generating-set-kernel-image"
+
+\end_inset
+
+, 
+\begin_inset Formula $K\cup I$
+\end_inset
+
+ is a generating set for 
+\begin_inset Formula $\Aut_{e}(X_{r+1})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Proof of theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:automorphism-generator-trivalent-graphs-reduceto-color-automorphism-2-groups"
 
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ We know 
+\begin_inset Formula $\Aut_{e}(X_{1})$
+\end_inset
+
+ by Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:determine-aut-r1"
+
+\end_inset
+
+.
+ With 
+\begin_inset Formula $|X|$
+\end_inset
+
+ iterations of Corollary 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cor:determine-aut-r-plus-1"
+
+\end_inset
+
+, we can obtain 
+\begin_inset Formula $\Aut_{e}(X)$
+\end_inset
+
+ using polynomial time and 
+\begin_inset Formula $|X|$
+\end_inset
+
+ calls to 
+\begin_inset Formula $M$
 \end_inset
 
 .
