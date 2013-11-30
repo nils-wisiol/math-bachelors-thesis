@@ -4279,6 +4279,12 @@ On the Size of Group Representations
 \end_layout
 
 \begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:group-size-representation"
+
+\end_inset
+
 Any group 
 \begin_inset Formula $G$
 \end_inset
@@ -4334,8 +4340,34 @@ Let
 \begin_inset Formula $g_{n+1}\notin G_{n}$
 \end_inset
 
+ and 
+\begin_inset Formula $G_{n+1}$
+\end_inset
+
+ has at least two disjoint cosets, 
+\begin_inset Formula $eG_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{n+1}G_{n}$
+\end_inset
+
 .
- 
+ Therefore, 
+\begin_inset Formula $|G_{n+1}|\geq2|G_{n}|$
+\end_inset
+
+.
+ By induction, we obtain 
+\begin_inset Formula $|G|=|G_{m}|\geq2^{m}$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $m\leq\log_{2}|G|$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -4896,12 +4928,28 @@ name "lem:equiv-automorph-generator"
 
 \end_inset
 
-For a graph 
-\begin_inset Formula $X$
+For two graphs 
+\begin_inset Formula $X_{1}$
 \end_inset
 
  and 
-\begin_inset Formula $e=(x_{1},x_{2})\in E(X)$
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ being the additional nodes in 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+ with 
+\begin_inset Formula $e=(x_{1},x_{2})\in E(X_{1}\ast X_{2})$
 \end_inset
 
 , if there is an automorphism transposing 
@@ -4926,7 +4974,7 @@ We will proof the contrapositive.
 \end_inset
 
  be a generating set of 
-\begin_inset Formula $\Aut_{e}(X)$
+\begin_inset Formula $\Aut_{e}(X_{1}\ast X_{2})$
 \end_inset
 
  that does not contain an automorphism transposing 
@@ -4943,11 +4991,23 @@ We will proof the contrapositive.
 \end_inset
 
 , 
-\begin_inset Formula $g(x_{1})=x_{1}$
+\begin_inset Formula $g(x_{1})\in X_{1}$
 \end_inset
 
  and 
-\begin_inset Formula $g(x_{2})=x_{2}$
+\begin_inset Formula $g^{-1}(x_{1})\in X_{1}$
+\end_inset
+
+ since 
+\begin_inset Formula $e$
+\end_inset
+
+ is the only edge that connects nodes from 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
 \end_inset
 
 .
@@ -4960,28 +5020,24 @@ We will proof the contrapositive.
 \end_inset
 
  there is a finite composition of 
-\begin_inset Formula $g_{1},...,g_{n}\in G$
+\begin_inset Formula $g_{1},...,g_{n}\in G\cup G^{-1}$
 \end_inset
 
  with 
-\begin_inset Formula $g_{1}\circ...\circ g_{n}=\sigma$
+\begin_inset Formula $g_{1}\circ...\circ g_{n}^{}=\sigma$
 \end_inset
 
 .
  This yields 
-\begin_inset Formula $\sigma(x_{1})=(g_{1}\circ...\circ g_{n})(x_{1})=x_{1}$
+\begin_inset Formula $\sigma(x_{1})=(g_{1}\circ...\circ g_{n})(x_{1})\in X_{1}$
 \end_inset
 
- and therefore every 
+ and therefore we obtain 
+\begin_inset Formula $\sigma(x_{1})\neq x_{2}$
+\end_inset
+
+ for every 
 \begin_inset Formula $\sigma\in\Aut_{e}(X)$
-\end_inset
-
- fixes 
-\begin_inset Formula $x_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $x_{2}$
 \end_inset
 
 .
@@ -5087,8 +5143,26 @@ reference "lem:equiv-automorph-generator"
 \end_inset
 
 .
- As the size of the generating set is bounded by TODO by lemma TODO, we
- can verify this condition in polynomial time.
+ As the size of the generating set is bounded by 
+\begin_inset Formula $\log_{2}|Aut_{e}(X_{1}\ast X_{2})|$
+\end_inset
+
+ by lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:group-size-representation"
+
+\end_inset
+
+ with 
+\begin_inset Formula $|\Aut_{e}(X_{1}\ast X_{2})|$
+\end_inset
+
+ being of exponential size in the input length 
+\begin_inset Formula $|(X_{1},X_{2})|$
+\end_inset
+
+ , we can verify this condition in polynomial time.
 \end_layout
 
 \begin_layout Subsection
