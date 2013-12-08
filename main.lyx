@@ -5323,7 +5323,7 @@ For
 
 \begin_layout Standard
 We obtain that 
-\begin_inset Formula $X_{1}=(\{e_{1},e_{2}\},\{(e_{1},e_{2})\})$
+\begin_inset Formula $X_{1}=(\{v_{1},v_{2}\},\{(v_{1},v_{2})\})$
 \end_inset
 
 , since there is only one path of length one through 
@@ -5348,42 +5348,6 @@ We obtain that
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Lemma
-If 
-\begin_inset Formula $\sigma$
-\end_inset
-
- is an automorphism on 
-\begin_inset Formula $X_{r+1}$
-\end_inset
-
-, then 
-\begin_inset Formula $\sigma|_{X_{r}}$
-\end_inset
-
- is an automorphism on 
-\begin_inset Formula $X_{r}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout --Separator--
-
-\end_layout
-
-\begin_layout Lemma
-The function 
-\begin_inset Formula $\pi_{r}$
-\end_inset
-
- is a group homomorphism.
-\end_layout
-
-\begin_layout --Separator--
-
 \end_layout
 
 \begin_layout Lemma
@@ -5416,6 +5380,227 @@ It is
 .
 \end_layout
 
+\begin_layout Proof
+As mentioned before, 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ is the graph consisting of all edges and nodes appearing of paths of length
+ one through 
+\begin_inset Formula $e$
+\end_inset
+
+ and is thus only 
+\begin_inset Formula $e$
+\end_inset
+
+ itself.
+ There are only two bijections of two elements, and both turn out to be
+ an automorphism on 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\Aut_{e}(X_{1})=\{\sigma,\tau\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:automorphism-restriction"
+
+\end_inset
+
+If 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is an automorphism on 
+\begin_inset Formula $X_{r+1}$
+\end_inset
+
+ that fixes edge 
+\begin_inset Formula $e$
+\end_inset
+
+, then 
+\begin_inset Formula $\sigma|_{X_{r}}$
+\end_inset
+
+ is an automorphism on 
+\begin_inset Formula $X_{r}$
+\end_inset
+
+ that fixes edge 
+\begin_inset Formula $e$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ be an automorphism on 
+\begin_inset Formula $X_{r+1}$
+\end_inset
+
+ that fixes edge 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\sigma|_{X_{1}}$
+\end_inset
+
+ fixes edge 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ So, 
+\begin_inset Formula $\sigma(X_{1})=X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma|_{X_{1}}\in\Aut_{e}(X_{1})$
+\end_inset
+
+.
+ We will prove by induction that 
+\begin_inset Formula $\sigma(X_{i})=X_{i}$
+\end_inset
+
+ and therefore 
+\begin_inset Formula $\sigma|_{X_{i}}\in\Aut_{e}(X_{i})$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\leq r+1$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $v\in V(X_{i+1})\setminus V(X_{i})$
+\end_inset
+
+.
+ As 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ preserves edge relations and 
+\begin_inset Formula $v$
+\end_inset
+
+ is adjacent to a node in 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma(v)$
+\end_inset
+
+ must be adjacent to a node in 
+\begin_inset Formula $\sigma(X_{i})$
+\end_inset
+
+.
+ By induction, 
+\begin_inset Formula $\sigma(V(X_{i}))=V(X_{i})$
+\end_inset
+
+ and thus 
+\begin_inset Formula $\sigma(v)$
+\end_inset
+
+ is adjacent to a node in 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\sigma(v)\in X_{i+1}$
+\end_inset
+
+ and thus 
+\begin_inset Formula $\sigma(V(X_{i+1}))=V(X_{i+1})$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma\in\Aut_{e}(X_{i+1})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+The function 
+\begin_inset Formula $\pi_{r}$
+\end_inset
+
+ is a group homomorphism.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\sigma,\tau\in\Aut(X_{r+1})$
+\end_inset
+
+.
+ As 
+\begin_inset Formula $\sigma\circ\tau$
+\end_inset
+
+ is a automorphism on 
+\begin_inset Formula $X_{r+1}$
+\end_inset
+
+ that fixes edge 
+\begin_inset Formula $e$
+\end_inset
+
+, Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:automorphism-restriction"
+
+\end_inset
+
+ applies and 
+\begin_inset Formula $(\sigma\circ\tau)|_{X_{r}}\in\Aut_{e}(X_{r})$
+\end_inset
+
+.
+ Moreover, Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:automorphism-restriction"
+
+\end_inset
+
+ also made clear that 
+\begin_inset Formula $\sigma(V(X_{i}))=V(X_{i})$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\leq r+1$
+\end_inset
+
+ and thus we obtain 
+\begin_inset Formula $\pi_{r}(\sigma\circ\tau)=(\sigma\circ\tau)|_{X_{r}}=(\sigma|_{X_{r}}\circ\tau|_{X_{r}})=\pi_{r}(\sigma)\circ\pi_{r}(\tau)$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout --Separator--
 
 \end_layout
@@ -5436,6 +5621,10 @@ Given a set of generators for
 \end_inset
 
  can be determined in polynomial time.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout --Separator--
