@@ -6371,7 +6371,7 @@ name "lem:stabilizes-as-imgpir"
 \end_inset
 
 Any 
-\begin_inset Formula $\sigma\in\Aut_{e}(X_{r})$
+\begin_inset Formula $\tau\in\Aut_{e}(X_{r})$
 \end_inset
 
 , that stabilizes 
@@ -6394,7 +6394,152 @@ Any
 \end_layout
 
 \begin_layout Proof
-TODO.
+We show that 
+\begin_inset Formula $\tau$
+\end_inset
+
+ can be extended to an automorphism 
+\begin_inset Formula $\sigma\in\Aut_{e}(X_{r+1})$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\sigma|_{X_{r}}=\tau$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+For any 
+\begin_inset Formula $v\in V(X_{r+1})\setminus V(X_{r})$
+\end_inset
+
+ with 
+\begin_inset Formula $f(v)\in A_{1}$
+\end_inset
+
+ we have 
+\begin_inset Formula $\tau(f(v))\in A_{1}$
+\end_inset
+
+, since 
+\begin_inset Formula $\tau$
+\end_inset
+
+ stabilizes 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+.
+ As 
+\begin_inset Formula $\tau(f(v))\in A_{1}$
+\end_inset
+
+, there is a uniquely determined 
+\begin_inset Formula $w$
+\end_inset
+
+ such that 
+\begin_inset Formula $f(w)=\tau(f(v))$
+\end_inset
+
+.
+ Therefore, we define 
+\begin_inset Formula $\sigma(v)=w$
+\end_inset
+
+.
+ Since any neighbor of 
+\begin_inset Formula $v$
+\end_inset
+
+ is a member of 
+\begin_inset Formula $f(v)$
+\end_inset
+
+ and any neighbor of 
+\begin_inset Formula $w$
+\end_inset
+
+ lies in 
+\begin_inset Formula $f(w)=\tau(f(v))$
+\end_inset
+
+, this extension of 
+\begin_inset Formula $\tau$
+\end_inset
+
+ preserves edge relations.
+\end_layout
+
+\begin_layout Proof
+For any 
+\begin_inset Formula $v_{1},v_{2}\in V(X_{r+1})\setminus(X_{r})$
+\end_inset
+
+ with 
+\begin_inset Formula $a:=f(v_{1})=f(v_{2})\in A_{2}$
+\end_inset
+
+, it must be 
+\begin_inset Formula $\tau(a)\in A_{2}$
+\end_inset
+
+, since 
+\begin_inset Formula $\tau$
+\end_inset
+
+ stabilizes 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+.
+ Similar to the mapping of 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+, there are two nodes 
+\begin_inset Formula $w_{1},w_{2}$
+\end_inset
+
+ such that 
+\begin_inset Formula $f(w_{1})=f(w_{2})=\tau(a)$
+\end_inset
+
+.
+ We define 
+\begin_inset Formula $\sigma(v_{1})=w_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma(v_{2})=w_{2}$
+\end_inset
+
+.
+ This preserves edge relations, as for 
+\begin_inset Formula $i\in\{1,2\}$
+\end_inset
+
+ it holds 
+\begin_inset Formula $f(w_{i})=\tau(a)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+This yields an automorphism 
+\begin_inset Formula $\sigma\in\Aut_{e}(X_{r+1})$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\tau\in\Img\pi_{r}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Corollary
