@@ -11,6 +11,7 @@
 theorems-ams
 eqs-within-sections
 figs-within-sections
+algolyx
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -195,6 +196,41 @@ Definition of complexity classes
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Additional statements for algorithms 
+\begin_inset Newline newline
+\end_inset
+
+(Note: changes to lyxalgo.sty are needed every time a new statement is added.)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+keyreturn}{return}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Title
 Graph Isomorphism
 \end_layout
@@ -258,7 +294,7 @@ Let
 \end_layout
 
 \begin_layout Abstract
-While in gerneral it is not known whether there is a polynomial time algorithm
+While in general it is not known whether there is a polynomial time algorithm
  to decide whether two given graphs are isomorphic, there are polynomial-time
  algorithms for certain subsets of graphs, including but not limited to
  planar graphs and graphs with bounded valence.
@@ -4447,6 +4483,12 @@ Let
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:valence-3"
+
+\end_inset
+
 Graphs with Valence Bounded By Three
 \end_layout
 
@@ -4457,6 +4499,12 @@ In this section, we will show that testing isomorphism of graphs with valence
 \end_layout
 
 \begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:trivalent-problems"
+
+\end_inset
+
 We define the following problems.
 \end_layout
 
@@ -4632,6 +4680,12 @@ We will prove the theorems separately in the following subsections.
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:valence-3-first-red"
+
+\end_inset
+
 Reduction to the Automorphism Generator Problem
 \end_layout
 
@@ -5242,6 +5296,12 @@ reference "lem:group-size-representation"
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:valence-3-second-red"
+
+\end_inset
+
 Reduction to the Color Automorphism Problem for 2-groups
 \end_layout
 
@@ -6916,18 +6976,855 @@ reference "cor:determine-aut-r-plus-1"
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:valence-3-polytime-alg"
+
+\end_inset
+
 Solving the Color Automorphism Problem for 2-groups in polynomial time
 \end_layout
 
 \begin_layout Standard
-Lemmas in this subsection will prove Theorem 
+The Graph Isomorphism Problem for graphs with valence bounded by three was
+ reduced to the Color Automorphism Problems for 2-groups by sections 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:valence-3-first-red"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:valence-3-second-red"
+
+\end_inset
+
+.
+ This section will show that there is a polynomial time divide and conquer
+ algorithm that can solve the Color Automorphism Problem.
+ Ultimately, this will prove that we can solve the Graph Isomorphism Problem
+ for graphs with valence bounded by three in polynomial time as stated in
+ Corollary 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cor:gi-trivalent-graphs-polynomial-time"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To unveil the recursive structure of the problem, we need the notion of
+ a 
+\begin_inset Quotes eld
+\end_inset
+
+filter
+\begin_inset Quotes erd
+\end_inset
+
+ for color-preserving elements from a set of permutations.
+\end_layout
+
+\begin_layout Definition
+For a colored set 
+\begin_inset Formula $A$
+\end_inset
+
+, a subset 
+\begin_inset Formula $B\subseteq A$
+\end_inset
+
+ and 
+\begin_inset Formula $K\subseteq\Sym(A)$
+\end_inset
+
+ we define 
+\begin_inset Formula $C_{B}(K)=\{\sigma\in K\,|\,\text{for all }b\in B,\sigma(b)\sim b\}$
+\end_inset
+
+, where 
+\begin_inset Formula $a\sim b$
+\end_inset
+
+ for 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ is true if and only if 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ have the same color.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be a colored set.
+ As stated in definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:trivalent-problems"
+
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pro:color-automorphism-2-groups"
+
+\end_inset
+
+), we need to give an polynomial-time algorithm that finds the biggest color-pre
+serving subgroup of 
+\begin_inset Formula $G$
+\end_inset
+
+, where 
+\begin_inset Formula $G$
+\end_inset
+
+ is a 2-subgroup of 
+\begin_inset Formula $\Sym(A)$
+\end_inset
+
+ given by a set of generators.
+ That is, we need to find 
+\begin_inset Formula $C_{A}(G)$
+\end_inset
+
+.
+ We will prove in lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:CB-properties"
+
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:CB-properties-subgroup"
+
+\end_inset
+
+) that 
+\begin_inset Formula $C_{A}(G)$
+\end_inset
+
+ is indeed a group.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:CB-properties"
+
+\end_inset
+
+Let 
+\begin_inset Formula $K,K'\subseteq\Sym(A)$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a subgroup of 
+\begin_inset Formula $\Sym(A)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:CB-properties-union"
+
+\end_inset
+
+
+\begin_inset Formula $C_{B}(K\cup K')=C_{B}(K)\cup C_{B}(K')$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:CB-properties-composition"
+
+\end_inset
+
+
+\begin_inset Formula $C_{B\cup B'}(K)=C_{B'}C_{B}(K)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:CB-properties-subgroup"
+
+\end_inset
+
+For any 
+\begin_inset Formula $G$
+\end_inset
+
+-stable 
+\begin_inset Formula $K$
+\end_inset
+
+, 
+\begin_inset Formula $C_{B}(K)$
+\end_inset
+
+ is a subgroup of 
+\begin_inset Formula $K$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:CB-properties-coset"
+
+\end_inset
+
+If 
+\begin_inset Formula $C_{B}(\sigma G)$
+\end_inset
+
+ is not empty then it is a left coset of the subgroup 
+\begin_inset Formula $C_{B}(G)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+To allow recursive calls, the algorithm's input will be a set 
+\begin_inset Formula $B\subset A$
+\end_inset
+
+ and a coset, represented by a 
+\begin_inset Formula $\sigma\in\Sym(A)$
+\end_inset
+
+ and a generating set for a subgroup 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ The algorithm will then find 
+\begin_inset Formula $C_{B}(\sigma G)$
+\end_inset
+
+.
+ By lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:CB-properties"
+
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:CB-properties-coset"
+
+\end_inset
+
+), this is either empty or a coset as well.
+ To use the algorithm to find 
+\begin_inset Formula $C_{A}(G)$
+\end_inset
+
+, we will use 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $1\in\Sym(A)$
+\end_inset
+
+ and a generating set for 
+\begin_inset Formula $G$
+\end_inset
+
+ as input values.
+\end_layout
+
+\begin_layout Standard
+Each recursive call of the algorithm will use two or four sub-calls to itself,
+ using a (possibly) different coset and some 
+\begin_inset Formula $B'\subsetneq B$
+\end_inset
+
+ as an input.
+ The smaller 
+\begin_inset Formula $B'$
+\end_inset
+
+ guarantees the algorithm will terminate eventually.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+* input: a set 
+\begin_inset Formula $B\subseteq A$
+\end_inset
+
+, permutation 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, set of generators for 2-subgroup 
+\begin_inset Formula $G\leq\Sym A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+if 
+\begin_inset Formula $B$
+\end_inset
+
+ is union of 
+\begin_inset Formula $G$
+\end_inset
+
+-stable subsets 
+\begin_inset Formula $B'$
+\end_inset
+
+, 
+\begin_inset Formula $B''$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+return 
+\begin_inset Formula $C_{B}(\sigma G)=C_{B''}(C_{B}'(\sigma G))$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+else
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* find 
+\begin_inset Formula $G$
+\end_inset
+
+-blocks 
+\begin_inset Formula $B'$
+\end_inset
+
+ and 
+\begin_inset Formula $B''$
+\end_inset
+
+ such that 
+\begin_inset Formula $B=B'\cup B''$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+* find subgroup 
+\begin_inset Formula $H\leq G=H\cup\tau H$
+\end_inset
+
+ that stabilizes 
+\begin_inset Formula $B'$
+\end_inset
+
+ and 
+\begin_inset Formula $B''$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+return 
+\begin_inset Formula $C_{B}(\sigma G)=C_{B''}(C_{B'}(\sigma H))\cup C_{B''}(C_{B'}(\sigma\tau H))$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endif
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:trivalent"
+
+\end_inset
+
+Polynomial-time divide and conquer algorithm for the Color Automorphism
+ Problem for 2-groups.
+ (TODO base case not shown)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With the following lemmas, we will show that both cases of the algorithm
+ return the correct result.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:trivalent-algo-intransitive"
+
+\end_inset
+
+If 
+\begin_inset Formula $B$
+\end_inset
+
+ is the union of 
+\begin_inset Formula $G$
+\end_inset
+
+-stable subsets 
+\begin_inset Formula $B'$
+\end_inset
+
+ and 
+\begin_inset Formula $B''$
+\end_inset
+
+, then 
+\begin_inset Formula $C_{B}(\sigma G)=C_{B''}(C_{B}'(\sigma G))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+TODO
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:trivalent-algo-transitive"
+
+\end_inset
+
+If 
+\begin_inset Formula $B$
+\end_inset
+
+ is not the union of 
+\begin_inset Formula $G$
+\end_inset
+
+-stable subsets 
+\begin_inset Formula $B'$
+\end_inset
+
+ and 
+\begin_inset Formula $B''$
+\end_inset
+
+, then there are 
+\begin_inset Formula $G$
+\end_inset
+
+-blocks 
+\begin_inset Formula $B'$
+\end_inset
+
+ and 
+\begin_inset Formula $B''$
+\end_inset
+
+, a 
+\begin_inset Formula $B'$
+\end_inset
+
+- and 
+\begin_inset Formula $B''$
+\end_inset
+
+-stable subgroup 
+\begin_inset Formula $H\leq G$
+\end_inset
+
+ and a 
+\begin_inset Formula $\tau\in\Sym A$
+\end_inset
+
+ such that 
+\begin_inset Formula $B=B'\cup B''$
+\end_inset
+
+ and 
+\begin_inset Formula $G=H\cup\tau H$
+\end_inset
+
+.
+ Furthermore, 
+\begin_inset Formula $C_{B}(\sigma G)=C_{B''}(C_{B'}(\sigma H))\cup C_{B''}(C_{B'}(\sigma\tau H))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+TODO
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Correctness of algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:trivalent"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:trivalent-algo-correct"
+
+\end_inset
+
+Given a colored set 
+\begin_inset Formula $A$
+\end_inset
+
+ and a 2-subgroup 
+\begin_inset Formula $G$
+\end_inset
+
+ of 
+\begin_inset Formula $\Sym A$
+\end_inset
+
+, algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:trivalent"
+
+\end_inset
+
+ returns 
+\begin_inset Formula $C_{A}(G)$
+\end_inset
+
+, which is the biggest color-preserving subgroup of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+TODO
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Induction using lemmas 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:trivalent-algo-intransitive"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:trivalent-algo-transitive"
+
+\end_inset
+
+; base case.
+ This yields: Algorithm returns 
+\begin_inset Formula $C_{A}(G)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $C_{A}(G)$
+\end_inset
+
+ is the biggest color-preserving subgroup
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:trivalent-algo-correct"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:trivalent-algo-step-runtime"
+
+\end_inset
+
+In algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:trivalent"
+
+\end_inset
+
+, the runtime for each recursive step is polynomial in 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+TODO case-by-case: transitive and intransitive
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:trivalent-algo-number-of-branches"
+
+\end_inset
+
+Given a colored set 
+\begin_inset Formula $A$
+\end_inset
+
+ with 
+\begin_inset Formula $n$
+\end_inset
+
+ elements and a generating set for a 2-subgroup 
+\begin_inset Formula $G$
+\end_inset
+
+ of 
+\begin_inset Formula $\Sym A$
+\end_inset
+
+, algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:trivalent"
+
+\end_inset
+
+ uses less than TODO number of recursive calls.
+\end_layout
+
+\begin_layout Proof
+TODO
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Runtime of algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:trivalent"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:trivalent-algo-runtime"
+
+\end_inset
+
+Given a colored set 
+\begin_inset Formula $A$
+\end_inset
+
+ with 
+\begin_inset Formula $n$
+\end_inset
+
+ elements and a generating set for a 2-subgroup 
+\begin_inset Formula $G$
+\end_inset
+
+ of 
+\begin_inset Formula $\Sym A$
+\end_inset
+
+, algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:trivalent"
+
+\end_inset
+
+ uses polynomial time in 
+\begin_inset Formula $n$
+\end_inset
+
+ to terminate.
+\end_layout
+
+\begin_layout Proof
+By lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:trivalent-algo-step-runtime"
+
+\end_inset
+
+, the runtime for each recursive step is polynomial in 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ By 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:trivalent-algo-number-of-branches"
+
+\end_inset
+
+, there are less than TODO recursive calls.
+ This yields a polynomial runtime in 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Proof of theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:color-automorphism-2-groups-polynomial-time"
 
 \end_inset
 
-.
+
+\end_layout
+
+\end_inset
+
+Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:trivalent-algo-correct"
+
+\end_inset
+
+ guarantees correctness of algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:trivalent"
+
+\end_inset
+
+, while theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:trivalent-algo-runtime"
+
+\end_inset
+
+ proves polynomial runtime.
+ Therefore, we have a polynomial-time algorithm for the Color Automorphism
+ Problem for 2-groups.
 \end_layout
 
 \begin_layout Section
