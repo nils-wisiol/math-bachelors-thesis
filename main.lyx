@@ -362,9 +362,9 @@ Given two graphs
 \end_inset
 
 .
- A one-to-one mapping that satisfy this constraint is called an 
+ A one-to-one mapping that satisfies this constraint is called an 
 \emph on
-isomorphism from 
+graph isomorphism from 
 \begin_inset Formula $G_{1}$
 \end_inset
 
@@ -3350,13 +3350,13 @@ Graph Isomorphism Problem
 \end_inset
 
 -complete if the polynomial hierarchy collapses and it is thus believed
- to be not 
+ not to be 
 \begin_inset Formula $\NP$
 \end_inset
 
 -complete.
  As no polynomial time algorithm is known for the general case as well,
- the Graph Isomorphism is thought to be an intermediate problem in 
+ the Graph Isomorphism is thought to be an intermediatnote problem in 
 \begin_inset Formula $\NP-\P$
 \end_inset
 
@@ -3382,7 +3382,7 @@ Being thought to be in between
 -complete, the Graph Isomorphism problem is related to the Integer Factorization
  Problem, which is thought to be an intermediate problem as well.
  In fact, it was shown that Graph Isomorphism and Integer Factorization
- can be reduced to the problem of counting automorphisms for rings which
+ can be reduced to the problem of counting automorphisms for rings, which
  lies in 
 \begin_inset Formula $\AM\cap\coAM$
 \end_inset
@@ -3415,7 +3415,7 @@ key "journals/jacm/Hopcroft74"
 .
  In this thesis, we will show focus on graphs with bounded valence and give
  a proof that these can be checked for Isomorphism in polynomial time as
- well following the original paper by Luks
+ well following the original paper by Luks 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "journals/jcss/Luks82"
@@ -3840,7 +3840,7 @@ Graphs
 \end_layout
 
 \begin_layout Standard
-A ordered pair of two sets 
+An ordered pair of two sets 
 \begin_inset Formula $X=(V,E)$
 \end_inset
 
@@ -4162,6 +4162,16 @@ automorphism group
 \end_inset
 
 .
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+TODO remove?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Definition
@@ -5615,7 +5625,7 @@ The function
 
 \begin_layout Proof
 Let 
-\begin_inset Formula $\sigma,\tau\in\Aut(X_{r+1})$
+\begin_inset Formula $\sigma,\tau\in\Aut_{e}(X_{r+1})$
 \end_inset
 
 .
@@ -6816,7 +6826,11 @@ reference "cor:aut-e-Xr-is-a-2-group"
 \begin_inset Formula $\Aut_{e}(X_{r})$
 \end_inset
 
- is a 2-group.
+ is a 2-subgroup of 
+\begin_inset Formula $\Sym A$
+\end_inset
+
+.
  Therefore, we can use algorithm 
 \begin_inset Formula $M$
 \end_inset
@@ -6826,14 +6840,6 @@ reference "cor:aut-e-Xr-is-a-2-group"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Proof
-TODO How is the set of generators for 
-\begin_inset Formula $\Img\pi_{r}$
-\end_inset
-
- determined?
 \end_layout
 
 \begin_layout Corollary
@@ -7171,7 +7177,7 @@ name "lem:CB-properties-composition"
 \end_inset
 
 
-\begin_inset Formula $C_{B\cup B'}(K)=C_{B'}C_{B}(K)$
+\begin_inset Formula $C_{B\cup B'}(K)=C_{B'}(C_{B}(K))$
 \end_inset
 
 .
@@ -7222,6 +7228,10 @@ If
 \end_layout
 
 \end_deeper
+\begin_layout Proof
+TODO
+\end_layout
+
 \begin_layout Standard
 To allow recursive calls, the algorithm's input will be a set 
 \begin_inset Formula $B\subset A$
@@ -7286,7 +7296,8 @@ Each recursive call of the algorithm will use two or four sub-calls to itself,
 \begin_inset Formula $B'$
 \end_inset
 
- guarantees the algorithm will terminate eventually.
+ guarantees the algorithm will terminate eventually, since TODO(explain
+ base case).
 \end_layout
 
 \begin_layout Standard
