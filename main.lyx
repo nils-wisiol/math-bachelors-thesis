@@ -362,7 +362,7 @@ Given two graphs
 \end_inset
 
 .
- A one-to-one mapping that satisfies this constraint is called an 
+ A one-to-one mapping that satisfies this constraint is called a 
 \emph on
 graph isomorphism from 
 \begin_inset Formula $G_{1}$
@@ -3356,7 +3356,7 @@ Graph Isomorphism Problem
 
 -complete.
  As no polynomial time algorithm is known for the general case as well,
- the Graph Isomorphism is thought to be an intermediatnote problem in 
+ the Graph Isomorphism is thought to be an intermediate problem in 
 \begin_inset Formula $\NP-\P$
 \end_inset
 
@@ -3413,9 +3413,9 @@ key "journals/jacm/Hopcroft74"
 \end_inset
 
 .
- In this thesis, we will show focus on graphs with bounded valence and give
- a proof that these can be checked for Isomorphism in polynomial time as
- well following the original paper by Luks 
+ In this thesis, we will focus on graphs with bounded valence and give a
+ proof that these can be checked for isomorphism in polynomial time as well,
+ following the original paper by Luks 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "journals/jcss/Luks82"
@@ -4008,7 +4008,11 @@ degree of
 
 
 \emph default
- to be 
+ to be the number of edges adjacent to 
+\begin_inset Formula $v$
+\end_inset
+
+, 
 \begin_inset Formula $\deg v=|\{e\in E\,|\, v\in e\}|$
 \end_inset
 
@@ -4126,7 +4130,9 @@ automorphism group
 \end_inset
 
 .
- Furthermore, for any 
+ 
+\emph default
+For any 
 \begin_inset Formula $e\in E(X)$
 \end_inset
 
@@ -4248,7 +4254,7 @@ Assume we have an algorithm that decides Graph Isomorphism for connected
 \end_inset
 
  edges have to be added.
- As 
+ We will see that 
 \begin_inset Formula $X_{1}$
 \end_inset
 
@@ -4264,8 +4270,8 @@ Assume we have an algorithm that decides Graph Isomorphism for connected
 \begin_inset Formula $\widetilde{X}_{2}$
 \end_inset
 
- are isomorphic, we can use the algorithm for Graph Isomorphism for connected
- graphs to decide isomorphism for 
+ are isomorphic, hence we can use the algorithm for Graph Isomorphism for
+ connected graphs to decide isomorphism for 
 \begin_inset Formula $X_{1}$
 \end_inset
 
@@ -4386,7 +4392,7 @@ is an isomorphism from
 \end_layout
 
 \begin_layout Standard
-With the justification given by Lemma 
+With justification given by Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:poly-time-reduction-connected-graphs"
@@ -4574,7 +4580,17 @@ name "pro:color-automorphism-2-groups"
 
 \end_inset
 
-Given a set of generators for a 2-subgroup 
+Given a set of generators for a 2-subgroup
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+define 2-subgroup
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Formula $G$
 \end_inset
 
@@ -4655,7 +4671,7 @@ There is a polynomial-time algorithm for the Graph Isomorphism Problem for
 \end_layout
 
 \begin_layout Proof
-With theorems 
+With Theorems 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:gi-trivalent-graphs-reduceto-automorphism-generator-trivalent-graphs"
@@ -4685,7 +4701,7 @@ reference "thm:color-automorphism-2-groups-polynomial-time"
 
 \begin_layout Standard
 We will prove the theorems separately in the following subsections.
- To ensure the integrity of the proofs, no reference is made to the Theorems
+ To ensure the integrity of the proofs, no reference is made to the theorems
  above.
 \end_layout
 
@@ -4737,7 +4753,7 @@ Let
 \end_layout
 
 \begin_layout Standard
-Since, by Lemma 
+By Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:poly-time-reduction-connected-graphs"
@@ -4757,7 +4773,7 @@ reference "lem:poly-time-reduction-connected-graphs"
 \end_layout
 
 \begin_layout Definition
-For any two given graphs 
+Let 
 \begin_inset Formula $X_{1}$
 \end_inset
 
@@ -4765,31 +4781,56 @@ For any two given graphs
 \begin_inset Formula $X_{2}$
 \end_inset
 
- with at least one edge respectively and edges 
+ be two graphs with, respectively, at least one edge.
+ We choose 
 \begin_inset Formula $e_{1}=(v_{1},w_{1})\in E_{1}$
 \end_inset
 
 , 
-\begin_inset Formula $e_{2}=(v_{2},w_{2})$
+\begin_inset Formula $e_{2}=(v_{2},w_{2})\in E_{2}$
 \end_inset
 
- let 
+ and define 
 \begin_inset Formula $X_{1}\ast X_{2}$
 \end_inset
 
- be a graph with nodes 
+ to be the graph with nodes 
 \begin_inset Formula $V_{1}\cup V_{2}\cup\{x_{1},x_{2}\}$
 \end_inset
 
  and edges 
 \begin_inset Formula 
 \[
-(E_{1}-e_{1}\cup\{(v_{1},x_{1}),(x_{1},w_{1})\})\,\,\cup\,\,(E_{2}-e_{2}\cup\{(v_{2},x_{2}),(x_{2},w_{2})\})\,\,\cup\,\,\{(x_{1},x_{2})\}.
+(E_{1}-e_{1}\cup\{(v_{1},x_{1}),(x_{1},w_{1})\})\,\,\cup\,\,(E_{2}-e_{2}\cup\{(v_{2},x_{2}),(x_{2},w_{2})\})\,\,\cup\,\,\{(x_{1},x_{2})\},
 \]
 
 \end_inset
 
+that is, we insert the new nodes 
+\begin_inset Formula $x_{1}$
+\end_inset
 
+ and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+, breaking down edges 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{2}$
+\end_inset
+
+ in two pieces, and connect 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ with a new edge.
 \end_layout
 
 \begin_layout Standard
@@ -4906,6 +4947,31 @@ The graph
 
 \end_layout
 
+\begin_layout Standard
+Although 
+\begin_inset Formula $X_{1}\ast X_{2}$
+\end_inset
+
+ depends on the choice of 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{2}$
+\end_inset
+
+, all presented results does not depend on the choice of 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{2}$
+\end_inset
+
+.
+ We therefore omit this dependency in our formal notation.
+\end_layout
+
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
@@ -4999,7 +5065,7 @@ Let
 \begin_inset Formula $(x_{1},x_{2})$
 \end_inset
 
-, that is 
+, that is, we have 
 \begin_inset Formula $\sigma(x_{1})=x_{2}$
 \end_inset
 
@@ -5193,7 +5259,7 @@ We will proof the contrapositive.
 \end_layout
 
 \begin_layout Standard
-Using this, we can go ahead and proof theorem 
+Using this, we can go ahead and proof Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:gi-trivalent-graphs-reduceto-automorphism-generator-trivalent-graphs"
@@ -5201,6 +5267,28 @@ reference "thm:gi-trivalent-graphs-reduceto-automorphism-generator-trivalent-gra
 \end_inset
 
  by stating a polynomial time reduction.
+ As a reminder, Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:gi-trivalent-graphs-reduceto-automorphism-generator-trivalent-graphs"
+
+\end_inset
+
+ states that the problem of deciding whether two trivalent graphs are isomorphic
+ is polynomial time reducible to the problem of finding a generating set
+ for 
+\begin_inset Formula $\Aut_{e}(X)$
+\end_inset
+
+, where 
+\begin_inset Formula $e$
+\end_inset
+
+ is a fixed edge in the trivalent graph 
+\begin_inset Formula $X$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Proof
@@ -5208,7 +5296,7 @@ reference "thm:gi-trivalent-graphs-reduceto-automorphism-generator-trivalent-gra
 status open
 
 \begin_layout Plain Layout
-Proof of theorem 
+Proof of Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:gi-trivalent-graphs-reduceto-automorphism-generator-trivalent-graphs"
@@ -5248,7 +5336,7 @@ Assume we have an algorithm
 
  involves adding and removing a constant number of edges and nodes and can
  thus be done in polynomial time.
- Combining lemmas 
+ Combining Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:equiv-auto-isomorphism"
@@ -5287,7 +5375,7 @@ reference "lem:equiv-automorph-generator"
 \begin_inset Formula $\log_{2}|Aut_{e}(X_{1}\ast X_{2})|$
 \end_inset
 
- by lemma 
+ by Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:group-size-representation"
@@ -5302,7 +5390,21 @@ reference "lem:group-size-representation"
 \begin_inset Formula $|(X_{1},X_{2})|$
 \end_inset
 
- , we can verify this condition in polynomial time.
+, we can verify this condition in polynomial time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+shouldn't this be a reduction from a decision problem to a decision problem?
+ ...
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -5325,7 +5427,7 @@ Let
 \end_inset
 
  edges and 
-\begin_inset Formula $e=(e_{1},e_{2})\in E(X)$
+\begin_inset Formula $e=(v_{1},v_{2})\in E(X)$
 \end_inset
 
  be a distinguished edge.
@@ -5333,16 +5435,23 @@ Let
 \begin_inset Formula $M$
 \end_inset
 
- be an algorithm that finds a generating set for the biggest color-preserving
- subgroup of a 2-subgroup 
-\begin_inset Formula $G\leq\Sym A$
-\end_inset
-
-, where 
+ be an algorithm that, given a colored set 
 \begin_inset Formula $A$
 \end_inset
 
- is a colored set.
+ and a set of generators for a 2-subgroup 
+\begin_inset Formula $G$
+\end_inset
+
+ of 
+\begin_inset Formula $\Sym A$
+\end_inset
+
+, finds a generating set for the biggest color-preserving subgroup of 
+\begin_inset Formula $G$
+\end_inset
+
+.
  We will show that we can determine a generating set for 
 \begin_inset Formula $\Aut_{e}(X)$
 \end_inset
@@ -5562,6 +5671,22 @@ Let
 
 .
  Let 
+\begin_inset Formula $v$
+\end_inset
+
+ be one of the 
+\begin_inset Quotes eld
+\end_inset
+
+new
+\begin_inset Quotes erd
+\end_inset
+
+ nodes in 
+\begin_inset Formula $X_{i+1}$
+\end_inset
+
+, that is, 
 \begin_inset Formula $v\in V(X_{i+1})\setminus V(X_{i})$
 \end_inset
 
@@ -5620,7 +5745,15 @@ The function
 \begin_inset Formula $\pi_{r}$
 \end_inset
 
- is a group homomorphism.
+, the restriction of automorphisms in 
+\begin_inset Formula $\Aut_{e}(X_{r+r})$
+\end_inset
+
+ to 
+\begin_inset Formula $X_{r}$
+\end_inset
+
+, is a group homomorphism.
 \end_layout
 
 \begin_layout Proof
@@ -5927,7 +6060,11 @@ Now let
 
 .
  Then 
-\begin_inset Formula $\sigma^{-1}(x)\in V(X_{r})$
+\begin_inset Formula $\sigma^{-1}(x)\in f(v)$
+\end_inset
+
+, that is, 
+\begin_inset Formula $\sigma^{-1}(x)$
 \end_inset
 
  is adjacent to 
@@ -5936,7 +6073,7 @@ Now let
 
 .
  Therefore, 
-\begin_inset Formula $x\in V(X_{r})$
+\begin_inset Formula $x$
 \end_inset
 
  is adjacent to 
@@ -6029,6 +6166,15 @@ Let
 \end_inset
 
 .
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Introduce more justification for the next step.
+\end_layout
+
+\end_inset
+
  
 \begin_inset Formula $\Ker\pi_{r}$
 \end_inset
@@ -6077,7 +6223,7 @@ A closer look at the layered structure of the graphs
 \begin_inset Formula $r$
 \end_inset
 
- for the following theorems and assume by lemma 
+ for the following theorems and assume by Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:determine-aut-r1"
@@ -6240,7 +6386,7 @@ Let
 
 .
  We will show that 
-\begin_inset Formula $\tau(a)$
+\begin_inset Formula $\tau(a)=\sigma(a)$
 \end_inset
 
  is a member of 
@@ -6265,7 +6411,12 @@ Let
 \end_inset
 
 .
- Then there are 
+ We will show that in this case, we always have 
+\begin_inset Formula $w=w'$
+\end_inset
+
+.
+ There are 
 \begin_inset Formula $v,v'\in V(X_{r+1})\setminus V(X_{r})$
 \end_inset
 
@@ -6274,7 +6425,7 @@ Let
 \end_inset
 
 .
- Applying lemma 
+ Applying Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:swtich-sigma-f"
@@ -6296,6 +6447,10 @@ reference "lem:swtich-sigma-f"
 
 , it holds that 
 \begin_inset Formula $v=v'$
+\end_inset
+
+ and 
+\begin_inset Formula $w=w'$
 \end_inset
 
 .
@@ -6350,7 +6505,7 @@ Let
 \begin_inset Formula $\sigma(f(v_{1}))=\sigma(f(v_{2}))=\sigma(a)$
 \end_inset
 
- and by lemma 
+ and by Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:swtich-sigma-f"
@@ -6477,7 +6632,19 @@ We show that
 \begin_inset Formula $\sigma|_{X_{r}}=\tau$
 \end_inset
 
-.
+, definitions for 
+\begin_inset Formula $\sigma(v)$
+\end_inset
+
+ with 
+\begin_inset Formula $v$
+\end_inset
+
+ being a node of 
+\begin_inset Formula $X_{r+1}\setminus X_{r}$
+\end_inset
+
+ follow below.
  
 \end_layout
 
@@ -6546,14 +6713,14 @@ For any
 
 \begin_layout Proof
 For any 
-\begin_inset Formula $v_{1},v_{2}\in V(X_{r+1})\setminus(X_{r})$
+\begin_inset Formula $v_{1},v_{2}\in V(X_{r+1})\setminus V(X_{r})$
 \end_inset
 
  with 
 \begin_inset Formula $a:=f(v_{1})=f(v_{2})\in A_{2}$
 \end_inset
 
-, it must be 
+, it holds that 
 \begin_inset Formula $\tau(a)\in A_{2}$
 \end_inset
 
@@ -6571,7 +6738,7 @@ For any
 \end_inset
 
 , there are two nodes 
-\begin_inset Formula $w_{1},w_{2}$
+\begin_inset Formula $w_{1},w_{2}\in V(X_{r+1})\setminus V(X_{r})$
 \end_inset
 
  such that 
@@ -6647,53 +6814,19 @@ Let
 \end_layout
 
 \begin_layout Proof
-Combining lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:imgpir-stabilizes-as"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:stabilizes-as-imgpir"
-
-\end_inset
-
-, we know that 
-\begin_inset Formula $\Img\pi_{r}$
-\end_inset
-
- is exactly the set of all automorphisms 
-\begin_inset Formula $\Aut_{e}(X_{r})$
-\end_inset
-
- that stabilize the sets 
-\begin_inset Formula $A_{1}$
-\end_inset
-
-, 
-\begin_inset Formula $A_{2}$
-\end_inset
-
- and 
-\begin_inset Formula $A'$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Proof
 Remember, 
 \begin_inset Formula $M$
 \end_inset
 
- is an algorithm that finds the biggest color-preserving 2-subgroup 
-\begin_inset Formula $G\leq\Sym A$
+ is an algorithm that finds the biggest color-preserving subgroup of 
+\begin_inset Formula $G$
 \end_inset
 
 , where 
+\begin_inset Formula $G\leq\Sym A$
+\end_inset
+
+ is a 2-group and 
 \begin_inset Formula $A$
 \end_inset
 
@@ -6726,11 +6859,53 @@ reference "fig:The-six-partitions"
 \end_inset
 
 .
- Since 
+ 
+\end_layout
+
+\begin_layout Proof
+By Corollary 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cor:aut-e-Xr-is-a-2-group"
+
+\end_inset
+
+ we know that 
+\begin_inset Formula $\Aut_{e}(X_{r})$
+\end_inset
+
+ is a 2-subgroup of 
+\begin_inset Formula $\Sym A$
+\end_inset
+
+.
+ Combining Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:imgpir-stabilizes-as"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:stabilizes-as-imgpir"
+
+\end_inset
+
+, we know that 
+\begin_inset Formula $\Img\pi_{r}$
+\end_inset
+
+ is exactly the group of all automorphisms 
+\begin_inset Formula $\Aut_{e}(X_{r})$
+\end_inset
+
+ that stabilize the sets 
 \begin_inset Formula $A_{1}$
 \end_inset
 
-,
+, 
 \begin_inset Formula $A_{2}$
 \end_inset
 
@@ -6738,11 +6913,8 @@ reference "fig:The-six-partitions"
 \begin_inset Formula $A'$
 \end_inset
 
- are stabilized by any automorphism of 
-\begin_inset Formula $\Img\pi_{r}$
-\end_inset
-
-, so is 
+.
+ Hence, it also stabilizes 
 \begin_inset Formula $A_{0}$
 \end_inset
 
@@ -6765,6 +6937,16 @@ reference "fig:The-six-partitions"
 
 , and therefore 
 \begin_inset Formula $\sigma\in\Img\pi_{r}$
+\end_inset
+
+.
+ We can conclude that the set of all stabilizing automorphisms (with respect
+ to the six partitions above) in 
+\begin_inset Formula $\Aut_{e}(X_{r})$
+\end_inset
+
+ is exactly 
+\begin_inset Formula $\Img\pi_{r}$
 \end_inset
 
 .
@@ -6815,31 +6997,53 @@ The six partitions of
 \end_layout
 
 \begin_layout Proof
-By corollary 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cor:aut-e-Xr-is-a-2-group"
-
-\end_inset
-
-, 
-\begin_inset Formula $\Aut_{e}(X_{r})$
-\end_inset
-
- is a 2-subgroup of 
-\begin_inset Formula $\Sym A$
-\end_inset
-
-.
- Therefore, we can use algorithm 
+This enables us to use algorithm 
 \begin_inset Formula $M$
+\end_inset
+
+ on the above coloring of 
+\begin_inset Formula $A$
+\end_inset
+
+ and the generating set 
+\begin_inset Formula $H$
+\end_inset
+
+ of 
+\begin_inset Formula $\Aut_{e}(X_{r})$
 \end_inset
 
  to find a generating set of 
 \begin_inset Formula $\Img\pi_{r}$
 \end_inset
 
-.
+ in polynomial time.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+How do we know 
+\begin_inset Formula $\Aut_{e}(X_{r})$
+\end_inset
+
+ is the 
+\emph on
+biggest
+\emph default
+ 2-subgroup of 
+\begin_inset Formula $G\leq\Sym A$
+\end_inset
+
+, and wtf is 
+\begin_inset Formula $G$
+\end_inset
+
+?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Corollary
@@ -6865,11 +7069,7 @@ Given a set of generators for
 \end_layout
 
 \begin_layout Proof
-Since we know a set of generators for 
-\begin_inset Formula $\Aut_{e}(X_{r})$
-\end_inset
-
-, by Lemma 
+By Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:determine-aut-kernel"
@@ -6884,7 +7084,7 @@ reference "lem:determine-aut-kernel"
 \begin_inset Formula $\Ker\pi_{r}$
 \end_inset
 
- in polynomial time and by corollary 
+ in polynomial time and by Corollary 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cor:determine-aut-image"
@@ -6911,6 +7111,17 @@ reference "lem:generating-set-kernel-image"
 
 \end_inset
 
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+doublecheck on this.
+ Isn't a pullback set required?
+\end_layout
+
+\end_inset
+
 , 
 \begin_inset Formula $K\cup I$
 \end_inset
@@ -6931,7 +7142,7 @@ reference "lem:generating-set-kernel-image"
 status open
 
 \begin_layout Plain Layout
-Proof of theorem 
+Proof of Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:automorphism-generator-trivalent-graphs-reduceto-color-automorphism-2-groups"
@@ -7110,7 +7321,7 @@ serving subgroup of
 \end_inset
 
 .
- We will prove in lemma 
+ We will prove in Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:CB-properties"
@@ -7251,7 +7462,7 @@ To allow recursive calls, the algorithm's input will be a set
 \end_inset
 
 .
- By lemma 
+ By Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:CB-properties"
@@ -7298,6 +7509,15 @@ Each recursive call of the algorithm will use two or four sub-calls to itself,
 
  guarantees the algorithm will terminate eventually, since TODO(explain
  base case).
+ We will see later that 
+\begin_inset Formula $B'$
+\end_inset
+
+ will actually be half the size of 
+\begin_inset Formula $B$
+\end_inset
+
+ in every recursive step.
 \end_layout
 
 \begin_layout Standard
@@ -7610,7 +7830,7 @@ TODO
 
 \begin_deeper
 \begin_layout Enumerate
-Induction using lemmas 
+Induction using Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:trivalent-algo-intransitive"
@@ -7764,7 +7984,7 @@ reference "alg:trivalent"
 \end_layout
 
 \begin_layout Proof
-By lemma 
+By Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:trivalent-algo-step-runtime"
@@ -7800,7 +8020,7 @@ reference "lem:trivalent-algo-number-of-branches"
 status open
 
 \begin_layout Plain Layout
-Proof of theorem 
+Proof of Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:color-automorphism-2-groups-polynomial-time"
@@ -7826,7 +8046,7 @@ reference "alg:trivalent"
 
 \end_inset
 
-, while theorem 
+, while Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:trivalent-algo-runtime"
