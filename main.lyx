@@ -164,6 +164,12 @@ Definition of complexity classes
 \end_inset
 
 
+\begin_inset FormulaMacro
+\newcommand{\coNP}{\complexityclass{coNP}}
+{\complexityclass{coNP}}
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -273,7 +279,7 @@ Let
 \begin_inset Formula $G_{2}$
 \end_inset
 
- are called isomorphic, if there is a one-to-one mapping 
+ are called isomorphic, if there is a bijection 
 \begin_inset Formula $\sigma:V_{1}\to V_{2}$
 \end_inset
 
@@ -286,7 +292,7 @@ Let
 \begin_inset Formula $v,w\in V_{1}$
 \end_inset
 
- it holds 
+ it holds that 
 \begin_inset Formula $(v,w)\in E_{1}\iff(\sigma(v),\sigma(w))\in E_{2}$
 \end_inset
 
@@ -334,10 +340,6 @@ LatexCommand tableofcontents
 Introduction
 \end_layout
 
-\begin_layout Subsection
-Introduction
-\end_layout
-
 \begin_layout Standard
 Given two graphs 
 \begin_inset Formula $G_{1}=(V_{1},E_{1})$
@@ -349,7 +351,7 @@ Given two graphs
 
 , deciding whether they are isomorphic is deciding whether these graphs
  are essentially the same.
- More precisely, it is deciding whether there is a one-to-one mapping 
+ More precisely, it is deciding whether there is a bijection 
 \begin_inset Formula $\sigma:V_{1}\to V_{2}$
 \end_inset
 
@@ -362,7 +364,7 @@ Given two graphs
 \end_inset
 
 .
- A one-to-one mapping that satisfies this constraint is called a 
+ A bijection that satisfies this constraint is called a 
 \emph on
 graph isomorphism from 
 \begin_inset Formula $G_{1}$
@@ -497,7 +499,7 @@ Two different drawings of the Petersen Graph.
 \end_layout
 
 \begin_layout Standard
-Despite the two drawings look different, we will prove that they actually
+Although the two drawings look different, we will prove that they actually
  represent the same graph.
  Let 
 \begin_inset Formula $G_{1}=(V_{1},E_{1})$
@@ -535,7 +537,7 @@ reference "fig:petersen-9polygon"
 \end_inset
 
  and show that it is an isomorphism.
- Before having a close look on 
+ Before having a close look at 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -549,7 +551,8 @@ reference "fig:petersen-9polygon"
 
  have the same number of edges and vertices.
  Moreover, both graphs have only vertices with degree exactly three.
- Thus, they meet some necessary but not sufficient criteria for being isomorphic.
+ Thus, they meet some necessary but in general not sufficient criteria for
+ being isomorphic.
 \end_layout
 
 \end_deeper
@@ -571,14 +574,14 @@ It is
 \begin_inset Formula $x\mapsto\sigma(x):=x'$
 \end_inset
 
-, which is an one-to-one mapping.
+, which is a bijection.
  Notice that 
 \begin_inset Formula $\sigma$
 \end_inset
 
  preserves paths through the graph, which is another necessary condition
  for being an isomorphism.
- That is, the path 
+ That is, the closed path 
 \begin_inset Formula $(A,B,C,D,E)$
 \end_inset
 
@@ -587,20 +590,16 @@ It is
 \end_inset
 
 , which is still a circle.
- Furthermore it holds for both graphs that if 
-\begin_inset Formula $x\in\{a,b,c,d,e\}$
+ Similar, the closed path 
+\begin_inset Formula $(a,c,e,b,d)$
 \end_inset
 
- and 
-\begin_inset Formula $X\in\{A,B,C,D,E\}$
+, the inner star in 
+\begin_inset Formula $G_{1}$
 \end_inset
 
- then there are edges 
-\begin_inset Formula $(x,X)$
-\end_inset
-
- respectively 
-\begin_inset Formula $(x',X')$
+, becomes the closed path 
+\begin_inset Formula $(a',c',e',b',d')$
 \end_inset
 
 .
@@ -3340,7 +3339,7 @@ Graph Isomorphism Problem
 \begin_inset Formula $\sigma$
 \end_inset
 
- nondeterministically, but it is not known to be 
+ in polynomial time, but it is not known to be 
 \begin_inset Formula $\NP$
 \end_inset
 
@@ -3349,14 +3348,38 @@ Graph Isomorphism Problem
 \begin_inset Formula $\NP$
 \end_inset
 
--complete if the polynomial hierarchy collapses and it is thus believed
- not to be 
+-complete if the polynomial hierarchy collapses
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The polynomial hierarchy generalizes the complexity classes 
+\begin_inset Formula $\P$
+\end_inset
+
+, 
+\begin_inset Formula $\NP$
+\end_inset
+
+ and 
+\begin_inset Formula $\coNP$
+\end_inset
+
+ to a hierarchy of increasingly complex classes.
+ It is believed that higher classes of the hierarchy are honest supersets
+ of their respective counterparts in lower levels.
+\end_layout
+
+\end_inset
+
+ and it is thus believed not to be 
 \begin_inset Formula $\NP$
 \end_inset
 
 -complete.
  As no polynomial time algorithm is known for the general case as well,
- the Graph Isomorphism is thought to be an intermediate problem in 
+ the Graph Isomorphism Problem is thought to be an intermediate problem
+ in 
 \begin_inset Formula $\NP-\P$
 \end_inset
 
@@ -3379,16 +3402,11 @@ Being thought to be in between
 \begin_inset Formula $\NP$
 \end_inset
 
--complete, the Graph Isomorphism problem is related to the Integer Factorization
+-complete, the Graph Isomorphism Problem is related to the Integer Factorization
  Problem, which is thought to be an intermediate problem as well.
  In fact, it was shown that Graph Isomorphism and Integer Factorization
- can be reduced to the problem of counting automorphisms for rings, which
- lies in 
-\begin_inset Formula $\AM\cap\coAM$
-\end_inset
-
-.
- Thus, both problems cannot be 
+ can be reduced to the problem of counting automorphisms for rings.
+ Kayal and Saxena used this to show that both problems cannot be 
 \begin_inset Formula $\NP$
 \end_inset
 
@@ -3404,7 +3422,7 @@ key "conf/coco/KayalS05"
 
 \begin_layout Standard
 As opposed to the general Graph Isomorphism Problem, it is known that the
- isomorphism problem is solvable in polynomial time for many subgroups of
+ isomorphism problem is solvable in polynomial time for many classes of
  graphs, including planar graphs 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3413,9 +3431,9 @@ key "journals/jacm/Hopcroft74"
 \end_inset
 
 .
- In this thesis, we will focus on graphs with bounded valence and give a
- proof that these can be checked for isomorphism in polynomial time as well,
- following the original paper by Luks 
+ In this thesis, we will focus on graphs with bounded valence and demonstrate
+ how the Graph Isomorphism Problem can be solved in polynomial time.
+ We follow a proof due to Luks 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "journals/jcss/Luks82"
@@ -3507,6 +3525,10 @@ left coset of
 \begin_inset Formula $G$
 \end_inset
 
+ with respect to 
+\begin_inset Formula $g$
+\end_inset
+
 
 \emph default
 , and 
@@ -3523,6 +3545,10 @@ right coset of
 \begin_inset Formula $G$
 \end_inset
 
+ with respect to 
+\begin_inset Formula $g$
+\end_inset
+
 
 \emph default
 .
@@ -3535,7 +3561,7 @@ right coset of
 \end_inset
 
  if and only if 
-\begin_inset Formula $\exists_{h\in H}xh=y$
+\begin_inset Formula $x^{-1}y\in H$
 \end_inset
 
 .
@@ -3655,7 +3681,7 @@ quotient group of
 \end_inset
 
 .
- Using the product of subsets, the quotient group is a group.
+ The quotient group and the product of subsets form an algebraic group.
 \end_layout
 
 \begin_layout Standard
@@ -3715,48 +3741,266 @@ index of the subgroup
 \end_layout
 
 \begin_layout Standard
+We call a finite group 
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\emph on
+2-group
+\emph default
+, if every element has a power of 2 as its order.
+ More generally, we call a finite group 
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\begin_inset Formula $p$
+\end_inset
+
+-group, if every element has a power of 
+\begin_inset Formula $p$
+\end_inset
+
+ as its order.
+\end_layout
+
+\begin_layout Lemma
+A group 
+\begin_inset Formula $G$
+\end_inset
+
+ is a 2-group if and only if 
+\begin_inset Formula $|G|$
+\end_inset
+
+ is a power of 2.
+\end_layout
+
+\begin_layout Proof
+TODO.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We define the 
+\emph on
+action of 
+\begin_inset Formula $G$
+\end_inset
+
+ on 
+\begin_inset Formula $B$
+\end_inset
+
+
+\emph default
+ if there is a homomorphism 
+\begin_inset Formula $G\to\Sym B$
+\end_inset
+
+.
+ The homomorphism yields a permutation of 
+\begin_inset Formula $B$
+\end_inset
+
+ for every element in 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ In this case, the set 
+\begin_inset Formula $\{\sigma(b)\mid\sigma\in G\}$
+\end_inset
+
+ for an element 
+\begin_inset Formula $b\in B$
+\end_inset
+
+ is called the 
+\emph on
+
+\begin_inset Formula $G$
+\end_inset
+
+-orbit of 
+\begin_inset Formula $b$
+\end_inset
+
+
+\emph default
+.
+ The group 
+\begin_inset Formula $G$
+\end_inset
+
+ acts 
+\emph on
+transitively on 
+\begin_inset Formula $B$
+\end_inset
+
+
+\emph default
+ if 
+\begin_inset Formula $B$
+\end_inset
+
+ is a 
+\begin_inset Formula $G$
+\end_inset
+
+-orbit.
+\end_layout
+
+\begin_layout Standard
+For a group 
+\begin_inset Formula $G$
+\end_inset
+
+ transitively acting on a set 
+\begin_inset Formula $A$
+\end_inset
+
+, we define a 
+\emph on
+
+\begin_inset Formula $G$
+\end_inset
+
+-block
+\emph default
+ as a non-empty subset 
+\begin_inset Formula $B$
+\end_inset
+
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+ for which any action 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ induced by 
+\begin_inset Formula $G$
+\end_inset
+
+ either stabilizes 
+\begin_inset Formula $B$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma(B)=B$
+\end_inset
+
+, or moves 
+\begin_inset Formula $B$
+\end_inset
+
+ completely, 
+\begin_inset Formula $\sigma(B)\cap B=\emptyset$
+\end_inset
+
+.
+ In this case, we call the set 
+\begin_inset Formula $\{\sigma(B)\mid\sigma\in G\}$
+\end_inset
+
+ a 
+\begin_inset Formula $G$
+\end_inset
+
+-block system in 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $b\in B$
+\end_inset
+
+, the set 
+\begin_inset Formula $\{b\}$
+\end_inset
+
+ is a block.
+ Therefore, we call a 
+\begin_inset Formula $G$
+\end_inset
+
+-block system 
+\emph on
+minimal
+\emph default
+ if there are no 
+\begin_inset Formula $G$
+\end_inset
+
+-blocks of size larger than one.
+\end_layout
+
+\begin_layout Lemma
 Let 
-\begin_inset Formula $G$
+\begin_inset Formula $P$
 \end_inset
 
- be a group, and let 
-\begin_inset Formula $S\subset G$
+ be a transitive 
+\begin_inset Formula $p$
 \end_inset
 
-.
- We define 
-\begin_inset Formula $\langle S\rangle$
+-subgroup of 
+\begin_inset Formula $\Sym A$
 \end_inset
 
- to be the set of elements of 
-\begin_inset Formula $G$
-\end_inset
-
- that can be generated by finite many elements of 
-\begin_inset Formula $S$
-\end_inset
-
-, 
-\begin_inset Formula $\langle S\rangle=\left\{ \sum_{i=1}^{k}a_{i}^{\alpha_{i}}\right\} $
-\end_inset
-
-, where 
-\begin_inset Formula $k\in\mathbb{N}$
-\end_inset
-
-, 
-\begin_inset Formula $a_{i}\in S$
-\end_inset
-
-, 
-\begin_inset Formula $\alpha_{i}\in\{-1,1\}$
-\end_inset
-
- and the sum refers to the group operation of 
-\begin_inset Formula $G$
+ with 
+\begin_inset Formula $|A|>1$
 \end_inset
 
 .
+ Then any minimal 
+\begin_inset Formula $p$
+\end_inset
+
+-block system consists of exactly 
+\begin_inset Formula $p$
+\end_inset
+
+ blocks.
+ Furthermore, the subgroup 
+\begin_inset Formula $P'$
+\end_inset
+
+ which stabilizes all of the blocks has index 
+\begin_inset Formula $p$
+\end_inset
+
+ in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "journals/jcss/Luks82"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout --Separator--
+
 \end_layout
 
 \begin_layout Lemma
@@ -3774,7 +4018,11 @@ Let
 \begin_inset Formula $H$
 \end_inset
 
- be groups and 
+ be groups, 
+\begin_inset Formula $I\subseteq G$
+\end_inset
+
+, and 
 \begin_inset Formula $f:G\to H$
 \end_inset
 
@@ -3788,7 +4036,7 @@ Let
 \end_inset
 
  and 
-\begin_inset Formula $I$
+\begin_inset Formula $f(I)$
 \end_inset
 
  is a generating set for 
@@ -3807,7 +4055,148 @@ Let
 \end_layout
 
 \begin_layout Proof
-TODO.
+Choose an arbitrary 
+\begin_inset Formula $g$
+\end_inset
+
+ of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $f(g)=0$
+\end_inset
+
+, then 
+\begin_inset Formula $g\in\Ker f$
+\end_inset
+
+ and thus 
+\begin_inset Formula $g\in\langle K\rangle$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $f(g)\neq0$
+\end_inset
+
+, then 
+\begin_inset Formula $f(g)\in\Img f$
+\end_inset
+
+ and hence 
+\begin_inset Formula $f(g)\in\langle f(I)\rangle$
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula $f(g)=\sum f(i_{k})^{\alpha_{k}}$
+\end_inset
+
+ for some 
+\begin_inset Formula $i_{k}\in I$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{k}\in\{-1,1\}$
+\end_inset
+
+.
+ We obtain 
+\begin_inset Formula $f(g)=f(\sum i_{k}^{\alpha_{k}})$
+\end_inset
+
+, that is, 
+\begin_inset Formula $g\in f^{-1}(f(\sum i_{k}^{\alpha_{k}}))$
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Finish proof
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(g)\in\langle f(I)\rangle=f(\langle I\rangle)=\Img f\implies g\in f^{-1}(\Img f))=g\in G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\langle f(I)\rangle=\Img f\implies f(\langle I\rangle)=\Img f\implies f^{-1}f(\langle I\rangle)=f^{-1}(\Img f)=G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\langle K\cup I\rangle\supseteq\langle K\rangle\cup\langle I\rangle=\Ker f\cup$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(g)\in\Img f$
+\end_inset
+
+ and hence there are 
+\begin_inset Formula $i_{k}\in I$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{k}\in\{-1,1\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\sum f(i_{k})^{\alpha_{k}}=f(g)$
+\end_inset
+
+.
+ This yields 
+\begin_inset Formula $f(\sum i_{k}^{\alpha_{k}})=f(g)$
+\end_inset
+
+.
+ We have 
+\begin_inset Formula $\sum i_{k}^{\alpha_{k}}\in\langle I\rangle$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum i_{k}^{\alpha_{k}}\in f^{-1}f(g)$
+\end_inset
+
+.
+ By definition, 
+\begin_inset Formula $g\in f^{-1}f(g)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{g'|\exists g'\in G,f(g')=f(g)\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3829,10 +4218,6 @@ Reduction for function problems.
 \begin_layout Standard
 In this thesis, polynomial time reduction means Turing-reduction if not
  noted otherwise.
-\end_layout
-
-\begin_layout Subsection
-Algorithms
 \end_layout
 
 \begin_layout Subsection
@@ -3908,6 +4293,10 @@ edges
 \end_inset
 
  are sets by definition, we often write 
+\begin_inset Formula $vw$
+\end_inset
+
+ or 
 \begin_inset Formula $(v,w)$
 \end_inset
 
@@ -3916,18 +4305,18 @@ edges
 \end_inset
 
  for the sake of simplicity.
- As opposed to directed graphs, 
-\begin_inset Formula $(v,w)\in E$
+ As opposed to directed graphs, we have 
+\begin_inset Formula $vw\in E$
 \end_inset
 
  if and only if 
-\begin_inset Formula $(w,v)\in E$
+\begin_inset Formula $wv\in E$
 \end_inset
 
  for any graph in this thesis.
  Moreover, all graphs in this thesis are simple, that is, they have no edges
  
-\begin_inset Formula $(v,v)$
+\begin_inset Formula $vv$
 \end_inset
 
  for any 
@@ -3935,11 +4324,20 @@ edges
 \end_inset
 
 .
+ We only consider finite graphs in this thesis, as we use 
+\begin_inset Formula $|E|$
+\end_inset
+
+ and 
+\begin_inset Formula $|V|$
+\end_inset
+
+ to define the input length for algorithms.
 \end_layout
 
 \begin_layout Standard
 A list of edges 
-\begin_inset Formula $((s,v_{1}),(v_{1},v_{2}),...,(v_{n-1},v_{n}),(v_{n},t))$
+\begin_inset Formula $(sv_{1},v_{1}v_{2},...,v_{n-1}v_{n},v_{n}t)$
 \end_inset
 
  of a graph 
@@ -4071,11 +4469,11 @@ isomorphism
 \end_inset
 
  it holds that 
-\begin_inset Formula $(v,w)\in E_{1}\iff(\sigma(v),\sigma(w))\in E_{2}$
+\begin_inset Formula $vw\in E_{1}\iff\sigma(v)\sigma(w)\in E_{2}$
 \end_inset
 
 .
- For isomorphisms 
+ For an isomorphism 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -4153,10 +4551,10 @@ For any
 \end_inset
 
  with 
-\begin_inset Formula $e=(v,w)$
+\begin_inset Formula $e=vw$
 \end_inset
 
- it holds 
+ we have 
 \begin_inset Formula $\sigma(\{v,w\})=\{v,w\}$
 \end_inset
 
@@ -4231,7 +4629,7 @@ Assume we have an algorithm that decides Graph Isomorphism for connected
 \begin_inset Formula $x$
 \end_inset
 
- that is connected to every other node in 
+ that is connected to every node in 
 \begin_inset Formula $X$
 \end_inset
 
@@ -4284,6 +4682,16 @@ Assume we have an algorithm that decides Graph Isomorphism for connected
 \end_layout
 
 \begin_layout Proof
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+WRONG!!?! What if the graph is complete...
+ non sequitur.
+\end_layout
+
+\end_inset
+
 To see the equivalence, let 
 \begin_inset Formula $\widetilde{X}_{1}$
 \end_inset
@@ -4297,6 +4705,28 @@ To see the equivalence, let
 \end_inset
 
  being an isomorphism.
+ If 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ are complete, then so are 
+\begin_inset Formula $\widetilde{X}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\widetilde{X}_{2}$
+\end_inset
+
+.
+ In this case, 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is the identity function.
  Since 
 \begin_inset Formula $\sigma$
 \end_inset
@@ -4437,6 +4867,10 @@ Let
 \begin_inset Formula $G_{n}=\langle g_{1},...,g_{n}\rangle$
 \end_inset
 
+ for 
+\begin_inset Formula $n=1,...,m$
+\end_inset
+
 .
  By minimality, 
 \begin_inset Formula $e\notin\widetilde{G}$
@@ -4448,18 +4882,10 @@ Let
 \end_inset
 
 , then 
-\begin_inset Formula $g_{n+1}$
-\end_inset
-
- is generated by 
-\begin_inset Formula $\{g_{1},...,g_{n}\}$
-\end_inset
-
- and therefore 
 \begin_inset Formula $\widetilde{G}\setminus\{g_{n+1}\}$
 \end_inset
 
- is still a generator for 
+ is still a generating set for 
 \begin_inset Formula $G$
 \end_inset
 
@@ -4496,6 +4922,886 @@ Let
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+Basic Polynomial-Time Graph Operations
+\end_layout
+
+\begin_layout Standard
+To tackle the Graph Automorphism Problem for graphs with valence bounded
+ by three, we need some basic graph operations for permutation groups that
+ can be computed in polynomial time.
+ Due to the succinct notation of groups proven in Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:group-size-representation"
+
+\end_inset
+
+, which results in a short input length for algorithms, it is not obvious
+ that these computations can be carried out in polynomial time.
+ 
+\end_layout
+
+\begin_layout Subsection
+Determine the 
+\begin_inset Formula $G$
+\end_inset
+
+-orbits
+\end_layout
+
+\begin_layout Standard
+Let the group 
+\begin_inset Formula $G\subseteq\Sym A$
+\end_inset
+
+ be generated by the generators 
+\begin_inset Formula $g_{1},...,g_{m}$
+\end_inset
+
+.
+ We can use a transitive hull algorithm to compute the 
+\begin_inset Formula $G$
+\end_inset
+
+-orbit of any element 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "journals/jcss/Luks82"
+
+\end_inset
+
+.
+ More specifically, we start with 
+\begin_inset Formula $H_{a}=\{a\}$
+\end_inset
+
+ and keep adding the result of the operation 
+\begin_inset Formula $g_{k}(h)$
+\end_inset
+
+, with 
+\begin_inset Formula $h\in H_{a}$
+\end_inset
+
+ and 
+\begin_inset Formula $k=1,...,m$
+\end_inset
+
+ to 
+\begin_inset Formula $H_{a}$
+\end_inset
+
+ until all operations do not yield new results anymore.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+* input: set 
+\begin_inset Formula $A$
+\end_inset
+
+, generators 
+\begin_inset Formula $g_{1},...,g_{m}$
+\end_inset
+
+ of group 
+\begin_inset Formula $G\subseteq\Sym A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+* output: collection of 
+\begin_inset Formula $G$
+\end_inset
+
+-orbits 
+\begin_inset Formula $H_{a}$
+\end_inset
+
+ for each element 
+\begin_inset Formula $a\in A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+*
+\end_layout
+
+\begin_layout Algorithm
+for all 
+\begin_inset Formula $a\in A$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* 
+\begin_inset Formula $H_{a}\leftarrow\lbrace a\rbrace$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+repeat
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* 
+\begin_inset Formula $H_{a}\leftarrow H_{a}\cup\{g_{k}(h)\mid k=1,...,m\text{ and }h\in H_{a}\}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+until no new elements were added
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endfor
+\end_layout
+
+\begin_layout Algorithm
+return 
+\begin_inset Formula $\lbrace H_{a}\mid a\in A\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:orbits"
+
+\end_inset
+
+Algorithm to compute the 
+\begin_inset Formula $G$
+\end_inset
+
+-orbits of all 
+\begin_inset Formula $a\in A$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can illustrate the transitive hull algorithm approach for a fixed member
+ 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ with a graph that contains a node for each member of 
+\begin_inset Formula $H_{a}$
+\end_inset
+
+ and an edge going from every 
+\begin_inset Formula $h$
+\end_inset
+
+ to 
+\begin_inset Formula $g_{k}(h)$
+\end_inset
+
+.
+ Since all element eventually decent from 
+\begin_inset Formula $a$
+\end_inset
+
+, the graph is connected.
+ Since 
+\begin_inset Formula $|A|$
+\end_inset
+
+ is an upper bound for the size of the 
+\begin_inset Formula $G$
+\end_inset
+
+-orbit of 
+\begin_inset Formula $a$
+\end_inset
+
+, and each node has at most 
+\begin_inset Formula $m$
+\end_inset
+
+ outgoing edges, one for each generator, we can conclude that the algorithm
+ terminates within polynomial time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Graphs/transitive-hull.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:orbit-transitiv-hull-graph"
+
+\end_inset
+
+Example of the transitive hull algorithm to determine the 
+\begin_inset Formula $G$
+\end_inset
+
+-orbit of 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Assume 
+\begin_inset Formula $A=\{a,b,c\}$
+\end_inset
+
+ and 
+\begin_inset Formula $G=\langle g_{1},g_{2}\rangle$
+\end_inset
+
+ with 
+\begin_inset Formula $g_{1}$
+\end_inset
+
+ transposing 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+, and 
+\begin_inset Formula $g_{2}$
+\end_inset
+
+ transposing 
+\begin_inset Formula $b$
+\end_inset
+
+ and 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\Sym A$
+\end_inset
+
+ has 
+\begin_inset Formula $|A|!=3!=6$
+\end_inset
+
+ elements, and we can find six different members of 
+\begin_inset Formula $\langle g_{1},g_{2}\rangle$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $G=\Sym A$
+\end_inset
+
+.
+ From this we can conclude that the 
+\begin_inset Formula $G$
+\end_inset
+
+-orbit of 
+\begin_inset Formula $a$
+\end_inset
+
+ is 
+\begin_inset Formula $\{a,b,c\}$
+\end_inset
+
+.
+ However, neither 
+\begin_inset Formula $g_{1}$
+\end_inset
+
+ nor 
+\begin_inset Formula $g_{2}$
+\end_inset
+
+ map 
+\begin_inset Formula $a$
+\end_inset
+
+ to 
+\begin_inset Formula $c$
+\end_inset
+
+ directly.
+ We can only derive 
+\begin_inset Formula $c$
+\end_inset
+
+ from a second iteration: 
+\begin_inset Formula $g_{2}(g_{1}(a))=g_{2}(b)=c$
+\end_inset
+
+.
+ The corresponding graph is illustrated in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:orbit-transitiv-hull-graph"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We formalize the result of this section in 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:compute-g-orbits-poly"
+
+\end_inset
+
+Given a set 
+\begin_inset Formula $A$
+\end_inset
+
+ and generators 
+\begin_inset Formula $g_{1},...,g_{m}$
+\end_inset
+
+ of 
+\begin_inset Formula $G\subseteq\Sym A$
+\end_inset
+
+, we can compute the 
+\begin_inset Formula $G$
+\end_inset
+
+-orbit of all 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ in polynomial time.
+\end_layout
+
+\begin_layout Subsection
+Determine the Order of 
+\begin_inset Formula $G$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Given a set of generators for a subgroup 
+\begin_inset Formula $G$
+\end_inset
+
+ of 
+\begin_inset Formula $S_{n}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+define 
+\begin_inset Formula $S_{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, one can determine the order of 
+\begin_inset Formula $|G|$
+\end_inset
+
+ in polynomial-time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+* input: an element 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ of 
+\begin_inset Formula $G$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+* output: none
+\end_layout
+
+\begin_layout Algorithm
+*
+\end_layout
+
+\begin_layout Algorithm
+for 
+\begin_inset Formula $j=0...n-2$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+if 
+\begin_inset Formula $\gamma^{-1}\alpha\in G_{i+1}$
+\end_inset
+
+ for some 
+\begin_inset Formula $\gamma\in C_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* 
+\begin_inset Formula $\alpha\leftarrow\gamma^{-1}\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+else
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* 
+\begin_inset Formula $C_{i}\leftarrow C_{i}\cup\lbrace\alpha\rbrace$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endif
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endfor
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:order-filter"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+* input: generators 
+\begin_inset Formula $\lbrace g_{1},...,g_{m}\rbrace$
+\end_inset
+
+ that generate permutation group 
+\begin_inset Formula $G$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+* output: 
+\begin_inset Formula $|G|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+*
+\end_layout
+
+\begin_layout Algorithm
+* for all 
+\begin_inset Formula $i$
+\end_inset
+
+: 
+\begin_inset Formula $C_{i}\leftarrow\lbrace1\rbrace$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+* filter all generators 
+\begin_inset Formula $g_{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+* filter the sets 
+\begin_inset Formula $C_{i}C_{j}$
+\end_inset
+
+ with 
+\begin_inset Formula $i\geq j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:order"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Determine a Minimal Block System
+\end_layout
+
+\begin_layout Standard
+From 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "atkinson1975algorithm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+* input: non-empty set 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, set of generators 
+\begin_inset Formula $\lbrace g_{1},...,g_{m}\rbrace$
+\end_inset
+
+ that generate permutation group 
+\begin_inset Formula $G$
+\end_inset
+
+, element 
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+, 
+\begin_inset Formula $\omega\neq1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+* output: 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+*
+\end_layout
+
+\begin_layout Algorithm
+* 
+\begin_inset Formula $C\leftarrow\lbrace\omega\rbrace$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+* 
+\begin_inset Formula $f(\alpha)\leftarrow\alpha$
+\end_inset
+
+ for all 
+\begin_inset Formula $\alpha\in\Omega\setminus\lbrace\omega\rbrace$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+* 
+\begin_inset Formula $f(\omega)\leftarrow1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+while 
+\begin_inset Formula $C\neq\emptyset$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* delete a symbol 
+\begin_inset Formula $\beta$
+\end_inset
+
+ from 
+\begin_inset Formula $C$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha\leftarrow f(\beta)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+for 
+\begin_inset Formula $j=1...m-1$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+\begin_inset Formula $\gamma\leftarrow\alpha g_{j}$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\leftarrow\beta g_{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+if 
+\begin_inset Formula $f(\gamma)\neq f(\delta)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* ensure 
+\begin_inset Formula $f(\delta)<f(\gamma)$
+\end_inset
+
+ (rename if necessary)
+\end_layout
+
+\begin_layout Algorithm
+* 
+\begin_inset Formula $C\leftarrow C\cup\lbrace f(\gamma)\rbrace$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+for all 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ with 
+\begin_inset Formula $f(\epsilon)=f(\gamma)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* 
+\begin_inset Formula $f(\epsilon)\leftarrow f(\delta)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endfor
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endif
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endfor
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endwhile
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:blocksystem"
+
+\end_inset
+
+Polynomial-time algorithm to find the blocks of imprimitivity of a group
+ from generating permutations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -4580,17 +5886,7 @@ name "pro:color-automorphism-2-groups"
 
 \end_inset
 
-Given a set of generators for a 2-subgroup
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-define 2-subgroup
-\end_layout
-
-\end_inset
-
- 
+Given a set of generators for a 2-subgroup 
 \begin_inset Formula $G$
 \end_inset
 
@@ -4781,13 +6077,17 @@ Let
 \begin_inset Formula $X_{2}$
 \end_inset
 
- be two graphs with, respectively, at least one edge.
- We choose 
-\begin_inset Formula $e_{1}=(v_{1},w_{1})\in E_{1}$
+ be two graphs containing the edges 
+\begin_inset Formula $e_{1}=v_{1}w_{1}\in E_{1}$
 \end_inset
 
-, 
-\begin_inset Formula $e_{2}=(v_{2},w_{2})\in E_{2}$
+ and 
+\begin_inset Formula $e_{2}=v_{2}w_{2}\in E_{2}$
+\end_inset
+
+.
+ Choose 
+\begin_inset Formula $x_{1},x_{2}\notin V_{1}\cup V_{2}$
 \end_inset
 
  and define 
@@ -4801,7 +6101,7 @@ Let
  and edges 
 \begin_inset Formula 
 \[
-(E_{1}-e_{1}\cup\{(v_{1},x_{1}),(x_{1},w_{1})\})\,\,\cup\,\,(E_{2}-e_{2}\cup\{(v_{2},x_{2}),(x_{2},w_{2})\})\,\,\cup\,\,\{(x_{1},x_{2})\},
+(E_{1}-e_{1})\cup\{v_{1}x_{1},x_{1}w_{1}\}\,\,\cup\,\,(E_{2}-e_{2})\cup\{v_{2}x_{2},x_{2}w_{2}\}\,\,\cup\,\,\{x_{1}x_{2}\},
 \]
 
 \end_inset
@@ -4992,7 +6292,7 @@ Two graphs
 \end_inset
 
  that transposes 
-\begin_inset Formula $(x_{1},x_{2})$
+\begin_inset Formula $x_{1}x_{2}$
 \end_inset
 
 , where 
@@ -5003,7 +6303,7 @@ Two graphs
 \begin_inset Formula $x_{2}$
 \end_inset
 
- are the two additional nodes of 
+ are the two newly added nodes of 
 \begin_inset Formula $X_{1}\ast X_{2}$
 \end_inset
 
@@ -5037,12 +6337,12 @@ is an automorphism on
 \end_inset
 
  that transposes 
-\begin_inset Formula $(x_{1},x_{2})$
+\begin_inset Formula $x_{1}x_{2}$
 \end_inset
 
 .
  Notice that any node in 
-\begin_inset Formula $(X_{1}\ast X_{2})\cup X_{1}$
+\begin_inset Formula $(X_{1}\ast X_{2})\cap X_{1}$
 \end_inset
 
  is mapped to 
@@ -5062,7 +6362,7 @@ Let
 \end_inset
 
  that transposes 
-\begin_inset Formula $(x_{1},x_{2})$
+\begin_inset Formula $x_{1}x_{2}$
 \end_inset
 
 , that is, we have 
@@ -5092,19 +6392,11 @@ Let
 \end_inset
 
  not only transposes 
-\begin_inset Formula $(x_{1},x_{2})$
+\begin_inset Formula $x_{1}x_{2}$
 \end_inset
 
- but switches the 
-\begin_inset Formula $X_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $X_{2}$
-\end_inset
-
- components of 
-\begin_inset Formula $X_{1}\ast X_{2}$
+ but switches the connected components of 
+\begin_inset Formula $X_{1}\ast X_{2}-x_{1}x_{2}$
 \end_inset
 
 .
@@ -5134,15 +6426,15 @@ name "lem:equiv-automorph-generator"
 
 \end_inset
 
-For two graphs 
+Let 
 \begin_inset Formula $X_{1}$
 \end_inset
 
- and 
+, 
 \begin_inset Formula $X_{2}$
 \end_inset
 
-, and 
+ be two graphs, 
 \begin_inset Formula $x_{1}$
 \end_inset
 
@@ -5150,15 +6442,16 @@ For two graphs
 \begin_inset Formula $x_{2}$
 \end_inset
 
- being the additional nodes in 
+ be the added nodes in 
 \begin_inset Formula $X_{1}\ast X_{2}$
 \end_inset
 
- with 
-\begin_inset Formula $e=(x_{1},x_{2})\in E(X_{1}\ast X_{2})$
+ and let 
+\begin_inset Formula $e=x_{1}x_{2}\in E(X_{1}\ast X_{2})$
 \end_inset
 
-, if there is an automorphism transposing 
+.
+ If there is an automorphism transposing 
 \begin_inset Formula $x_{1}$
 \end_inset
 
@@ -5196,24 +6489,8 @@ We will proof the contrapositive.
 \begin_inset Formula $g\in G$
 \end_inset
 
-, 
-\begin_inset Formula $g(x_{1})\in X_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $g^{-1}(x_{1})\in X_{1}$
-\end_inset
-
- since 
-\begin_inset Formula $e$
-\end_inset
-
- is the only edge that connects nodes from 
-\begin_inset Formula $X_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $X_{2}$
+, we have 
+\begin_inset Formula $g(x_{1})=x_{1}$
 \end_inset
 
 .
@@ -5235,15 +6512,7 @@ We will proof the contrapositive.
 
 .
  This yields 
-\begin_inset Formula $\sigma(x_{1})=(g_{1}\circ...\circ g_{n})(x_{1})\in X_{1}$
-\end_inset
-
- and therefore we obtain 
-\begin_inset Formula $\sigma(x_{1})\neq x_{2}$
-\end_inset
-
- for every 
-\begin_inset Formula $\sigma\in\Aut_{e}(X)$
+\begin_inset Formula $\sigma(x_{1})=(g_{1}\circ...\circ g_{n})(x_{1})=x_{1}$
 \end_inset
 
 .
@@ -5322,16 +6591,16 @@ Assume we have an algorithm
 
 .
  Let 
-\begin_inset Formula $X_{1}$
+\begin_inset Formula $X'$
 \end_inset
 
  and 
-\begin_inset Formula $X_{2}$
+\begin_inset Formula $X'$
 \end_inset
 
  be two connected trivalent graphs.
  Constructing 
-\begin_inset Formula $X_{1}\ast X_{2}$
+\begin_inset Formula $X'\ast X''$
 \end_inset
 
  involves adding and removing a constant number of edges and nodes and can
@@ -5351,11 +6620,11 @@ reference "lem:equiv-automorph-generator"
 \end_inset
 
 , 
-\begin_inset Formula $X_{1}$
+\begin_inset Formula $X'$
 \end_inset
 
  and 
-\begin_inset Formula $X_{2}$
+\begin_inset Formula $X''$
 \end_inset
 
  are isomorphic if and only if the generating set returned by 
@@ -5363,7 +6632,7 @@ reference "lem:equiv-automorph-generator"
 \end_inset
 
  on input 
-\begin_inset Formula $X_{1}\ast X_{2}$
+\begin_inset Formula $X'\ast X''$
 \end_inset
 
  contains an automorphism transposing the edge 
@@ -5372,7 +6641,7 @@ reference "lem:equiv-automorph-generator"
 
 .
  As the size of the generating set is bounded by 
-\begin_inset Formula $\log_{2}|Aut_{e}(X_{1}\ast X_{2})|$
+\begin_inset Formula $\log_{2}|Aut_{e}(X'\ast X'')|$
 \end_inset
 
  by Lemma 
@@ -5383,11 +6652,11 @@ reference "lem:group-size-representation"
 \end_inset
 
  with 
-\begin_inset Formula $|\Aut_{e}(X_{1}\ast X_{2})|$
+\begin_inset Formula $|\Aut_{e}(X'\ast X'')|$
 \end_inset
 
  being of exponential size in the input length 
-\begin_inset Formula $|(X_{1},X_{2})|$
+\begin_inset Formula $|(X',X'')|$
 \end_inset
 
 , we can verify this condition in polynomial time.
@@ -5476,7 +6745,8 @@ For
 \begin_inset Formula $X$
 \end_inset
 
- consisting of all edges and nodes that appear on paths of length 
+ consisting of all edges and nodes that appear on paths of length up to
+ 
 \begin_inset Formula $r$
 \end_inset
 
@@ -5490,7 +6760,7 @@ For
 \end_inset
 
  be defined by 
-\begin_inset Formula $\sigma\mapsto\pi_{r}(\sigma)=\sigma|_{X_{r}}$
+\begin_inset Formula $\sigma\mapsto\sigma|_{X_{r}}$
 \end_inset
 
 , the restriction of 
@@ -5502,6 +6772,23 @@ For
 \end_inset
 
 .
+ Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:automorphism-restriction"
+
+\end_inset
+
+ will show that for any 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, we have 
+\begin_inset Formula $\pi_{r}(\sigma)\in\Aut_{e}(X_{r})$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -5540,7 +6827,15 @@ name "lem:determine-aut-r1"
 
 \end_inset
 
-It is 
+For an graph 
+\begin_inset Formula $X$
+\end_inset
+
+ and an edge 
+\begin_inset Formula $e$
+\end_inset
+
+ we have 
 \begin_inset Formula $\Aut_{e}(X_{1})=\{\sigma,\tau\}$
 \end_inset
 
@@ -5552,12 +6847,8 @@ It is
 \begin_inset Formula $\tau$
 \end_inset
 
- transposing 
-\begin_inset Formula $e_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $e_{2}$
+ transposing the two vertices of 
+\begin_inset Formula $X_{1}$
 \end_inset
 
 .
@@ -5586,155 +6877,6 @@ As mentioned before,
 .
  Therefore, 
 \begin_inset Formula $\Aut_{e}(X_{1})=\{\sigma,\tau\}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:automorphism-restriction"
-
-\end_inset
-
-If 
-\begin_inset Formula $\sigma$
-\end_inset
-
- is an automorphism on 
-\begin_inset Formula $X_{r+1}$
-\end_inset
-
- that fixes edge 
-\begin_inset Formula $e$
-\end_inset
-
-, then 
-\begin_inset Formula $\sigma|_{X_{r}}$
-\end_inset
-
- is an automorphism on 
-\begin_inset Formula $X_{r}$
-\end_inset
-
- that fixes edge 
-\begin_inset Formula $e$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Proof
-Let 
-\begin_inset Formula $\sigma$
-\end_inset
-
- be an automorphism on 
-\begin_inset Formula $X_{r+1}$
-\end_inset
-
- that fixes edge 
-\begin_inset Formula $e$
-\end_inset
-
-.
- Then 
-\begin_inset Formula $\sigma|_{X_{1}}$
-\end_inset
-
- fixes edge 
-\begin_inset Formula $e$
-\end_inset
-
-.
- So, 
-\begin_inset Formula $\sigma(X_{1})=X_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\sigma|_{X_{1}}\in\Aut_{e}(X_{1})$
-\end_inset
-
-.
- We will prove by induction that 
-\begin_inset Formula $\sigma(X_{i})=X_{i}$
-\end_inset
-
- and therefore 
-\begin_inset Formula $\sigma|_{X_{i}}\in\Aut_{e}(X_{i})$
-\end_inset
-
- for all 
-\begin_inset Formula $i\leq r+1$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $v$
-\end_inset
-
- be one of the 
-\begin_inset Quotes eld
-\end_inset
-
-new
-\begin_inset Quotes erd
-\end_inset
-
- nodes in 
-\begin_inset Formula $X_{i+1}$
-\end_inset
-
-, that is, 
-\begin_inset Formula $v\in V(X_{i+1})\setminus V(X_{i})$
-\end_inset
-
-.
- As 
-\begin_inset Formula $\sigma$
-\end_inset
-
- preserves edge relations and 
-\begin_inset Formula $v$
-\end_inset
-
- is adjacent to a node in 
-\begin_inset Formula $X_{i}$
-\end_inset
-
-, 
-\begin_inset Formula $\sigma(v)$
-\end_inset
-
- must be adjacent to a node in 
-\begin_inset Formula $\sigma(X_{i})$
-\end_inset
-
-.
- By induction, 
-\begin_inset Formula $\sigma(V(X_{i}))=V(X_{i})$
-\end_inset
-
- and thus 
-\begin_inset Formula $\sigma(v)$
-\end_inset
-
- is adjacent to a node in 
-\begin_inset Formula $X_{i}$
-\end_inset
-
-.
- Therefore, 
-\begin_inset Formula $\sigma(v)\in X_{i+1}$
-\end_inset
-
- and thus 
-\begin_inset Formula $\sigma(V(X_{i+1}))=V(X_{i+1})$
-\end_inset
-
- and 
-\begin_inset Formula $\sigma\in\Aut_{e}(X_{i+1})$
 \end_inset
 
 .
@@ -5774,34 +6916,16 @@ Let
 \begin_inset Formula $e$
 \end_inset
 
-, Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:automorphism-restriction"
-
+, the restriction to 
+\begin_inset Formula $V(X_{r})$
 \end_inset
 
- applies and 
-\begin_inset Formula $(\sigma\circ\tau)|_{X_{r}}\in\Aut_{e}(X_{r})$
+ yields an automorphism in 
+\begin_inset Formula $\Aut(X_{r})$
 \end_inset
 
 .
- Moreover, Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:automorphism-restriction"
-
-\end_inset
-
- also made clear that 
-\begin_inset Formula $\sigma(V(X_{i}))=V(X_{i})$
-\end_inset
-
- for all 
-\begin_inset Formula $i\leq r+1$
-\end_inset
-
- and thus we obtain 
+ We thus obtain 
 \begin_inset Formula $\pi_{r}(\sigma\circ\tau)=(\sigma\circ\tau)|_{X_{r}}=(\sigma|_{X_{r}}\circ\tau|_{X_{r}})=\pi_{r}(\sigma)\circ\pi_{r}(\tau)$
 \end_inset
 
@@ -5865,7 +6989,26 @@ For any node
 \end_inset
 
 .
- Any two different nodes 
+ (There is no node in 
+\begin_inset Formula $X_{r+1}\setminus X_{r}$
+\end_inset
+
+ that has no neighbor, because of the way the graph is constructed.
+ There is no node with more than three neighbors, because valence is bounded
+ by 3.
+ Also notice that 
+\begin_inset Formula $X_{r+1}$
+\end_inset
+
+ does not contain edges in between nodes of 
+\begin_inset Formula $X_{r+1}\setminus X_{r}$
+\end_inset
+
+, so 
+\begin_inset Formula $f(v)\subseteq V(X_{r})$
+\end_inset
+
+.) Any two different nodes 
 \begin_inset Formula $v_{1},v_{2}\in V(X_{r+1})\setminus V(X_{r})$
 \end_inset
 
@@ -5878,33 +7021,6 @@ twins
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Since valence is bounded by three, the number of neighbors of any 
-\begin_inset Formula $v\in V(X_{r+1})\setminus V(X_{r})$
-\end_inset
-
- is limited by three.
- Being a member of the 
-\begin_inset Formula $(r+1)$
-\end_inset
-
--st layer, 
-\begin_inset Formula $v$
-\end_inset
-
- has to be adjacent to at least one node in 
-\begin_inset Formula $V(X_{r})$
-\end_inset
-
-.
- Therefore, 
-\begin_inset Formula $|f(v)|$
-\end_inset
-
- is one, two or three.
- 
 \end_layout
 
 \begin_layout Standard
@@ -5928,8 +7044,7 @@ If
 \begin_inset Formula $v_{2}$
 \end_inset
 
-.
- We can proof that by contradiction: assume 
+, which we prove by contradiction: assume 
 \begin_inset Formula $v_{1},v_{2},v_{3}\in V(X_{r+1})\setminus V(X_{r})$
 \end_inset
 
@@ -6099,6 +7214,7 @@ A set of generators for
 \end_inset
 
  can be determined in polynomial time.
+ The set of generators contains only elements of order 2.
 \end_layout
 
 \begin_layout Proof
@@ -6108,15 +7224,15 @@ Let
 
 .
  If 
+\begin_inset Formula $\sigma\in\Ker\pi_{r}$
+\end_inset
+
+, that is, 
 \begin_inset Formula $\sigma$
 \end_inset
 
  fixes all nodes of 
 \begin_inset Formula $X_{r}$
-\end_inset
-
-, that is 
-\begin_inset Formula $\sigma\in\Ker\pi_{r}$
 \end_inset
 
 , we have 
@@ -6135,7 +7251,7 @@ Let
 \begin_inset Formula $X_{r+1}$
 \end_inset
 
-.
+ by definition.
  It follows that either 
 \begin_inset Formula $\sigma(v)=v$
 \end_inset
@@ -6149,7 +7265,11 @@ Let
 \end_inset
 
  are twins.
- Therefore, 
+ Since 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ preserves neighborhoods, 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -6166,16 +7286,6 @@ Let
 \end_inset
 
 .
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Introduce more justification for the next step.
-\end_layout
-
-\end_inset
-
- 
 \begin_inset Formula $\Ker\pi_{r}$
 \end_inset
 
@@ -6184,7 +7294,17 @@ Introduce more justification for the next step.
 \begin_inset Formula $X_{r}$
 \end_inset
 
-, we can determine all pairs of twins in polynomial time.
+, we can determine all pairs of twins in polynomial time: For each layer
+ in 
+\begin_inset Formula $r\in1,...,n-1$
+\end_inset
+
+, we determine the neighborhoods of all vertices in 
+\begin_inset Formula $X_{r+1}\setminus X_{r}$
+\end_inset
+
+.
+ For every pair of twins, we add the transposition to the generator.
 \end_layout
 
 \begin_layout Corollary
@@ -6206,7 +7326,47 @@ For each
 \end_layout
 
 \begin_layout Proof
-TODO.
+By Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:determine-aut-kernel"
+
+\end_inset
+
+, every 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ in the generator 
+\begin_inset Formula $\langle g_{1},...,g_{k}\rangle$
+\end_inset
+
+ has order two.
+ Thus all linear combinations of the 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ can be expressed as 
+\begin_inset Formula $g_{1}^{\alpha_{1}}\cdot...\cdot g_{k}^{\alpha_{k}}$
+\end_inset
+
+ with 
+\begin_inset Formula $\alpha_{i}\in\{0,1\}$
+\end_inset
+
+.
+ Different linear combinations cannot result into the same automorphism
+ since all 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ transpose different twins and triplets do not exist.
+ This yields a total of 
+\begin_inset Formula $2^{k}=|\langle g_{1},...,g_{k}\rangle|$
+\end_inset
+
+ combinations.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -6248,15 +7408,15 @@ reference "lem:determine-aut-r1"
 \end_inset
 
  into three disjoint subsets 
-\begin_inset Formula $A_{0}$
-\end_inset
-
-, 
 \begin_inset Formula $A_{1}$
 \end_inset
 
- and 
+, 
 \begin_inset Formula $A_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{0}=A\setminus(A_{1}\cup A_{2})$
 \end_inset
 
 .
@@ -6759,7 +7919,7 @@ For any
 \begin_inset Formula $i\in\{1,2\}$
 \end_inset
 
- it holds 
+ we have 
 \begin_inset Formula $f(w_{i})=\tau(a)$
 \end_inset
 
@@ -6814,11 +7974,11 @@ Let
 \end_layout
 
 \begin_layout Proof
-Remember, 
+Let 
 \begin_inset Formula $M$
 \end_inset
 
- is an algorithm that finds the biggest color-preserving subgroup of 
+ be an algorithm that finds the biggest color-preserving subgroup of 
 \begin_inset Formula $G$
 \end_inset
 
@@ -6897,7 +8057,7 @@ reference "lem:stabilizes-as-imgpir"
 \begin_inset Formula $\Img\pi_{r}$
 \end_inset
 
- is exactly the group of all automorphisms 
+ is exactly the group of all automorphisms in 
 \begin_inset Formula $\Aut_{e}(X_{r})$
 \end_inset
 
@@ -7018,32 +8178,6 @@ This enables us to use algorithm
 \end_inset
 
  in polynomial time.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-How do we know 
-\begin_inset Formula $\Aut_{e}(X_{r})$
-\end_inset
-
- is the 
-\emph on
-biggest
-\emph default
- 2-subgroup of 
-\begin_inset Formula $G\leq\Sym A$
-\end_inset
-
-, and wtf is 
-\begin_inset Formula $G$
-\end_inset
-
-?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Corollary
@@ -7091,11 +8225,11 @@ reference "cor:determine-aut-image"
 
 \end_inset
 
-, we can determine a generating 
-\begin_inset Formula $I$
+, we can determine a generating set 
+\begin_inset Formula $I'\subseteq\Aut_{e}(X_{r})$
 \end_inset
 
- set for 
+ for 
 \begin_inset Formula $\Img\pi_{r}$
 \end_inset
 
@@ -7104,29 +8238,38 @@ reference "cor:determine-aut-image"
 \end_inset
 
 .
- By Lemma 
+ We can extend each automorphism in 
+\begin_inset Formula $I'$
+\end_inset
+
+ using the identity function on any node in 
+\begin_inset Formula $X_{r+1}\setminus X_{r}$
+\end_inset
+
+ and thus obtain the set 
+\begin_inset Formula 
+\[
+I=\{\sigma'\mid\sigma'\text{ is \sigma\ \text{extended} with identity on all nodes in \ensuremath{X_{r+1}\setminus X_{r}\}}}.
+\]
+
+\end_inset
+
+This yields 
+\begin_inset Formula $f(I)=I'$
+\end_inset
+
+ and we can use Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:generating-set-kernel-image"
 
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-doublecheck on this.
- Isn't a pullback set required?
-\end_layout
-
-\end_inset
-
-, 
+, to prove that 
 \begin_inset Formula $K\cup I$
 \end_inset
 
- is a generating set for 
+ generates 
 \begin_inset Formula $\Aut_{e}(X_{r+1})$
 \end_inset
 
@@ -7204,7 +8347,7 @@ Solving the Color Automorphism Problem for 2-groups in polynomial time
 
 \begin_layout Standard
 The Graph Isomorphism Problem for graphs with valence bounded by three was
- reduced to the Color Automorphism Problems for 2-groups by sections 
+ reduced to the Color Automorphism Problem for 2-groups by Sections 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:valence-3-first-red"
@@ -7280,6 +8423,19 @@ For a colored set
 \end_inset
 
  have the same color.
+ We can think of 
+\begin_inset Formula $C_{B}(K)$
+\end_inset
+
+ as all permutations in 
+\begin_inset Formula $K$
+\end_inset
+
+ that preserve colors for all elements in 
+\begin_inset Formula $B$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -7288,7 +8444,7 @@ Let
 \end_inset
 
  be a colored set.
- As stated in definition 
+ As stated in Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:trivalent-problems"
@@ -7302,8 +8458,8 @@ reference "pro:color-automorphism-2-groups"
 
 \end_inset
 
-), we need to give an polynomial-time algorithm that finds the biggest color-pre
-serving subgroup of 
+), we need to give a polynomial-time algorithm that finds the biggest color-pres
+erving subgroup of 
 \begin_inset Formula $G$
 \end_inset
 
@@ -7353,8 +8509,11 @@ Let
 \begin_inset Formula $K,K'\subseteq\Sym(A)$
 \end_inset
 
-.
- Let 
+, 
+\begin_inset Formula $B',B''\subseteq B$
+\end_inset
+
+ and let 
 \begin_inset Formula $G$
 \end_inset
 
@@ -7388,7 +8547,7 @@ name "lem:CB-properties-composition"
 \end_inset
 
 
-\begin_inset Formula $C_{B\cup B'}(K)=C_{B'}(C_{B}(K))$
+\begin_inset Formula $C_{B'\cup B''}(K)=C_{B''}(C_{B'}(K))$
 \end_inset
 
 .
@@ -7401,20 +8560,20 @@ name "lem:CB-properties-subgroup"
 
 \end_inset
 
-For any 
+If 
 \begin_inset Formula $G$
 \end_inset
 
--stable 
-\begin_inset Formula $K$
+ stabilizes 
+\begin_inset Formula $B$
 \end_inset
 
-, 
-\begin_inset Formula $C_{B}(K)$
+, then 
+\begin_inset Formula $C_{B}(G)$
 \end_inset
 
  is a subgroup of 
-\begin_inset Formula $K$
+\begin_inset Formula $G$
 \end_inset
 
 .
@@ -7427,7 +8586,16 @@ name "lem:CB-properties-coset"
 
 \end_inset
 
-If 
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ stabilize 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ If 
 \begin_inset Formula $C_{B}(\sigma G)$
 \end_inset
 
@@ -7440,16 +8608,157 @@ If
 
 \end_deeper
 \begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The color-preserving elements in 
+\begin_inset Formula $K\cup K'$
+\end_inset
+
+ are exactly the color-preserving elements in 
+\begin_inset Formula $K$
+\end_inset
+
+ plus the ones in 
+\begin_inset Formula $K'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Any 
+\begin_inset Formula $\sigma\in K$
+\end_inset
+
+ that preserves color for all elements in 
+\begin_inset Formula $B'$
+\end_inset
+
+ and 
+\begin_inset Formula $B''$
+\end_inset
+
+ preserves the color for all elements in 
+\begin_inset Formula $B'\cup B''$
+\end_inset
+
+, and vice versa.
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $1\in\Sym(A)$
+\end_inset
+
+ we have 
+\begin_inset Formula $1\in G$
+\end_inset
+
+, and 
+\begin_inset Formula $1$
+\end_inset
+
+ preserves color, therefore 
+\begin_inset Formula $1\in C_{B}(G)$
+\end_inset
+
+.
+ For any two elements 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+ that preserve color, 
+\begin_inset Formula $\sigma\circ\tau$
+\end_inset
+
+ preserves color as well.
+ 
+\begin_inset Formula $\sigma\circ\tau$
+\end_inset
+
+ is a permutation on 
+\begin_inset Formula $B$
+\end_inset
+
+ because 
+\begin_inset Formula $G$
+\end_inset
+
+ stabilizes 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ preserves color on 
+\begin_inset Formula $B$
+\end_inset
+
+, so does 
+\begin_inset Formula $\sigma^{-1}$
+\end_inset
+
+ (otherwise, 
+\begin_inset Formula $\sigma\circ\sigma^{-1}\neq1$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Enumerate
+We just demonstrated that 
+\begin_inset Formula $C_{B}(G)$
+\end_inset
+
+ is a subgroup of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 TODO
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 To allow recursive calls, the algorithm's input will be a set 
 \begin_inset Formula $B\subset A$
 \end_inset
 
  and a coset, represented by a 
-\begin_inset Formula $\sigma\in\Sym(A)$
+\begin_inset Formula $\sigma\in\Sym A$
 \end_inset
 
  and a generating set for a subgroup 
@@ -7477,6 +8786,11 @@ reference "lem:CB-properties-coset"
 \end_inset
 
 ), this is either empty or a coset as well.
+ We can thus represent the output by a generator and an element of 
+\begin_inset Formula $\Sym A$
+\end_inset
+
+.
  To use the algorithm to find 
 \begin_inset Formula $C_{A}(G)$
 \end_inset
@@ -7486,7 +8800,7 @@ reference "lem:CB-properties-coset"
 \end_inset
 
 , 
-\begin_inset Formula $1\in\Sym(A)$
+\begin_inset Formula $1\in\Sym A$
 \end_inset
 
  and a generating set for 
@@ -7502,18 +8816,53 @@ Each recursive call of the algorithm will use two or four sub-calls to itself,
 \begin_inset Formula $B'\subsetneq B$
 \end_inset
 
- as an input.
+ as input.
  The smaller 
 \begin_inset Formula $B'$
 \end_inset
 
- guarantees the algorithm will terminate eventually, since TODO(explain
- base case).
- We will see later that 
+ guarantees the algorithm will terminate eventually, since for 
+\begin_inset Formula $G$
+\end_inset
+
+-stable 
+\begin_inset Formula $B$
+\end_inset
+
+ with 
+\begin_inset Formula $|B|=1$
+\end_inset
+
+, 
+\begin_inset Formula $B=\{b\}$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+C_{B}(\sigma G)=\begin{cases}
+\sigma G & \text{if \ensuremath{\sigma(b)\sim b}},\\
+\emptyset & \text{if \ensuremath{\sigma(b)\nsim b}.}
+\end{cases}
+\]
+
+\end_inset
+
+We will see later that 
 \begin_inset Formula $B'$
 \end_inset
 
- will actually be half the size of 
+ will actually be at most
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+doublecheck
+\end_layout
+
+\end_inset
+
+ half the size of 
 \begin_inset Formula $B$
 \end_inset
 
@@ -7543,11 +8892,97 @@ status open
 \end_layout
 
 \begin_layout Algorithm
+* output: 
+\begin_inset Formula $C_{B}(\sigma G)$
+\end_inset
+
+, a coset represented by a set of generators and a permutation
+\end_layout
+
+\begin_layout Algorithm
+*
+\end_layout
+
+\begin_layout Algorithm
+* // base case
+\end_layout
+
+\begin_layout Algorithm
+if 
+\begin_inset Formula $|B|=1$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* let 
+\begin_inset Formula $b$
+\end_inset
+
+ be the only element in 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+if 
+\begin_inset Formula $\sigma(b)\sim b$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+return 
+\begin_inset Formula $\sigma G$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+else
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+return 
+\begin_inset Formula $\emptyset$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endif
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endif
+\end_layout
+
+\begin_layout Algorithm
+*
+\end_layout
+
+\begin_layout Algorithm
+* // recursive step
+\end_layout
+
+\begin_layout Algorithm
 if 
 \begin_inset Formula $B$
 \end_inset
 
- is union of 
+ is a union of 
 \begin_inset Formula $G$
 \end_inset
 
@@ -7564,8 +8999,51 @@ if
 
 \begin_deeper
 \begin_layout Algorithm
+* // divide an conquer by Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:CB-properties"
+
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:CB-properties-composition"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Algorithm
+* find 
+\begin_inset Formula $B',B''$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+how can we find these sets? partial result: use thm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:compute-g-orbits-poly"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
 return 
-\begin_inset Formula $C_{B}(\sigma G)=C_{B''}(C_{B}'(\sigma G))$
+\begin_inset Formula $C_{B}(\sigma G)=C_{B''}(C_{B'}(\sigma G))$
 \end_inset
 
 
@@ -7577,6 +9055,17 @@ else
 \end_layout
 
 \begin_deeper
+\begin_layout Algorithm
+* // divide and conquer by Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:trivalent-algo-transitive"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Algorithm
 * find 
 \begin_inset Formula $G$
@@ -7595,11 +9084,25 @@ else
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+how can we find these blocks?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Algorithm
-* find subgroup 
-\begin_inset Formula $H\leq G=H\cup\tau H$
+* find a subgroup 
+\begin_inset Formula $H$
+\end_inset
+
+ with 
+\begin_inset Formula $G=H\cup\tau H$
 \end_inset
 
  that stabilizes 
@@ -7638,7 +9141,6 @@ name "alg:trivalent"
 
 Polynomial-time divide and conquer algorithm for the Color Automorphism
  Problem for 2-groups.
- (TODO base case not shown)
 \end_layout
 
 \end_inset
@@ -7652,42 +9154,23 @@ Polynomial-time divide and conquer algorithm for the Color Automorphism
 \end_layout
 
 \begin_layout Standard
-With the following lemmas, we will show that both cases of the algorithm
- return the correct result.
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:trivalent-algo-intransitive"
+The correctness of the first resursive branch of the algorithm was already
+ shown in Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:CB-properties"
 
 \end_inset
 
-If 
-\begin_inset Formula $B$
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:CB-properties-composition"
+
 \end_inset
 
- is the union of 
-\begin_inset Formula $G$
-\end_inset
-
--stable subsets 
-\begin_inset Formula $B'$
-\end_inset
-
- and 
-\begin_inset Formula $B''$
-\end_inset
-
-, then 
-\begin_inset Formula $C_{B}(\sigma G)=C_{B''}(C_{B}'(\sigma G))$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Proof
-TODO
+).
+ The following lemma proves the correctness of the second branch.
 \end_layout
 
 \begin_layout Lemma
@@ -7766,7 +9249,7 @@ TODO
 status open
 
 \begin_layout Plain Layout
-Correctness of algorithm 
+Correctness of Algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:trivalent"
@@ -7804,7 +9287,7 @@ reference "alg:trivalent"
 
 \end_inset
 
- returns 
+ returns a generator for 
 \begin_inset Formula $C_{A}(G)$
 \end_inset
 
@@ -7833,11 +9316,18 @@ TODO
 Induction using Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:trivalent-algo-intransitive"
+reference "lem:CB-properties"
 
 \end_inset
 
- and 
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:CB-properties-composition"
+
+\end_inset
+
+) and 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:trivalent-algo-transitive"
@@ -8058,6 +9548,10 @@ reference "thm:trivalent-algo-runtime"
  Problem for 2-groups.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
 \begin_layout Section
 Notes
 \end_layout
@@ -8077,7 +9571,7 @@ key "journals/jcss/Luks82"
 Lemma 1.2(i)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Let 
 \begin_inset Formula $G$
 \end_inset
@@ -8146,7 +9640,7 @@ Let
  are simple.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Why is 
 \begin_inset Formula $G_{i}\vartriangleleft G_{i+1}$
 \end_inset
@@ -8154,7 +9648,7 @@ Why is
 ?
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula $G_{i}/G_{i+1}=\{gG_{i}:g\in G_{i+1}\}$
 \end_inset
 
@@ -8178,7 +9672,7 @@ Why is
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Every Element in 
 \begin_inset Formula $G_{i}/G_{i+1}$
 \end_inset
@@ -8194,7 +9688,7 @@ Every Element in
 The Trivalent Case
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We show that testing isomorphism of trivalent graphs is polynomial-time
  reducible to the Color Automorphism Problem for 2-groups by showing a reduction
  from the isomorphism problem of trivalent graphs to determining generators
@@ -8203,6 +9697,11 @@ We show that testing isomorphism of trivalent graphs is polynomial-time
 \end_inset
 
 ; 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
