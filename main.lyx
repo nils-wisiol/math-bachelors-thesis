@@ -237,15 +237,7 @@ keyreturn}{return}
 
 \end_layout
 
-\begin_layout Title
-Graph Isomorphism
-\end_layout
-
-\begin_layout Author
-Nils Wisiol
-\end_layout
-
-\begin_layout Date
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -253,9 +245,230 @@ status open
 
 
 \backslash
-today
+begin{titlepage}
 \end_layout
 
+\begin_layout Plain Layout
+
+  Julius-Maximilians-Universität Würzburg
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  Institut für Mathematik
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  Lehrstuhl für Geometrie
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+vspace{3cm}      
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+     
+\backslash
+LARGE
+\backslash
+textbf{Bachelor Thesis}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+vspace{0cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+huge
+\backslash
+textbf{Graph Isomorphism}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+vspace{1cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+Large Nils Wisiol
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+vspace{0cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+Large submitted on May 9th, 2015
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{figure}[ht]
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+includegraphics[height=8cm]{siegel.pdf}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+Large supervisor:
+\backslash
+
+\backslash
+Dr.
+ Nils Rosehr
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{titlepage} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -279,7 +492,11 @@ Let
 \begin_inset Formula $G_{2}$
 \end_inset
 
- are called isomorphic, if there is a bijection 
+ are called 
+\emph on
+isomorphic
+\emph default
+, if there is a bijection 
 \begin_inset Formula $\sigma:V_{1}\to V_{2}$
 \end_inset
 
@@ -308,16 +525,15 @@ While in general it is not known whether there is a polynomial time algorithm
 
 \begin_layout Abstract
 In this thesis, we will give a brief introduction on the Graph Isomorphism
- Problem and its relations to complexity theory, followed by a number of
- algebraic preliminaries.
+ Problem and its relations to complexity theory.
+ We show that permutation groups can, despite their large sizes, stored
+ in digital computers in a succinct way.
+ This raises questions about our ability to answer important questions about
+ these permutation groups with algorithms in polynomial time.
+ We present some polynomial-time algorithms that can determine basic fact
+ about succinctly stored groups.
  After this, we proof that graphs with valence bounded by 3 can be checked
- for isomorphism in polynomial time.
-\end_layout
-
-\begin_layout Abstract
-With these preparations, we will be able to show that isomorphism can be
- decided in polynomial time even for graphs with valence bounded by an arbitrary
- constant, following the proof given by Luks 
+ for isomorphism in polynomial time, following the proof given by Luks 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "journals/jcss/Luks82"
@@ -328,9 +544,105 @@ key "journals/jcss/Luks82"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+
+\lang ngerman
+Seien 
+\begin_inset Formula $G_{1}=(V_{1},E_{1})$
+\end_inset
+
+ und 
+\begin_inset Formula $G_{2}=(V_{2},E_{2})$
+\end_inset
+
+ Graphen.
+ 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ sind 
+\emph on
+isomorph
+\emph default
+, falls es eine Bijektion 
+\begin_inset Formula $\sigma:V_{1}\to V_{2}$
+\end_inset
+
+ gibt, die die Struktur des Graphen erhält.
+ Genauer gesagt ist 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ genau dann ein Isomorphismus, wenn für alle 
+\begin_inset Formula $v,w\in V_{1}$
+\end_inset
+
+ gilt dass 
+\begin_inset Formula $(v,w)\in E_{1}\iff(\sigma(v),\sigma(w))\in E_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Abstract
+
+\lang ngerman
+Es ist unbekannt, ob es einen Polynomialzeitalgorithmus gibt, der Isomorphie
+ für zwei beliebige Graphen feststellen kann.
+ Wir kennen jedoch Polynomialzeitalgorithmen für bestimmte Klassen von Graphen,
+ beispielsweise planare Graphen und Graphen mit beschränkter Valenz.
+\end_layout
+
+\begin_layout Abstract
+
+\lang ngerman
+In der vorliegenden Arbeit geben wir eine kurze Einführung in das Graphen-Isomor
+phie-Problem und seine Verbindung zur Komplexitätstheorie.
+ Wir zeigen dass Permutationsgruppen, obwohl von großer Ordnung, in kurzer
+ Darstellung in digitalen Computern gespeichert werden können.
+ Das wirft die Frage auf, ob wir wichtige Eigenschaften dieser Gruppen in
+ Polynomialzeit algorithmisch festgestellt werden können.
+ Wir führen einige Algorithmen auf, die einige dieser Fragen in Polynomialzeit
+ beantworten können.
+ Anschließend zeigen wir, basierend auf einem Beweis von Luks 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "journals/jcss/Luks82"
+
+\end_inset
+
+, dass Graphen, deren Valenz durch 3 beschränkt ist, in Polynomialzeit auf
+ Isomorphie überprüft werden können.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -3443,6 +3755,13 @@ key "journals/jcss/Luks82"
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Preliminaries
 \end_layout
@@ -4056,41 +4375,19 @@ Let
 
 \begin_layout Proof
 Choose an arbitrary 
-\begin_inset Formula $g$
-\end_inset
-
- of 
-\begin_inset Formula $G$
+\begin_inset Formula $g\in G$
 \end_inset
 
 .
- If 
-\begin_inset Formula $f(g)=0$
+ The element 
+\begin_inset Formula $f(g)$
 \end_inset
 
-, then 
-\begin_inset Formula $g\in\Ker f$
+ is a member of 
+\begin_inset Formula $\Img f$
 \end_inset
 
- and thus 
-\begin_inset Formula $g\in\langle K\rangle$
-\end_inset
-
-.
- If 
-\begin_inset Formula $f(g)\neq0$
-\end_inset
-
-, then 
-\begin_inset Formula $f(g)\in\Img f$
-\end_inset
-
- and hence 
-\begin_inset Formula $f(g)\in\langle f(I)\rangle$
-\end_inset
-
-.
- That is, 
+ and thus has a representation 
 \begin_inset Formula $f(g)=\sum f(i_{k})^{\alpha_{k}}$
 \end_inset
 
@@ -4102,101 +4399,46 @@ Choose an arbitrary
 \begin_inset Formula $\alpha_{k}\in\{-1,1\}$
 \end_inset
 
-.
- We obtain 
-\begin_inset Formula $f(g)=f(\sum i_{k}^{\alpha_{k}})$
-\end_inset
-
-, that is, 
-\begin_inset Formula $g\in f^{-1}(f(\sum i_{k}^{\alpha_{k}}))$
-\end_inset
-
-.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Finish proof
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $f(g)\in\langle f(I)\rangle=f(\langle I\rangle)=\Img f\implies g\in f^{-1}(\Img f))=g\in G$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $\langle f(I)\rangle=\Img f\implies f(\langle I\rangle)=\Img f\implies f^{-1}f(\langle I\rangle)=f^{-1}(\Img f)=G$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $\langle K\cup I\rangle\supseteq\langle K\rangle\cup\langle I\rangle=\Ker f\cup$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $f(g)\in\Img f$
-\end_inset
-
- and hence there are 
-\begin_inset Formula $i_{k}\in I$
-\end_inset
-
 , 
-\begin_inset Formula $\alpha_{k}\in\{-1,1\}$
-\end_inset
-
- such that 
-\begin_inset Formula $\sum f(i_{k})^{\alpha_{k}}=f(g)$
+\begin_inset Formula $0\leq k\leq m$
 \end_inset
 
 .
- This yields 
-\begin_inset Formula $f(\sum i_{k}^{\alpha_{k}})=f(g)$
+ Let 
+\begin_inset Formula $h=g^{-1}\sum i_{k}^{\alpha_{k}}$
 \end_inset
 
 .
- We have 
-\begin_inset Formula $\sum i_{k}^{\alpha_{k}}\in\langle I\rangle$
+ Then 
+\begin_inset Formula $f(h)=f(g^{-1})f(\sum i_{k}^{\alpha_{k}})=f(g)^{-1}\sum f(i_{k})^{\alpha_{k}}=f(g)^{-1}f(g)=1$
+\end_inset
+
+ and therefore, we have 
+\begin_inset Formula $h,h^{-1}\in\Ker f$
+\end_inset
+
+.
+ From the definition of 
+\begin_inset Formula $h$
+\end_inset
+
+ we can derive 
+\begin_inset Formula $g=\sum i_{k}^{\alpha_{k}}\cdot h^{-1}$
+\end_inset
+
+ and thus 
+\begin_inset Formula $g$
+\end_inset
+
+ can be generated from 
+\begin_inset Formula $I$
 \end_inset
 
  and 
-\begin_inset Formula $\sum i_{k}^{\alpha_{k}}\in f^{-1}f(g)$
+\begin_inset Formula $K$
 \end_inset
 
 .
- By definition, 
-\begin_inset Formula $g\in f^{-1}f(g)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $\{g'|\exists g'\in G,f(g')=f(g)\}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -4606,9 +4848,20 @@ The Graph Isomorphism Problem is polynomial time reducible to the Graph
 \end_layout
 
 \begin_layout Proof
-Assume we have an algorithm that decides Graph Isomorphism for connected
- graphs.
- Let 
+For any given graph, we can compute the number of connected components in
+ polynomial time using a transitive hull algorithm similar to Algorithm
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:orbits"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
 \begin_inset Formula $X_{1}=(V_{1},E_{1})$
 \end_inset
 
@@ -4617,7 +4870,40 @@ Assume we have an algorithm that decides Graph Isomorphism for connected
 \end_inset
 
  be two possibly disconnected graphs.
- For any given graph 
+ We assume 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ consist of an equal number of nodes, if they do not, they are not isomorphic
+ and we are done.
+ We compute all connected components for 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+.
+ If both graphs are connected, we have a Graph Isomorphism Problem for connected
+ graphs and we are done.
+ If the graphs have different number of connected components (for instance,
+ one graph is connected, and the other is not), then they are not isomorphic
+ and we are done.
+\end_layout
+
+\begin_layout Proof
+Now assume both graphs are not connected and have an equal number of connected
+ components.
+ 
+\end_layout
+
+\begin_layout Proof
+For any given graph 
 \begin_inset Formula $X=(V,E)$
 \end_inset
 
@@ -4626,7 +4912,7 @@ Assume we have an algorithm that decides Graph Isomorphism for connected
 \end_inset
 
  be the graph with one additional node 
-\begin_inset Formula $x$
+\begin_inset Formula $x_{X}$
 \end_inset
 
  that is connected to every node in 
@@ -4682,16 +4968,57 @@ Assume we have an algorithm that decides Graph Isomorphism for connected
 \end_layout
 
 \begin_layout Proof
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-WRONG!!?! What if the graph is complete...
- non sequitur.
-\end_layout
-
+Notice that, since 
+\begin_inset Formula $X$
 \end_inset
 
+ is not connected, 
+\begin_inset Formula $X$
+\end_inset
+
+ does not have a node that is connected to every other node in 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Therefore, there is no node in 
+\begin_inset Formula $X$
+\end_inset
+
+ with degree 
+\begin_inset Formula $|V|-1$
+\end_inset
+
+.
+ From construction we know that 
+\begin_inset Formula $|\widetilde{V}|=|V|+1$
+\end_inset
+
+ and the degree of the new node 
+\begin_inset Formula $x_{X}\in\widetilde{X}$
+\end_inset
+
+ is 
+\begin_inset Formula $|\widetilde{V}|-1=|V|$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $x_{X}$
+\end_inset
+
+ is the only node in 
+\begin_inset Formula $\widetilde{X}$
+\end_inset
+
+ of degree 
+\begin_inset Formula $|\widetilde{V}|-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
 To see the equivalence, let 
 \begin_inset Formula $\widetilde{X}_{1}$
 \end_inset
@@ -4705,42 +5032,28 @@ To see the equivalence, let
 \end_inset
 
  being an isomorphism.
- If 
-\begin_inset Formula $X_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $X_{2}$
-\end_inset
-
- are complete, then so are 
-\begin_inset Formula $\widetilde{X}_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\widetilde{X}_{2}$
-\end_inset
-
-.
- In this case, 
-\begin_inset Formula $\sigma$
-\end_inset
-
- is the identity function.
  Since 
 \begin_inset Formula $\sigma$
 \end_inset
 
- preserves the degree of every node, the additional node in 
-\begin_inset Formula $\widetilde{X}_{1}$
+ preserves node degree, 
+\begin_inset Formula $\sigma$
 \end_inset
 
- must be mapped to the additional node in 
-\begin_inset Formula $\widetilde{X}_{2}$
+ maps 
+\begin_inset Formula $x_{X_{1}}$
+\end_inset
+
+ to 
+\begin_inset Formula $x_{X_{2}}$
+\end_inset
+
+, both nodes being the only ones in their graph having node degree 
+\begin_inset Formula $|\widetilde{V}_{1}|-1=|\widetilde{V}_{2}|-1$
 \end_inset
 
 .
- Therefore, the restriction of 
+ Thus, the restriction of 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -4748,28 +5061,15 @@ To see the equivalence, let
 \begin_inset Formula $X_{1}$
 \end_inset
 
- is a one-to-one mapping onto 
-\begin_inset Formula $X_{2}$
-\end_inset
-
-.
- Hence, 
-\begin_inset Formula $\sigma|_{X_{1}}$
-\end_inset
-
- is an isomorphism on 
-\begin_inset Formula $X_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $X_{2}$
+ is a graph isomorphism 
+\begin_inset Formula $X_{1}\to X_{2}$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Proof
-Now let 
+Conversely, if 
 \begin_inset Formula $X_{1}$
 \end_inset
 
@@ -4777,44 +5077,35 @@ Now let
 \begin_inset Formula $X_{2}$
 \end_inset
 
- be isomorphic with 
-\begin_inset Formula $\sigma:X_{1}\to X_{2}$
+ are isomorphic with an isomorphism 
+\begin_inset Formula $\sigma$
 \end_inset
 
- being an isomorphism.
- Let 
-\begin_inset Formula $x_{1}$
-\end_inset
-
- be the additional node in 
+ we can compute 
 \begin_inset Formula $\widetilde{X}_{1}$
 \end_inset
 
  and 
-\begin_inset Formula $x_{2}$
-\end_inset
-
- be the additional node in 
 \begin_inset Formula $\widetilde{X}_{2}$
 \end_inset
 
-.
- Then 
-\begin_inset Formula 
-\[
-\widetilde{\sigma}:\widetilde{X}_{1}\to\widetilde{X}_{2},x\mapsto\widetilde{\sigma}(x)=\begin{cases}
-\sigma(x) & x\in X_{1}\\
-x_{2} & x=x_{1}
-\end{cases}
-\]
-
+ and extend 
+\begin_inset Formula $\sigma$
 \end_inset
 
-is an isomorphism from 
-\begin_inset Formula $\widetilde{X}_{1}$
+ to map 
+\begin_inset Formula $x_{X_{1}}$
 \end_inset
 
  to 
+\begin_inset Formula $x_{X_{2}}$
+\end_inset
+
+ to get an isomorphism of 
+\begin_inset Formula $\widetilde{X}_{1}$
+\end_inset
+
+ and 
 \begin_inset Formula $\widetilde{X}_{2}$
 \end_inset
 
@@ -4922,6 +5213,13 @@ Let
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -5357,6 +5655,86 @@ Determine the Order of
 
 \end_layout
 
+\begin_layout Standard
+In order to determine the order of 
+\begin_inset Formula $G$
+\end_inset
+
+ from a set of generators, we write 
+\begin_inset Formula $A=\{a_{1},...,a_{n}\}$
+\end_inset
+
+ and define a chain of subgroups 
+\begin_inset Formula $G_{i}$
+\end_inset
+
+, each 
+\begin_inset Formula $G_{i}$
+\end_inset
+
+ containing only elements that fix elements 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+,...,
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Furst:1980:PAP:1382434.1382665"
+
+\end_inset
+
+.
+ This yields
+\begin_inset Formula 
+\[
+\{1\}=G_{n-1}\subseteq G_{n-2}\subseteq...\subseteq G_{1}\subseteq G_{0}=G.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider the quotients 
+\begin_inset Formula $G_{i}/G_{i+1}$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+check if the term quotient is defined
+\end_layout
+
+\end_inset
+
+in this chain.
+ We can write 
+\begin_inset Formula $G$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $G_{1},...,G_{n-1}$
+\end_inset
+
+ be defined as above.
+ 
+\end_layout
+
 \begin_layout Theorem
 Given a set of generators for a subgroup 
 \begin_inset Formula $G$
@@ -5456,6 +5834,10 @@ else
 \end_inset
 
 
+\end_layout
+
+\begin_layout Algorithm
+return
 \end_layout
 
 \end_deeper
@@ -5570,6 +5952,19 @@ name "alg:order"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+finish proof
 \end_layout
 
 \end_inset
@@ -5799,6 +6194,26 @@ Polynomial-time algorithm to find the blocks of imprimitivity of a group
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+finish proof
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -9549,164 +9964,22 @@ reference "thm:trivalent-algo-runtime"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Section
-Notes
-\end_layout
-
-\begin_layout Subsection
-Bounded Valence Graph Isomorphism 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "journals/jcss/Luks82"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Lemma 1.2(i)
-\end_layout
-
-\begin_layout Plain Layout
-Let 
-\begin_inset Formula $G$
-\end_inset
-
- be a subgroup of 
-\begin_inset Formula $\Sym(A)$
-\end_inset
-
-, where 
-\begin_inset Formula $A=\{a_{1},...,a_{n}\}$
-\end_inset
-
-.
- Denote by 
-\begin_inset Formula $G_{i}$
-\end_inset
-
- the subgroup of 
-\begin_inset Formula $G$
-\end_inset
-
- which fixes all of the points in 
-\begin_inset Formula $\{a_{1},...,a_{i}\}$
-\end_inset
-
-.
- Thus we have a chain of subgroups 
-\begin_inset Formula $1=G_{n-1}\subseteq\cdots\subseteq G_{1}\subseteq G_{0}=G$
-\end_inset
-
-.
- We now construct complete sets of coset representatives, 
-\begin_inset Formula $C_{i}$
-\end_inset
-
- for 
-\begin_inset Formula $G_{i}/G_{i+1}$
-\end_inset
-
- for 
-\begin_inset Formula $0\leq i\leq n-2$
-\end_inset
-
-.
- That is, every 
-\begin_inset Formula $C_{i}$
-\end_inset
-
- contains (an arbitrary number of) members of the sets 
-\begin_inset Formula $gG_{i}$
-\end_inset
-
- with 
-\begin_inset Formula $g\in G_{i+1}$
-\end_inset
-
-.
- This yields 
-\begin_inset Formula $|G|=\Pi_{i=0}^{n-2}|C_{i}|$
-\end_inset
-
-, since all 
-\begin_inset Formula $G_{i}/G_{i+1}$
-\end_inset
-
- are simple.
-\end_layout
-
-\begin_layout Plain Layout
-Why is 
-\begin_inset Formula $G_{i}\vartriangleleft G_{i+1}$
-\end_inset
-
-?
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $G_{i}/G_{i+1}=\{gG_{i}:g\in G_{i+1}\}$
-\end_inset
-
-.
- While 
-\begin_inset Formula $G_{i}$
-\end_inset
-
- fixes the elements 
-\begin_inset Formula $\{a_{1},...,a_{i}\}$
-\end_inset
-
-, every 
-\begin_inset Formula $g\in G_{i+1}$
-\end_inset
-
- fixes the elements 
-\begin_inset Formula $\{a_{1},...,a_{i}\}\cup\{a_{i+1}\}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-Every Element in 
-\begin_inset Formula $G_{i}/G_{i+1}$
-\end_inset
-
- is a left coset of 
-\begin_inset Formula $G_{i}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-The Trivalent Case
-\end_layout
-
-\begin_layout Plain Layout
-We show that testing isomorphism of trivalent graphs is polynomial-time
- reducible to the Color Automorphism Problem for 2-groups by showing a reduction
- from the isomorphism problem of trivalent graphs to determining generators
- for 
-\begin_inset Formula $Aut_{e}(X)$
-\end_inset
-
-; 
-\end_layout
-
+\begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-Graph Isomorphism for bounded valence is in 
-\begin_inset Formula $\P$
+Conclusion
+\end_layout
+
+\begin_layout Standard
+General case bounded valence and applications
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -9717,10 +9990,84 @@ Graph Isomorphism for bounded valence is in
 LatexCommand bibtex
 btprint "btPrintAll"
 bibfiles "ref"
-options "bibtotoc,plainnat"
+options "amsalpha"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang ngerman
+Ich versichere, dass ich die vorliegende Arbeit selbstständig verfasst,
+ keine anderen als die angegebenen Quellen und Hilfsmittel benutzt und die
+ Arbeit bisher oder gleichzeitig keiner anderen Prüfungsbehörde vorgelegt
+ zu haben.
+\end_layout
+
+\begin_layout Standard
+
+\lang ngerman
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Berlin, 
+\lang ngerman
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
