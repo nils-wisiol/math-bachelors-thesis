@@ -5691,7 +5691,7 @@ key "Furst:1980:PAP:1382434.1382665"
  This yields
 \begin_inset Formula 
 \[
-\{1\}=G_{n-1}\subseteq G_{n-2}\subseteq...\subseteq G_{1}\subseteq G_{0}=G.
+\{1\}=G_{n}\subseteq G_{n-1}\subseteq...\subseteq G_{1}\subseteq G_{0}=G.
 \]
 
 \end_inset
@@ -5715,24 +5715,539 @@ check if the term quotient is defined
 \end_inset
 
 in this chain.
- We can write 
+ By definition, the quotient 
+\begin_inset Formula $G_{i}/G_{i+1}$
+\end_inset
+
+ is the collection of all cosets of 
+\begin_inset Formula $G_{i+1}$
+\end_inset
+
+ in 
+\begin_inset Formula $G_{i}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Furst:1980:PAP:1382434.1382665"
+
+\end_inset
+
+.
+ The cosets can be characterized as equivalence classes of the equivalence
+ relation 
+\begin_inset Formula $\sigma\equiv\tau\iff\sigma^{-1}\tau\in G_{i+1}$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma,\tau\in G_{i}$
+\end_inset
+
+.
+ In other words, 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ both fix the elements 
+\begin_inset Formula $a_{1},...,a_{i}$
+\end_inset
+
+.
+ They belong to the same equivalence class (that is, the same coset) if
+ 
+\begin_inset Formula $\sigma^{-1}\tau$
+\end_inset
+
+ fixes elements 
+\begin_inset Formula $a_{1},...,a_{i+1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ are in the same class, then 
+\begin_inset Formula $\sigma(a_{i+1})=\tau(a_{i+1})$
+\end_inset
+
+.
+ To see this, assume 
+\begin_inset Formula $\sigma^{-1}(\tau(a_{i+1}))=a_{i+1}$
+\end_inset
+
+.
+ In the case that 
+\begin_inset Formula $\tau(a_{i+1})=a_{i+1}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sigma(a_{i+1})=a_{i+1}$
+\end_inset
+
+.
+ In the other case, 
+\begin_inset Formula $\tau(a_{i+1})=a_{k}$
+\end_inset
+
+ for a 
+\begin_inset Formula $k\leq i$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sigma^{-1}(a_{k})=a_{i+1}$
+\end_inset
+
+ and thus 
+\begin_inset Formula $\sigma(a_{i+1})=a_{k}=\tau(a_{i+1})$
+\end_inset
+
+.
+ We obtain the following lemma.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:alg-order-coset-characterization"
+
+\end_inset
+
+The quotient 
+\begin_inset Formula $G_{i}/G_{i+1}$
+\end_inset
+
+ consists of exactly the classes of the equivalence relation 
+\begin_inset Formula $\sigma\equiv\tau\iff\sigma(a_{i+1})=\tau(a_{i+1})$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma,\tau\in G_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Thus, with the chain 
+\begin_inset Formula $G_{n-1}\subseteq...\subseteq G_{0}$
+\end_inset
+
+ we can represent every element 
+\begin_inset Formula $\sigma\in G$
+\end_inset
+
+ as a product of members 
+\begin_inset Formula $\sigma_{i}$
+\end_inset
+
+ of quotient 
+\begin_inset Formula $G_{i}/G_{i+1}$
+\end_inset
+
+ in the chain, 
+\begin_inset Formula $\sigma=\sigma_{n-1}\sigma_{n-2}\cdots\sigma_{1}\sigma_{0}$
+\end_inset
+
+.
+ In this representation, 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+ moves 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ to the right place, then 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ fixes 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ and moves 
+\begin_inset Formula $a_{2}$
+\end_inset
+
+ to the right place, and so on.
+\end_layout
+
+\begin_layout Standard
+By Lagrange's theorem, we know that 
+\begin_inset Formula $|G_{i}|=[G_{i}:G_{i+1}]|G_{i+1}|$
+\end_inset
+
+, and thus we can write 
+\begin_inset Formula 
+\[
+|G|=[G_{0}:G_{1}][G_{1}:G_{2}]\cdots[G_{n-1}:G_{n}].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to determine all 
+\begin_inset Formula $[G_{i}:G_{i+1}]$
+\end_inset
+
+, we are going to compute a table that holds, once we are done, exactly
+ one member of every coset in the subgroup chain.
+ By Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:alg-order-coset-characterization"
+
+\end_inset
+
+, we know that for each step in the subgroup chain, we have at most 
+\begin_inset Formula $n$
+\end_inset
+
+ different subgroups.
+ With the chain having 
+\begin_inset Formula $n$
+\end_inset
+
+ members, this results in a 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ table.
+ In the 
+\begin_inset Formula $i$
+\end_inset
+
+-th row we are going to store coset representatives of 
+\begin_inset Formula $G_{i}/G_{i+1}$
+\end_inset
+
+, and the permutation in the 
+\begin_inset Formula $j$
+\end_inset
+
+-th position fixes letters 
+\begin_inset Formula $1,...,i-1$
+\end_inset
+
+ and maps 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ to 
+\begin_inset Formula $a_{j}$
+\end_inset
+
+.
+ We call the table 
+\begin_inset Formula $T$
+\end_inset
+
+, and the element in the 
+\begin_inset Formula $i$
+\end_inset
+
+-th row and 
+\begin_inset Formula $j$
+\end_inset
+
+-th column 
+\begin_inset Formula $T_{i,j}$
+\end_inset
+
+.
+ To fill the table, we use the following routine 
+\emph on
+sift
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+* input: an element 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ of 
 \begin_inset Formula $G$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Lemma
-Let 
-\begin_inset Formula $G$
+\begin_layout Algorithm
+* No output, however contents and modifications of 
+\begin_inset Formula $T$
+\end_inset
+
+ are stored permanently.
+\end_layout
+
+\begin_layout Algorithm
+*
+\end_layout
+
+\begin_layout Algorithm
+for 
+\begin_inset Formula $i=0...n-2$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+if there is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ in the 
+\begin_inset Formula $i$
+\end_inset
+
+-th row of 
+\begin_inset Formula $T$
 \end_inset
 
  and 
-\begin_inset Formula $G_{1},...,G_{n-1}$
+\begin_inset Formula $\sigma(a_{i+1})=\alpha(a_{i+1})$
 \end_inset
 
- be defined as above.
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* // by Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:alg-order-coset-characterization"
+
+\end_inset
+
+, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ belong to the same coset
+\end_layout
+
+\begin_layout Algorithm
+* 
+\begin_inset Formula $\alpha\leftarrow\gamma^{-1}\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+else
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* // 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ represents a coset of 
+\begin_inset Formula $G_{i}/G_{i+1}$
+\end_inset
+
+ that we don't have in 
+\begin_inset Formula $T$
+\end_inset
+
+ yet
+\end_layout
+
+\begin_layout Algorithm
+* 
+\begin_inset Formula $T_{i,j}=\alpha$
+\end_inset
+
+ for the appropriate 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+return
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endif
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endfor
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:order-filter"
+
+\end_inset
+
+Sift
+\emph default
+: This algorithm fills table 
+\begin_inset Formula $T$
+\end_inset
+
+ based on a given element 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To get an idea of how 
+\emph on
+sift 
+\emph default
+works, assume element 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ written down as generated by the chain subgroups described above, 
+\begin_inset Formula $\alpha=\sigma_{n-1}\sigma_{n-2}\cdots\sigma_{1}\sigma_{0}$
+\end_inset
+
+ with 
+\begin_inset Formula $\sigma_{i}\in G_{i}/G_{i+1}$
+\end_inset
+
+.
  
+\emph on
+sift
+\emph default
+ now works top-down through the table, checking in each row, if 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ represents an already known coset.
+ If so, we remove the portion that belongs to the known coset and continue
+ with the next row.
+ (Another way to justify 
+\begin_inset Formula $\alpha\leftarrow\sigma^{-1}\alpha$
+\end_inset
+
+ is that in the next row, we only consider permutations that fix elements
+ 
+\begin_inset Formula $a_{1},...,a_{i+1}$
+\end_inset
+
+.) If 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ represents a coset that we do not have in our table yet, we add it to the
+ correct position and terminate 
+\emph on
+sift
+\emph default
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:alg-order-complete-table"
+
+\end_inset
+
+With the definitions from above, 
+\begin_inset Formula $T$
+\end_inset
+
+ is complete after calling 
+\emph on
+sift
+\emph default
+ for all generators of 
+\begin_inset Formula $G$
+\end_inset
+
+ and calling 
+\emph on
+sift
+\emph default
+ for the product 
+\begin_inset Formula $xy$
+\end_inset
+
+ for all pairs 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ in 
+\begin_inset Formula $T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+bla.
+\end_layout
+
+\begin_layout Standard
+Being able to compute the complete table in polynomial time enables us to
+ compute the order of 
+\begin_inset Formula $G$
+\end_inset
+
+ in polynomial time.
 \end_layout
 
 \begin_layout Theorem
@@ -5765,114 +6280,11 @@ define
  in polynomial-time.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float algorithm
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Algorithm
-* input: an element 
-\begin_inset Formula $\alpha$
-\end_inset
-
- of 
-\begin_inset Formula $G$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Algorithm
-* output: none
-\end_layout
-
-\begin_layout Algorithm
-*
-\end_layout
-
-\begin_layout Algorithm
-for 
-\begin_inset Formula $j=0...n-2$
-\end_inset
-
-
+\begin_layout Proof
+Consider the following algorithm.
 \end_layout
 
 \begin_deeper
-\begin_layout Algorithm
-if 
-\begin_inset Formula $\gamma^{-1}\alpha\in G_{i+1}$
-\end_inset
-
- for some 
-\begin_inset Formula $\gamma\in C_{i}$
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Algorithm
-* 
-\begin_inset Formula $\alpha\leftarrow\gamma^{-1}\alpha$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Algorithm
-else
-\end_layout
-
-\begin_deeper
-\begin_layout Algorithm
-* 
-\begin_inset Formula $C_{i}\leftarrow C_{i}\cup\lbrace\alpha\rbrace$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Algorithm
-return
-\end_layout
-
-\end_deeper
-\begin_layout Algorithm
-endif
-\end_layout
-
-\end_deeper
-\begin_layout Algorithm
-endfor
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:order-filter"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Float algorithm
 placement H
@@ -5905,19 +6317,7 @@ status open
 \end_layout
 
 \begin_layout Algorithm
-* for all 
-\begin_inset Formula $i$
-\end_inset
-
-: 
-\begin_inset Formula $C_{i}\leftarrow\lbrace1\rbrace$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Algorithm
-* filter all generators 
+* sift all generators 
 \begin_inset Formula $g_{k}$
 \end_inset
 
@@ -5925,15 +6325,33 @@ status open
 \end_layout
 
 \begin_layout Algorithm
-* filter the sets 
-\begin_inset Formula $C_{i}C_{j}$
+for each pair 
+\begin_inset Formula $(x,y)$
 \end_inset
 
- with 
-\begin_inset Formula $i\geq j$
+ in table 
+\begin_inset Formula $T$
 \end_inset
 
 
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+* sift 
+\begin_inset Formula $xy$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+endfor
+\end_layout
+
+\begin_layout Algorithm
+return the product of the number of cosets in each row 
 \end_layout
 
 \begin_layout Plain Layout
@@ -5959,17 +6377,34 @@ name "alg:order"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-finish proof
-\end_layout
+\end_deeper
+\begin_layout Proof
+By Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:alg-order-complete-table"
 
 \end_inset
 
+, after sifting all generators and products of pairs, the table is complete.
+ Based on the number of cosets for each step in the subgroup chain, we can
+ compute the total size of 
+\begin_inset Formula $G$
+\end_inset
 
+ with Lagrange's theorem.
+\end_layout
+
+\begin_layout Proof
+Since 
+\emph on
+sift
+\emph default
+ works in polynomial time, and the number of elements in table 
+\begin_inset Formula $T$
+\end_inset
+
+ is polynomially bounded, the procedure completes in polynomial time.
 \end_layout
 
 \begin_layout Subsection
@@ -10064,10 +10499,6 @@ today
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
