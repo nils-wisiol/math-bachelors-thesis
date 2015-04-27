@@ -650,6 +650,13 @@ LatexCommand tableofcontents
 
 \begin_layout Section
 Introduction
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Introduction"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3764,6 +3771,13 @@ key "journals/jcss/Luks82"
 
 \begin_layout Section
 Preliminaries
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Preliminaries"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3971,14 +3985,14 @@ Let
 \end_inset
 
  be a group, and 
-\begin_inset Formula $N\vartriangleleft G$
+\begin_inset Formula $H\leq G$
 \end_inset
 
 .
  We define the 
 \emph on
-quotient group of 
-\begin_inset Formula $N$
+quotient 
+\begin_inset Formula $H$
 \end_inset
 
  modulo 
@@ -3988,7 +4002,7 @@ quotient group of
 
 \emph default
  as the set of all left cosets of 
-\begin_inset Formula $N$
+\begin_inset Formula $H$
 \end_inset
 
  in 
@@ -3996,11 +4010,23 @@ quotient group of
 \end_inset
 
 , 
-\begin_inset Formula $G/N=\{gN:g\in G\}$
+\begin_inset Formula $G/H=\{gH:g\in G\}$
 \end_inset
 
 .
- The quotient group and the product of subsets form an algebraic group.
+ If 
+\begin_inset Formula $H$
+\end_inset
+
+ is a normal subgroup, we usually write 
+\begin_inset Formula $N=H$
+\end_inset
+
+ and 
+\begin_inset Formula $G/N$
+\end_inset
+
+ along with the product of subsets forms an algebraic group.
 \end_layout
 
 \begin_layout Standard
@@ -4443,6 +4469,10 @@ Choose an arbitrary
 
 \begin_layout Subsection
 Computational Complexity
+\end_layout
+
+\begin_layout Standard
+Definition of runtime
 \end_layout
 
 \begin_layout Standard
@@ -5224,6 +5254,13 @@ Let
 
 \begin_layout Section
 Basic Polynomial-Time Graph Operations
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Basic-Polynomial-Time-Graph"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5660,7 +5697,11 @@ In order to determine the order of
 \begin_inset Formula $G$
 \end_inset
 
- from a set of generators, we write 
+ from a set of generators 
+\begin_inset Formula $\{g_{1},...,g_{m}\}$
+\end_inset
+
+, we write 
 \begin_inset Formula $A=\{a_{1},...,a_{n}\}$
 \end_inset
 
@@ -5704,17 +5745,7 @@ Consider the quotients
 \begin_inset Formula $G_{i}/G_{i+1}$
 \end_inset
 
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-check if the term quotient is defined
-\end_layout
-
-\end_inset
-
-in this chain.
+ in this chain.
  By definition, the quotient 
 \begin_inset Formula $G_{i}/G_{i+1}$
 \end_inset
@@ -5883,6 +5914,11 @@ Thus, with the chain
 \end_inset
 
  to the right place, and so on.
+ We call this representation 
+\emph on
+canonical
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -6238,7 +6274,57 @@ sift
 \end_layout
 
 \begin_layout Proof
-bla.
+Let 
+\begin_inset Formula $g\in G$
+\end_inset
+
+.
+ We can write 
+\begin_inset Formula $g$
+\end_inset
+
+ as product of generators 
+\begin_inset Formula $g_{1},...,g_{m}$
+\end_inset
+
+ of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ In this product, write each generator as it's canonical product.
+ We obtain 
+\begin_inset Formula 
+\begin{eqnarray*}
+g & = & g_{1}^{\alpha_{1}}g_{2}^{\alpha_{2}}\cdots g_{m}^{\alpha_{m}}\\
+ & = & (\sigma_{n-1}^{(1)}\sigma_{n-2}^{(1)}\cdots\sigma_{0}^{(1)})^{\alpha_{1}}(\sigma_{n-1}^{(2)}\sigma_{n-2}^{(2)}\cdots\sigma_{0}^{(2)})^{\alpha_{2}}\cdots(\sigma_{n-1}^{(m)}\sigma_{n-2}^{(m)}\cdots\sigma_{0}^{(m)})^{\alpha_{m}}
+\end{eqnarray*}
+
+\end_inset
+
+with 
+\begin_inset Formula $\alpha\in\{-1,0,1\}$
+\end_inset
+
+.
+ In order to obtain 
+\begin_inset Formula $g$
+\end_inset
+
+ in canonical form, we can use the canonical representation of 
+\begin_inset Formula $xy$
+\end_inset
+
+ for any 
+\begin_inset Formula $x,y$
+\end_inset
+
+ in the representation of 
+\begin_inset Formula $g$
+\end_inset
+
+ that are in wrong order.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -6256,21 +6342,11 @@ Given a set of generators for a subgroup
 \end_inset
 
  of 
-\begin_inset Formula $S_{n}$
+\begin_inset Formula $\Sym A$
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-define 
-\begin_inset Formula $S_{n}$
-\end_inset
-
-
-\end_layout
-
+ with 
+\begin_inset Formula $A=\{a_{1},...,a_{n}\}$
 \end_inset
 
 , one can determine the order of 
@@ -6405,6 +6481,45 @@ sift
 \end_inset
 
  is polynomially bounded, the procedure completes in polynomial time.
+\end_layout
+
+\begin_layout Subsection
+Determine a Subgroup that Stabilizes
+\end_layout
+
+\begin_layout Standard
+With a similar approach, we can find a subgroup that 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+continue...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:algo-stabilizing-subgroup-polytime"
+
+\end_inset
+
+We can find a subgroup that stabilizes a block in polynomial time.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+doublecheck and rephrase
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -6640,6 +6755,27 @@ status open
 
 \begin_layout Plain Layout
 finish proof
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:algo-blocksystem-polytime"
+
+\end_inset
+
+We can compute a block system in polynomial time.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+doublecheck and rephrase
 \end_layout
 
 \end_inset
@@ -9871,19 +10007,20 @@ reference "lem:CB-properties-composition"
 \begin_inset Formula $B',B''$
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-how can we find these sets? partial result: use thm 
+ (Thm.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:compute-g-orbits-poly"
 
 \end_inset
 
+)
+\begin_inset Note Note
+status open
 
+\begin_layout Plain Layout
+why just two orbits?
 \end_layout
 
 \end_inset
@@ -9933,17 +10070,15 @@ reference "lem:trivalent-algo-transitive"
 \begin_inset Formula $B=B'\cup B''$
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-how can we find these blocks?
-\end_layout
+ (Thm.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:algo-blocksystem-polytime"
 
 \end_inset
 
-
+)
 \end_layout
 
 \begin_layout Algorithm
@@ -9963,7 +10098,15 @@ how can we find these blocks?
 \begin_inset Formula $B''$
 \end_inset
 
+ (Thm.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:algo-stabilizing-subgroup-polytime"
 
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Algorithm
@@ -10004,7 +10147,7 @@ Polynomial-time divide and conquer algorithm for the Color Automorphism
 \end_layout
 
 \begin_layout Standard
-The correctness of the first resursive branch of the algorithm was already
+The correctness of the first recursive branch of the algorithm was already
  shown in Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -10092,6 +10235,16 @@ If
 
 \begin_layout Proof
 TODO
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+todo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Theorem
@@ -10149,21 +10302,16 @@ reference "alg:trivalent"
 \end_layout
 
 \begin_layout Proof
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
+For the first input to the algorithm, we set 
+\begin_inset Formula $\sigma=1$
 \end_inset
 
-TODO
-\end_layout
+ and 
+\begin_inset Formula $B=A$
+\end_inset
 
-\begin_deeper
-\begin_layout Enumerate
-Induction using Lemmas 
+.
+ The correctness in each case is guaranteed by Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:CB-properties"
@@ -10177,36 +10325,35 @@ reference "lem:CB-properties-composition"
 
 \end_inset
 
-) and 
+) in the intransitive case and Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:trivalent-algo-transitive"
 
 \end_inset
 
-; base case.
- This yields: Algorithm returns 
+ in the transitive case.
+ The algorithm thus returns 
 \begin_inset Formula $C_{A}(G)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $C_{A}(G)$
-\end_inset
-
- is the biggest color-preserving subgroup
+, which is the biggest color-preserving subgroup by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "thm:trivalent-algo-correct"
+reference "lem:CB-properties"
 
 \end_inset
 
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:CB-properties-subgroup"
 
+\end_inset
+
+).
 \end_layout
 
-\end_deeper
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
@@ -10229,7 +10376,102 @@ reference "alg:trivalent"
 \end_layout
 
 \begin_layout Proof
-TODO case-by-case: transitive and intransitive
+Checking and handling for the base case only takes constant time.
+ For the recursive step, we need to check whether the action of 
+\begin_inset Formula $G$
+\end_inset
+
+ on 
+\begin_inset Formula $B$
+\end_inset
+
+ is transitive or intransitive.
+ We can do this in polynomial time with Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:orbits"
+
+\end_inset
+
+ (Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:compute-g-orbits-poly"
+
+\end_inset
+
+).
+ In the intransitive case, we compute orbits 
+\begin_inset Formula $B'$
+\end_inset
+
+ and 
+\begin_inset Formula $B''$
+\end_inset
+
+ and do two recursive calls.
+ (The recursive calls are not accounted for in this proof, see also Lemma
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:trivalent-algo-number-of-branches"
+
+\end_inset
+
+.) We do not need to combine the two sub-results in any way, as we just pass
+ the results of recursive call of 
+\begin_inset Formula $C_{B'}(\sigma G)$
+\end_inset
+
+ as input to 
+\begin_inset Formula $C_{B''}$
+\end_inset
+
+.
+ In the transitive case, we use Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:blocksystem"
+
+\end_inset
+
+ (Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:algo-blocksystem-polytime"
+
+\end_inset
+
+).
+ We can then find a subgroup 
+\begin_inset Formula $H$
+\end_inset
+
+ according to our needs with Algorithm 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+insert reference
+\end_layout
+
+\end_inset
+
+ (Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:algo-stabilizing-subgroup-polytime"
+
+\end_inset
+
+).
+ To make the recursive calls, we compute 
+\begin_inset Formula $\sigma\tau$
+\end_inset
+
+ in linear time.
+ For the union of two sub-results, we can compute the union of their generators
+ in linear time.
 \end_layout
 
 \begin_layout Lemma
@@ -10266,7 +10508,17 @@ reference "alg:trivalent"
 \end_layout
 
 \begin_layout Proof
-TODO
+TODO 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+todo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Theorem
@@ -10343,7 +10595,17 @@ reference "lem:trivalent-algo-number-of-branches"
 
 \end_inset
 
-, there are less than TODO recursive calls.
+, there are less than TODO
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+todo
+\end_layout
+
+\end_inset
+
+ recursive calls.
  This yields a polynomial runtime in 
 \begin_inset Formula $n$
 \end_inset
@@ -10351,8 +10613,10 @@ reference "lem:trivalent-algo-number-of-branches"
 .
 \end_layout
 
-\begin_layout --Separator--
-
+\begin_layout Standard
+With these preparations, we are now ready to proof our main result, showing
+ that we can decide isomorphism for graphs with valence bounded by three
+ in polynomial time.
 \end_layout
 
 \begin_layout Proof
@@ -10410,7 +10674,106 @@ Conclusion
 \end_layout
 
 \begin_layout Standard
-General case bounded valence and applications
+After giving a short introduction into the Graph Isomorphism Problem, we
+ introduced the reader in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Preliminaries"
+
+\end_inset
+
+ to notions in the fields of Algebra, Complexity Theory and Graphs and showed
+ basic theorems in these fields.
+ This included a short introduction into Group Theory, on which this entire
+ thesis is based.
+ In Complexity Theory, we introduced the reader into the basic notions of
+ runtime and reductions; in Graph Theory, we defined the problem that gave
+ this thesis it's name.
+ Finally in the first section, we motivate the study of polynomial-time
+ algorithms for groups by showing in Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:group-size-representation"
+
+\end_inset
+
+ that groups can be represented in a succinct way.
+\end_layout
+
+\begin_layout Standard
+In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basic-Polynomial-Time-Graph"
+
+\end_inset
+
+, we present some polynomial-time algorithms for problems related with permutati
+on groups.
+ These results are the foundation of our main result, but are interesting
+ on their on as well.
+ In the various subsections we show that for a given permutation group 
+\begin_inset Formula $G$
+\end_inset
+
+, we can determine 
+\begin_inset Formula $G$
+\end_inset
+
+-orbits, the size of 
+\begin_inset Formula $G$
+\end_inset
+
+, stabilizing subgroups and minimal blocks systems in polynomial time.
+\end_layout
+
+\begin_layout Standard
+Finally, we present out main result due to Luks 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "journals/jcss/Luks82"
+
+\end_inset
+
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:valence-3"
+
+\end_inset
+
+ by proofing that for graphs with valence bounded by three, we can decide
+ the Graph Isomorphism Problem in polynomial time.
+ The approach uses two different reductions from the Isomorphism Problem
+ to the problem of generating certain automorphism groups to the problem
+ of computing generators for a certain subgroup.
+ The latter problem is then solved by a divide-and-conquer algorithm that
+ relies on the results proven in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basic-Polynomial-Time-Graph"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We refer the reader to the Luks' paper 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "journals/jcss/Luks82"
+
+\end_inset
+
+, in which he shows that for graphs with valence bounded by 
+\emph on
+any
+\emph default
+ constant, the Graph Isomorphism Problem can be decided in polynomial time.
+ To show this, an abstraction of the algorithm described in this thesis
+ is used.
 \end_layout
 
 \begin_layout Standard
