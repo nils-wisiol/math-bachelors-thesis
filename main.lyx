@@ -377,7 +377,7 @@ begin{center}
 
     
 \backslash
-Large submitted on May 9th, 2015
+Large submitted on May 27th, 2015
 \end_layout
 
 \begin_layout Plain Layout
@@ -437,7 +437,8 @@ Large supervisor:
 \backslash
 
 \backslash
-Dr.
+Prof.
+ Dr.
  Nils Rosehr
 \end_layout
 
@@ -475,48 +476,6 @@ title{}
 \end_layout
 
 \begin_layout Abstract
-Let 
-\begin_inset Formula $G_{1}=(V_{1},E_{1})$
-\end_inset
-
- and 
-\begin_inset Formula $G_{2}=(V_{2},E_{2})$
-\end_inset
-
- be graphs.
- 
-\begin_inset Formula $G_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $G_{2}$
-\end_inset
-
- are called 
-\emph on
-isomorphic
-\emph default
-, if there is a bijection 
-\begin_inset Formula $\sigma:V_{1}\to V_{2}$
-\end_inset
-
- that preserves the basic structure of the graph.
- More formally, 
-\begin_inset Formula $\sigma$
-\end_inset
-
- is called an isomorphism, if for all 
-\begin_inset Formula $v,w\in V_{1}$
-\end_inset
-
- it holds that 
-\begin_inset Formula $(v,w)\in E_{1}\iff(\sigma(v),\sigma(w))\in E_{2}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Abstract
 While in general it is not known whether there is a polynomial time algorithm
  to decide whether two given graphs are isomorphic, there are polynomial-time
  algorithms for certain subsets of graphs, including but not limited to
@@ -530,7 +489,7 @@ In this thesis, we will give a brief introduction on the Graph Isomorphism
  in digital computers in a succinct way.
  This raises questions about our ability to answer important questions about
  these permutation groups with algorithms in polynomial time.
- We present some polynomial-time algorithms that can determine basic fact
+ We present some polynomial-time algorithms that can determine basic facts
  about succinctly stored groups.
  After this, we proof that graphs with valence bounded by 3 can be checked
  for isomorphism in polynomial time, following the proof given by Luks 
@@ -553,52 +512,21 @@ key "journals/jcss/Luks82"
 \begin_layout Abstract
 
 \lang ngerman
-Seien 
-\begin_inset Formula $G_{1}=(V_{1},E_{1})$
-\end_inset
+Es ist unbekannt, ob es einen Polynomial
+\begin_inset ERT
+status open
 
- und 
-\begin_inset Formula $G_{2}=(V_{2},E_{2})$
-\end_inset
+\begin_layout Plain Layout
 
- Graphen.
- 
-\begin_inset Formula $G_{1}$
-\end_inset
 
- und 
-\begin_inset Formula $G_{2}$
-\end_inset
-
- sind 
-\emph on
-isomorph
-\emph default
-, falls es eine Bijektion 
-\begin_inset Formula $\sigma:V_{1}\to V_{2}$
-\end_inset
-
- gibt, die die Struktur des Graphen erhält.
- Genauer gesagt ist 
-\begin_inset Formula $\sigma$
-\end_inset
-
- genau dann ein Isomorphismus, wenn für alle 
-\begin_inset Formula $v,w\in V_{1}$
-\end_inset
-
- gilt dass 
-\begin_inset Formula $(v,w)\in E_{1}\iff(\sigma(v),\sigma(w))\in E_{2}$
-\end_inset
-
-.
+\backslash
+-
 \end_layout
 
-\begin_layout Abstract
+\end_inset
 
-\lang ngerman
-Es ist unbekannt, ob es einen Polynomialzeitalgorithmus gibt, der Isomorphie
- für zwei beliebige Graphen feststellen kann.
+zeitalgorithmus gibt, der Isomorphie für zwei beliebige Graphen feststellen
+ kann.
  Wir kennen jedoch Polynomialzeitalgorithmen für bestimmte Klassen von Graphen,
  beispielsweise planare Graphen und Graphen mit beschränkter Valenz.
 \end_layout
@@ -876,7 +804,7 @@ reference "fig:petersen-9polygon"
 
 \end_deeper
 \begin_layout Example
-It is 
+We have 
 \begin_inset Formula $V_{1}=\{a,b,c,d,e,A,B,C,D,E\}$
 \end_inset
 
@@ -3817,17 +3745,34 @@ Let
 
  is called a 
 \emph on
-generator
+generating set 
 \emph default
- for 
+for 
 \begin_inset Formula $G$
 \end_inset
 
 .
-\end_layout
+ If 
+\begin_inset Formula $\langle S\rangle=G$
+\end_inset
 
-\begin_layout Standard
-Define minimal generator.
+ and for all 
+\begin_inset Formula $S'\subsetneq S$
+\end_inset
+
+ we have
+\begin_inset Formula $\langle S'\rangle\neq S$
+\end_inset
+
+ then 
+\begin_inset Formula $S$
+\end_inset
+
+ is called a 
+\emph on
+minimal generating set
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -3897,7 +3842,11 @@ right coset of
 \begin_inset Formula $x^{-1}y\in H$
 \end_inset
 
-.
+ and 
+\begin_inset Formula $yx^{-1}\in H$
+\end_inset
+
+ respectively.
  Therefore, the left (right) cosets of 
 \begin_inset Formula $G$
 \end_inset
@@ -3984,7 +3933,16 @@ Let
 \begin_inset Formula $G$
 \end_inset
 
- be a group, and 
+ be a group, and let 
+\begin_inset Formula $H$
+\end_inset
+
+ be a subgroup of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ In this case we also write 
 \begin_inset Formula $H\leq G$
 \end_inset
 
@@ -4022,7 +3980,7 @@ quotient
 \begin_inset Formula $N=H$
 \end_inset
 
- and 
+, and 
 \begin_inset Formula $G/N$
 \end_inset
 
@@ -4034,16 +3992,12 @@ Let
 \begin_inset Formula $G$
 \end_inset
 
- be a group, and 
-\begin_inset Formula $H\subseteq G$
-\end_inset
-
- be a subgroup of 
-\begin_inset Formula $H$
+ be a group, and let 
+\begin_inset Formula $H\leq G$
 \end_inset
 
 .
- The number of cosets of 
+ The cardinality of cosets of 
 \begin_inset Formula $H$
 \end_inset
 
@@ -4090,7 +4044,7 @@ We call a finite group
 \begin_inset Formula $G$
 \end_inset
 
- 
+ a 
 \emph on
 2-group
 \emph default
@@ -4137,23 +4091,15 @@ TODO
 \end_layout
 
 \begin_layout Standard
-We define the 
-\emph on
-action of 
-\begin_inset Formula $G$
-\end_inset
-
- on 
-\begin_inset Formula $B$
-\end_inset
-
-
-\emph default
- if there is a homomorphism 
+If there is a homomorphism 
 \begin_inset Formula $G\to\Sym B$
 \end_inset
 
-.
+, we define the action of 
+\begin_inset Formula $G$
+\end_inset
+
+ on as follows.
  The homomorphism yields a permutation of 
 \begin_inset Formula $B$
 \end_inset
@@ -4163,7 +4109,7 @@ action of
 \end_inset
 
 .
- In this case, the set 
+ The set 
 \begin_inset Formula $\{\sigma(b)\mid\sigma\in G\}$
 \end_inset
 
@@ -4205,6 +4151,17 @@ transitively on
 \end_inset
 
 -orbit.
+ The homomorphism is called 
+\emph on
+action of 
+\begin_inset Formula $G$
+\end_inset
+
+ on 
+\begin_inset Formula $B$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -4244,7 +4201,7 @@ For a group
 \begin_inset Formula $B$
 \end_inset
 
-, 
+, that is 
 \begin_inset Formula $\sigma(B)=B$
 \end_inset
 
@@ -4252,12 +4209,12 @@ For a group
 \begin_inset Formula $B$
 \end_inset
 
- completely, 
+ completely, that is 
 \begin_inset Formula $\sigma(B)\cap B=\emptyset$
 \end_inset
 
 .
- In this case, we call the set 
+ We call the set 
 \begin_inset Formula $\{\sigma(B)\mid\sigma\in G\}$
 \end_inset
 
@@ -4414,7 +4371,7 @@ Choose an arbitrary
 \end_inset
 
  and thus has a representation 
-\begin_inset Formula $f(g)=\sum f(i_{k})^{\alpha_{k}}$
+\begin_inset Formula $f(g)=\prod f(i_{k})^{\alpha_{k}}$
 \end_inset
 
  for some 
@@ -4430,13 +4387,22 @@ Choose an arbitrary
 \end_inset
 
 .
+ For the sake of simplicity, instead of 
+\begin_inset Formula $\prod_{k=0}^{m}$
+\end_inset
+
+, we just write 
+\begin_inset Formula $\prod$
+\end_inset
+
+.
  Let 
-\begin_inset Formula $h=g^{-1}\sum i_{k}^{\alpha_{k}}$
+\begin_inset Formula $h=g^{-1}\prod i_{k}^{\alpha_{k}}$
 \end_inset
 
 .
  Then 
-\begin_inset Formula $f(h)=f(g^{-1})f(\sum i_{k}^{\alpha_{k}})=f(g)^{-1}\sum f(i_{k})^{\alpha_{k}}=f(g)^{-1}f(g)=1$
+\begin_inset Formula $f(h)=f(g^{-1})f(\prod i_{k}^{\alpha_{k}})=f(g)^{-1}\prod f(i_{k})^{\alpha_{k}}=f(g)^{-1}f(g)=1$
 \end_inset
 
  and therefore, we have 
@@ -4449,7 +4415,7 @@ Choose an arbitrary
 \end_inset
 
  we can derive 
-\begin_inset Formula $g=\sum i_{k}^{\alpha_{k}}\cdot h^{-1}$
+\begin_inset Formula $g=\prod i_{k}^{\alpha_{k}}\cdot h^{-1}$
 \end_inset
 
  and thus 
@@ -4522,12 +4488,17 @@ An ordered pair of two sets
 \begin_inset Formula $E$
 \end_inset
 
- is a subset of the set of all two-sets of two different elements of 
+ is a subset of the set of all 2-sets of 
 \begin_inset Formula $V$
 \end_inset
 
 .
- Elements of 
+ (Notice that this definition does not include loops, that is edges connected
+ a 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ with itself.) Elements of 
 \begin_inset Formula $V$
 \end_inset
 
@@ -4648,6 +4619,10 @@ connected
 \emph default
 , if for any pair of nodes 
 \begin_inset Formula $v,w\in V(X)$
+\end_inset
+
+ and 
+\begin_inset Formula $v\neq w$
 \end_inset
 
 , there is a path in 
@@ -4864,19 +4839,11 @@ TODO remove?
 \end_layout
 
 \begin_layout Definition
-Given two (connected) graphs 
-\begin_inset Formula $X_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $X_{2}$
-\end_inset
-
-, the 
+The 
 \emph on
 Graph Isomorphism Problem (for connected graphs)
 \emph default
- is to decide whether or not they are isomorphic.
+ is to decide whether two (connected) graphs are isomorphic.
 \end_layout
 
 \begin_layout Lemma
@@ -6316,7 +6283,11 @@ g & = & g_{1}^{\alpha_{1}}g_{2}^{\alpha_{2}}\cdots g_{m}^{\alpha_{m}}\\
 \end_inset
 
 with 
-\begin_inset Formula $\alpha\in\{-1,0,1\}$
+\begin_inset Formula $\alpha_{i}\in\{-1,0,1\}$
+\end_inset
+
+ and 
+\begin_inset Formula $1\leq i\leq m$
 \end_inset
 
 .
@@ -6501,7 +6472,7 @@ Determine a Subgroup that Stabilizes
 \end_layout
 
 \begin_layout Standard
-With a similar approach, we can find a subgroup that 
+With a similar approach, we can find a subgroup that TODO 
 \begin_inset Note Note
 status open
 
@@ -6837,12 +6808,12 @@ Let
 \begin_inset Formula $r$
 \end_inset
 
- be the highest index of these refinement.
+ be the highest index of these refinements.
  For each function 
 \begin_inset Formula $f_{i}$
 \end_inset
 
-, we define a equivalence relation on 
+, we define an equivalence relation on 
 \begin_inset Formula $A$
 \end_inset
 
@@ -7047,6 +7018,16 @@ status open
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: als einzelne Absätze formatieren
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -7243,6 +7224,16 @@ status open
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: als einzelne Absätze formatieren
 \end_layout
 
 \end_inset
@@ -7621,7 +7612,7 @@ Let
 \begin_inset Formula $\Pi_{i}$
 \end_inset
 
- or the union of two partition of 
+ or the union of two partitions of 
 \begin_inset Formula $\Pi_{i}$
 \end_inset
 
@@ -7679,7 +7670,7 @@ Given a set of generators
 \begin_inset Formula $\{g_{1},...,g_{m}\}$
 \end_inset
 
- that generate 
+ of 
 \begin_inset Formula $G\leq\Sym A$
 \end_inset
 
@@ -7755,8 +7746,8 @@ Graphs with Valence Bounded By Three
 \end_layout
 
 \begin_layout Standard
-In this section, we will show that testing isomorphism of graphs with valence
- bounded by three is possible in polynomial time.
+In this section, we will show that testing the existence of an isomorphism
+ of graphs with valence bounded by three is possible in polynomial time.
  
 \end_layout
 
@@ -7782,7 +7773,7 @@ Given two trivalent graphs, the
 \emph on
 Graph Isomorphism Problem for Trivalent Graphs
 \emph default
- is to decide whether or not they are isomorphic.
+ is to decide whether two graphs are isomorphic.
 \end_layout
 
 \begin_layout Enumerate
@@ -7960,7 +7951,7 @@ Let
 \begin_inset Formula $X_{2}=(V_{2},E_{2})$
 \end_inset
 
- be two graphs with valence bounded by three.
+ be two disjoint graphs with valence bounded by three.
  We will state a polynomial-time algorithm to check whether 
 \begin_inset Formula $X_{1}$
 \end_inset
@@ -8026,7 +8017,7 @@ Let
 \end_inset
 
 .
- Choose 
+ Choose distinct 
 \begin_inset Formula $x_{1},x_{2}\notin V_{1}\cup V_{2}$
 \end_inset
 
@@ -8054,7 +8045,7 @@ that is, we insert the new nodes
 \begin_inset Formula $x_{2}$
 \end_inset
 
-, breaking down edges 
+, breaking up edges 
 \begin_inset Formula $e_{1}$
 \end_inset
 
@@ -8370,7 +8361,7 @@ Let
 \begin_inset Formula $X_{1}$
 \end_inset
 
-, 
+ and 
 \begin_inset Formula $X_{2}$
 \end_inset
 
@@ -8535,7 +8526,7 @@ Assume we have an algorithm
 \end_inset
 
  and 
-\begin_inset Formula $X'$
+\begin_inset Formula $X''$
 \end_inset
 
  be two connected trivalent graphs.
@@ -8656,7 +8647,8 @@ Let
 \begin_inset Formula $\Sym A$
 \end_inset
 
-, finds a generating set for the biggest color-preserving subgroup of 
+, finds a generating set for the subgroup of color-preserving elements of
+ 
 \begin_inset Formula $G$
 \end_inset
 
@@ -8699,11 +8691,11 @@ For
 \begin_inset Formula $\pi_{r}:\Aut_{e}(X_{r+1})\to\Aut_{e}(X_{r})$
 \end_inset
 
- be defined by 
+ defined by 
 \begin_inset Formula $\sigma\mapsto\sigma|_{X_{r}}$
 \end_inset
 
-, the restriction of 
+, be the restriction of 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -8712,14 +8704,7 @@ For
 \end_inset
 
 .
- Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:automorphism-restriction"
-
-\end_inset
-
- will show that for any 
+ For any 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -9226,6 +9211,7 @@ Let
 \end_inset
 
 .
+ The subgroup 
 \begin_inset Formula $\Ker\pi_{r}$
 \end_inset
 
@@ -9239,7 +9225,7 @@ Let
 \begin_inset Formula $r\in1,...,n-1$
 \end_inset
 
-, we determine the neighborhoods of all vertices in 
+ we determine the neighborhoods of all vertices in 
 \begin_inset Formula $X_{r+1}\setminus X_{r}$
 \end_inset
 
@@ -9287,7 +9273,21 @@ reference "lem:determine-aut-kernel"
 \end_inset
 
  can be expressed as 
-\begin_inset Formula $g_{1}^{\alpha_{1}}\cdot...\cdot g_{k}^{\alpha_{k}}$
+\begin_inset Formula $g_{1}^{\alpha_{1}}\cdot\cdots\cdot g_{k}^{\alpha_{k}}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Gruppe nicht abelsch 
+\begin_inset Formula $\implies$
+\end_inset
+
+ Faktoren können mehrfach vorkommen
+\end_layout
+
 \end_inset
 
  with 
@@ -9295,8 +9295,8 @@ reference "lem:determine-aut-kernel"
 \end_inset
 
 .
- Different linear combinations cannot result into the same automorphism
- since all 
+ Different linear combinations cannot result in the same automorphism since
+ all 
 \begin_inset Formula $g_{i}$
 \end_inset
 
@@ -10205,7 +10205,7 @@ reference "lem:generating-set-kernel-image"
 
 \end_inset
 
-, to prove that 
+ to obtain that 
 \begin_inset Formula $K\cup I$
 \end_inset
 
@@ -10343,7 +10343,7 @@ For a colored set
 \end_inset
 
  we define 
-\begin_inset Formula $C_{B}(K)=\{\sigma\in K\,|\,\text{for all }b\in B,\sigma(b)\sim b\}$
+\begin_inset Formula $C_{B}(K)=\{\sigma\in K\,|\,\sigma(b)\sim b\text{ for all }b\in B\}$
 \end_inset
 
 , where 
@@ -10363,7 +10363,10 @@ For a colored set
 \end_inset
 
  have the same color.
- We can think of 
+\end_layout
+
+\begin_layout Standard
+We can think of 
 \begin_inset Formula $C_{B}(K)$
 \end_inset
 
@@ -10553,6 +10556,16 @@ status open
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO einzelne Absätze
 \end_layout
 
 \end_inset
@@ -11237,14 +11250,14 @@ Given a colored set
 \begin_inset Formula $\Sym A$
 \end_inset
 
-, algorithm 
+, Algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:trivalent"
 
 \end_inset
 
- returns a generator for 
+ returns a set of generators for 
 \begin_inset Formula $C_{A}(G)$
 \end_inset
 
@@ -11315,7 +11328,7 @@ name "lem:trivalent-algo-step-runtime"
 
 \end_inset
 
-In algorithm 
+In Algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:trivalent"
@@ -11331,7 +11344,7 @@ reference "alg:trivalent"
 
 \begin_layout Proof
 Checking and handling for the base case only takes constant time.
- For the recursive step, we need to check whether the action of 
+ For the recursive step we need to check whether the action of 
 \begin_inset Formula $G$
 \end_inset
 
@@ -11451,7 +11464,7 @@ Given a colored set
 \begin_inset Formula $\Sym A$
 \end_inset
 
-, algorithm 
+, Algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:trivalent"
@@ -11515,7 +11528,7 @@ Given a colored set
 \begin_inset Formula $\Sym A$
 \end_inset
 
-, algorithm 
+, Algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:trivalent"
@@ -11569,8 +11582,8 @@ todo
 
 \begin_layout Standard
 With these preparations, we are now ready to proof our main result, showing
- that we can decide isomorphism for graphs with valence bounded by three
- in polynomial time.
+ that we can decide the existence of isomorphisms for graphs with valence
+ bounded by three in polynomial time.
 \end_layout
 
 \begin_layout Proof
@@ -11665,7 +11678,7 @@ reference "sec:Basic-Polynomial-Time-Graph"
 , we present some polynomial-time algorithms for problems related with permutati
 on groups.
  These results are the foundation of our main result, but are interesting
- on their on as well.
+ on their own as well.
  In the various subsections we show that for a given permutation group 
 \begin_inset Formula $G$
 \end_inset
@@ -11778,7 +11791,7 @@ pagestyle{empty}
 Ich versichere, dass ich die vorliegende Arbeit selbstständig verfasst,
  keine anderen als die angegebenen Quellen und Hilfsmittel benutzt und die
  Arbeit bisher oder gleichzeitig keiner anderen Prüfungsbehörde vorgelegt
- zu haben.
+ habe.
 \end_layout
 
 \begin_layout Standard
@@ -11800,22 +11813,10 @@ vspace{4cm}
 \end_layout
 
 \begin_layout Standard
-Berlin, 
+
 \lang ngerman
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-today
-\end_layout
-
-\end_inset
-
-
+Berlin, 27.
+ Mai 2015
 \end_layout
 
 \end_body
