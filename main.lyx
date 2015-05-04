@@ -4472,6 +4472,19 @@ Computational Complexity
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+todo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Definition of runtime
 \end_layout
 
@@ -6527,14 +6540,34 @@ Determine a Minimal Block System
 \end_layout
 
 \begin_layout Standard
-From 
+In this section we introduce an algorithm and proofs due to Atkinson 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "atkinson1975algorithm"
 
 \end_inset
 
+.
+ For imprimitive
+\begin_inset Note Note
+status open
 
+\begin_layout Plain Layout
+defined?
+\end_layout
+
+\end_inset
+
+ groups, the algorithm is able to compute a minimal block system which contains
+ a block that contains 
+\begin_inset Formula $\{1,\omega\}$
+\end_inset
+
+ for any 
+\begin_inset Formula $\omega\in A$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -6546,7 +6579,7 @@ status open
 
 \begin_layout Algorithm
 * input: non-empty set 
-\begin_inset Formula $\Omega$
+\begin_inset Formula $A=\lbrace1,...,n\rbrace$
 \end_inset
 
 , set of generators 
@@ -6554,11 +6587,11 @@ status open
 \end_inset
 
  that generate permutation group 
-\begin_inset Formula $G$
+\begin_inset Formula $G\leq\Sym A$
 \end_inset
 
 , element 
-\begin_inset Formula $\omega\in\Omega$
+\begin_inset Formula $\omega\in A$
 \end_inset
 
 , 
@@ -6569,14 +6602,12 @@ status open
 \end_layout
 
 \begin_layout Algorithm
-* output: 
-\begin_inset Note Note
-status open
+* output: function 
+\begin_inset Formula $f$
+\end_inset
 
-\begin_layout Plain Layout
-TODO
-\end_layout
-
+ representing a block system that contains a smallest block 
+\begin_inset Formula $\supseteq\lbrace1,\omega\rbrace$
 \end_inset
 
 
@@ -6624,7 +6655,11 @@ while
 
 \begin_deeper
 \begin_layout Algorithm
-* delete a symbol 
+* choose 
+\begin_inset Formula $\beta\in C$
+\end_inset
+
+, delete 
 \begin_inset Formula $\beta$
 \end_inset
 
@@ -6693,6 +6728,10 @@ for all
 \begin_inset Formula $f(\epsilon)=f(\gamma)$
 \end_inset
 
+ // refinement of 
+\begin_inset Formula $f$
+\end_inset
+
 
 \end_layout
 
@@ -6725,6 +6764,14 @@ endfor
 endwhile
 \end_layout
 
+\begin_layout Algorithm
+return 
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
 \begin_inset Caption
 
@@ -6750,16 +6797,875 @@ Polynomial-time algorithm to find the blocks of imprimitivity of a group
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+For the sake of analysis of this algorithm, we define 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ to be the function 
+\begin_inset Formula $f$
+\end_inset
+
+ in the algorithm after the 
+\begin_inset Formula $i$
+\end_inset
+
+-th refinement of 
+\begin_inset Formula $f$
+\end_inset
+
+ in the inner for loop.
+ In this notation, 
+\begin_inset Formula $f_{0}$
+\end_inset
+
+ represents the initially defined 
+\begin_inset Formula $f$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+f_{0}(\alpha)=\begin{cases}
+1 & (\alpha=\omega),\\
+\alpha & (\alpha\neq\omega).
+\end{cases}
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $r$
+\end_inset
+
+ be the highest index of these refinement.
+ For each function 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+, we define a equivalence relation on 
+\begin_inset Formula $A$
+\end_inset
+
+ that partitions 
+\begin_inset Formula $A$
+\end_inset
+
+ by any element's image under 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $\alpha,\beta\in A$
+\end_inset
+
+, we say 
+\begin_inset Formula $\alpha\equiv\beta\iff f(\alpha)=f(\beta)$
+\end_inset
+
+ and define 
+\begin_inset Formula $\Pi_{i}$
+\end_inset
+
+ to be the partition induced by the classes by this equivalence relation,
+ and let 
+\begin_inset Formula $\Pi_{i}(\alpha)$
+\end_inset
+
+ be the equivalence class that contains 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In each refinement of 
+\begin_inset Formula $f$
+\end_inset
+
+, we define 
+\begin_inset Formula $f_{i+1}$
+\end_inset
+
+ to be
+\begin_inset Formula 
+\[
+f_{i+1}(\alpha)=\begin{cases}
+f_{i}(\delta) & (f_{i}(\alpha)=f_{i}(\gamma)),\\
+f_{i}(\delta) & (\alpha=\delta),\\
+f_{i}(\alpha) & \text{otherwise}.
+\end{cases}
+\]
+
+\end_inset
+
+Notice that in the second and third case, the values are taken from 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ and are not changed; in the first case however, for all 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ with 
+\begin_inset Formula $f_{i}(\alpha)=f_{i}(\gamma)$
+\end_inset
+
+, we now have 
+\begin_inset Formula $f_{i+1}(\alpha)=f_{i}(\delta)$
+\end_inset
+
+.
+ Consequently, we are merging the equivalences classes 
+\begin_inset Formula $\Pi_{i}(f_{i}(\gamma))$
+\end_inset
+
+ and 
+\begin_inset Formula $\Pi_{i}(f_{i}(\delta))$
+\end_inset
+
+ from the partitioning 
+\begin_inset Formula $\Pi_{i}$
+\end_inset
+
+ into one partition 
+\begin_inset Formula $\Pi_{i+1}(f_{i+1}(\delta))$
+\end_inset
+
+ in 
+\begin_inset Formula $\Pi_{i+1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:algo-block-lem-1"
+
+\end_inset
+
+With the definitions from above:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:lem:algo-block-lem-1-1"
+
+\end_inset
+
+We have 
+\begin_inset Formula $f_{0}(\alpha)\in\Pi_{0}(\alpha)$
+\end_inset
+
+ for all 
+\begin_inset Formula $\alpha\in A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:lem:algo-block-lem-1-2"
+
+\end_inset
+
+It is 
+\begin_inset Formula $f_{i}(\alpha)\in\Pi_{i}(\alpha)$
+\end_inset
+
+ for all 
+\begin_inset Formula $\alpha\in A$
+\end_inset
+
+ and 
+\begin_inset Formula $i=1,...,r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:lem:algo-block-lem-1-3"
+
+\end_inset
+
+If 
+\begin_inset Formula $f_{i}(\alpha)=f_{i}(\beta)$
+\end_inset
+
+ then 
+\begin_inset Formula $f_{j}(\alpha)=f_{j}(\beta)$
+\end_inset
+
+ for 
+\begin_inset Formula $j=i,...,r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:lem:algo-block-lem-1-4"
+
+\end_inset
+
+For 
+\begin_inset Formula $i=0,1,...,r$
+\end_inset
+
+, the function 
+\begin_inset Formula $f$
+\end_inset
+
+ is idempotent: 
+\begin_inset Formula $f_{i}^{2}=f_{i}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-finish proof
+
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We have 
+\begin_inset Formula $f_{0}(\alpha)=\alpha$
+\end_inset
+
+, and 
+\begin_inset Formula $\Pi_{0}(\alpha)$
+\end_inset
+
+ is the partition containing 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Since 
+\begin_inset Formula $f_{0}(\alpha)\in\Pi_{0}(\alpha)$
+\end_inset
+
+, and each refinement of 
+\begin_inset Formula $f$
+\end_inset
+
+ only merges two partitions into one, we can conclude by an induction argument
+ that 
+\begin_inset Formula $f_{i}(\alpha)\in\Pi_{i}(\alpha)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+The statement 
+\begin_inset Formula $f_{i}(\alpha)=f_{i}(\beta)$
+\end_inset
+
+ means that 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ belong to the same equivalence class.
+ By construction and refinement of 
+\begin_inset Formula $f$
+\end_inset
+
+, no class gets ever split up.
+ Partitions are only merged.
+ Therefore, the refinement of 
+\begin_inset Formula $f$
+\end_inset
+
+ will not separate two previously related elements of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+For any 
+\begin_inset Formula $i=0,1,...,r$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha\in A$
+\end_inset
+
+ we have 
+\begin_inset Formula $f_{i}(\alpha)=\beta$
+\end_inset
+
+ with a 
+\begin_inset Formula $\beta\in\Pi_{i}(\alpha)$
+\end_inset
+
+.
+ Thus we have 
+\begin_inset Formula $f_{i}(f_{i}(\alpha))=f_{i}(\beta)=\beta$
+\end_inset
+
+ as 
+\begin_inset Formula $\alpha\equiv\beta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:algo-block-lem-2"
+
+\end_inset
+
+With the definitions from above:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:lem:algo-block-lem-2-1"
+
+\end_inset
+
+It holds that 
+\begin_inset Formula $\alpha\geq f_{0}(\alpha)\geq f_{1}(\alpha)\geq...\geq f_{r}(\alpha)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:lem:algo-block-lem-2-2"
+
+\end_inset
+
+We have 
+\begin_inset Formula $\beta\neq f_{r}(\beta)$
+\end_inset
+
+ for a 
+\begin_inset Formula $\beta\in A$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $b\in C$
+\end_inset
+
+ at some point during execution.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:lem:algo-block-lem-2-3"
+
+\end_inset
+
+In the case of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:lem:algo-block-lem-2-2"
+
+\end_inset
+
+), there exists 
+\begin_inset Formula $\alpha<\beta$
+\end_inset
+
+ such that 
+\begin_inset Formula $f_{r}(\alpha)=f_{r}(\beta)$
+\end_inset
+
+ and 
+\begin_inset Formula $f_{r}(\alpha g_{j})=f_{r}(\beta g_{j})$
+\end_inset
+
+ for 
+\begin_inset Formula $j=1,...,m$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+By definition we have 
+\begin_inset Formula $\alpha\geq f_{0}(\alpha)$
+\end_inset
+
+, and by renaming 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta$
+\end_inset
+
+ if necessary we make sure that 
+\begin_inset Formula $f_{i}(\alpha)\geq f_{i+1}(\alpha)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Assume 
+\begin_inset Formula $\beta$
+\end_inset
+
+ was added to 
+\begin_inset Formula $C$
+\end_inset
+
+ during initialization, then 
+\begin_inset Formula $\beta=\omega$
+\end_inset
+
+ and 
+\begin_inset Formula $\omega>f_{0}(\omega)=1=f_{r}(\omega)$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\beta$
+\end_inset
+
+ was added to 
+\begin_inset Formula $C$
+\end_inset
+
+ in the guise of 
+\begin_inset Formula $f(\gamma)$
+\end_inset
+
+, then for some 
+\begin_inset Formula $i=1,...,r-1$
+\end_inset
+
+ we have 
+\begin_inset Formula $f_{i+1}(\beta)=f(\delta)<f(\gamma)=\beta$
+\end_inset
+
+ with 
+\begin_inset Formula $f(\delta)$
+\end_inset
+
+ as defined in the algorithm.
+ Conversely, if 
+\begin_inset Formula $\beta$
+\end_inset
+
+ never belonged to 
+\begin_inset Formula $C$
+\end_inset
+
+ then 
+\begin_inset Formula $f(\beta)=\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Assume 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is the element that was deleted from 
+\begin_inset Formula $C$
+\end_inset
+
+ at the beginning of the while-loop.
+ We know that 
+\begin_inset Formula $f_{i}(\beta)<\beta$
+\end_inset
+
+ for some 
+\begin_inset Formula $i$
+\end_inset
+
+ and set 
+\begin_inset Formula $\alpha=f_{i}(\beta)$
+\end_inset
+
+.
+ From this we derive 
+\begin_inset Formula $f_{i}(\alpha)=f_{i}^{2}(\beta)$
+\end_inset
+
+ and with Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:algo-block-lem-1"
+
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:lem:algo-block-lem-1-4"
+
+\end_inset
+
+) we conclude 
+\begin_inset Formula $f_{i}(\alpha)=f_{i}(\beta)$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $\alpha\equiv\beta$
+\end_inset
+
+ and as classes only merge, we have 
+\begin_inset Formula $f_{r}(\alpha)=f_{r}(\beta)$
+\end_inset
+
+.
+ After the refinement of 
+\begin_inset Formula $f$
+\end_inset
+
+ in the inner for loop for some 
+\begin_inset Formula $j$
+\end_inset
+
+ we have 
+\begin_inset Formula $f_{k}(\alpha g_{j})=f_{k}(\beta g_{j})$
+\end_inset
+
+ and thus 
+\begin_inset Formula $f_{r}(\alpha g_{j})=f_{r}(\beta g_{j})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Lemma
+The partitioning 
+\begin_inset Formula $\Pi_{r}$
+\end_inset
+
+ is invariant under 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+We proof that every 
+\begin_inset Formula $g_{1},...,g_{m}$
+\end_inset
+
+ preserves 
+\begin_inset Formula $\Pi_{r}$
+\end_inset
+
+, this guarantees that any combination of 
+\begin_inset Formula $g_{k}$
+\end_inset
+
+ also preserves 
+\begin_inset Formula $\Pi_{r}$
+\end_inset
+
+ and thus 
+\begin_inset Formula $\Pi_{r}$
+\end_inset
+
+ is invariant under 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ We assume that 
+\begin_inset Formula $\Pi_{r}$
+\end_inset
+
+ is not invariant under 
+\begin_inset Formula $G$
+\end_inset
+
+, so suppose there are 
+\begin_inset Formula $\theta,\phi\in A$
+\end_inset
+
+, 
+\begin_inset Formula $\theta<\phi$
+\end_inset
+
+, such that 
+\begin_inset Formula $f_{r}(\theta)=f_{r}(\phi)$
+\end_inset
+
+ but 
+\begin_inset Formula $f_{r}(\theta g_{j})\neq f_{r}(\phi g_{j})$
+\end_inset
+
+.
+ We choose 
+\begin_inset Formula $\theta$
+\end_inset
+
+ minimal fulfilling this condition.
+ We obtain 
+\begin_inset Formula $f_{r}(\phi)=f_{r}(\theta)\leq\theta<\phi$
+\end_inset
+
+.
+ By Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:algo-block-lem-2"
+
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:lem:algo-block-lem-2-3"
+
+\end_inset
+
+), 
+\begin_inset Formula $\phi$
+\end_inset
+
+ was in 
+\begin_inset Formula $C$
+\end_inset
+
+ at some point during execution.
+ Thus, by definition of the algorithm, there is an 
+\begin_inset Formula $\alpha<\phi$
+\end_inset
+
+ with 
+\begin_inset Formula $f_{r}(\alpha)=f_{r}(\phi)$
+\end_inset
+
+ and therefore 
+\begin_inset Formula $f_{r}(\alpha g_{j})=f_{r}(\phi g_{j})$
+\end_inset
+
+.
+ This yields the contradiction 
+\begin_inset Formula $f_{r}(\phi g_{j})=f_{r}(\alpha g_{j})=f_{r}(\theta g_{j})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The invariance of 
+\begin_inset Formula $\Pi_{r}$
+\end_inset
+
+ means that 
+\begin_inset Formula $\Delta=\Pi_{r}(1)$
+\end_inset
+
+ is a 
+\begin_inset Formula $G$
+\end_inset
+
+-block containing 1 and 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+ The partitioning 
+\begin_inset Formula $\Pi_{r}$
+\end_inset
+
+ is a block system containing 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:alg-blocksystem-correctness"
+
+\end_inset
+
+The block 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ is the smallest block containing 1 and 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\Delta_{1}$
+\end_inset
+
+ be the smallest block containing 1 and 
+\begin_inset Formula $\omega$
+\end_inset
+
+ so that 
+\begin_inset Formula $\Delta_{1}\subseteq\Delta$
+\end_inset
+
+.
+ The set 
+\begin_inset Formula $\hat{\Pi}=\{g(\Delta_{1})\mid g\in G\}$
+\end_inset
+
+ is then a partition of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ We will show with an induction argument that each 
+\begin_inset Formula $\Pi_{i}$
+\end_inset
+
+ is a refinement of 
+\begin_inset Formula $\hat{\Pi}$
+\end_inset
+
+.
+ The base case 
+\begin_inset Formula $\Pi_{0}$
+\end_inset
+
+ is a refinement of 
+\begin_inset Formula $\hat{\Pi}$
+\end_inset
+
+ by definition.
+ We now assume 
+\begin_inset Formula $\Pi_{i}$
+\end_inset
+
+ is a refinement.
+ Each partition in 
+\begin_inset Formula $\Pi_{i+1}$
+\end_inset
+
+ is either also a partition of 
+\begin_inset Formula $\Pi_{i}$
+\end_inset
+
+ or the union of two partition of 
+\begin_inset Formula $\Pi_{i}$
+\end_inset
+
+.
+ In the first case, we are done.
+ In the latter case, the union can be written as 
+\begin_inset Formula 
+\[
+\Pi_{i}(f_{i}(\gamma))\cup\Pi_{i}(f_{i}(\delta))=\Pi_{i}(\gamma)\cup\Pi_{i}(\delta)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\gamma=\alpha g_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta=\beta g_{j}$
+\end_inset
+
+, and 
+\begin_inset Formula $\Pi_{i}(\alpha)=\Pi_{i}(\beta)$
+\end_inset
+
+, using the symbols from the algorithm's definition.
+ By inductive assumption, 
+\begin_inset Formula $\hat{\Pi}(\alpha)=\hat{\Pi}(\beta)$
+\end_inset
+
+.
+ This yields
+\begin_inset Formula 
+\[
+\hat{\Pi}(\gamma)=\hat{\Pi}(\alpha)g_{j}=\hat{\Pi}(\beta)g_{j}=\hat{\Pi}(\delta)\supseteq\Pi_{i}(f_{i}(\gamma))\cup\Pi_{i}(f_{i}(\delta)).
+\]
+
+\end_inset
+
+We can conclude 
+\begin_inset Formula $\Delta=\Pi_{r}(1)\subseteq\hat{\Pi}(1)=\Delta_{1}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Theorem
@@ -6769,18 +7675,66 @@ name "thm:algo-blocksystem-polytime"
 
 \end_inset
 
-We can compute a block system in polynomial time.
- 
-\begin_inset Note Note
-status open
+Given a set of generators 
+\begin_inset Formula $\{g_{1},...,g_{m}\}$
+\end_inset
 
-\begin_layout Plain Layout
-doublecheck and rephrase
+ that generate 
+\begin_inset Formula $G\leq\Sym A$
+\end_inset
+
+, 
+\begin_inset Formula $A=\{1,...,n\}$
+\end_inset
+
+, and an element 
+\begin_inset Formula $\omega\in A$
+\end_inset
+
+, we can compute a block system containing the smallest block that contains
+ 
+\begin_inset Formula $\{1,\omega\}$
+\end_inset
+
+.
 \end_layout
+
+\begin_layout Proof
+Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:blocksystem"
 
 \end_inset
 
+ returns 
+\begin_inset Formula $f$
+\end_inset
 
+, which describes the block system containing the block for 
+\begin_inset Formula $\{1,\omega\}$
+\end_inset
+
+ by Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:alg-blocksystem-correctness"
+
+\end_inset
+
+.
+ The algorithm can operate in polynomial time, since the while-loop loops
+ for every 
+\begin_inset Formula $\beta\in C$
+\end_inset
+
+ at most once, the outer for-loop has a fixed length and the inner for-loop
+ loops at most once for every 
+\begin_inset Formula $\epsilon\in A$
+\end_inset
+
+.
+ All other instructions can be carried out in constant time, respectively.
 \end_layout
 
 \begin_layout Standard
@@ -10846,7 +11800,6 @@ vspace{4cm}
 \end_layout
 
 \begin_layout Standard
-
 Berlin, 
 \lang ngerman
 
