@@ -4270,6 +4270,14 @@ For a group
 \emph on
 minimal
 \emph default
+ and the action of 
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\emph on
+primitive
+\emph default
  if there are no 
 \begin_inset Formula $G$
 \end_inset
@@ -6852,18 +6860,8 @@ key "atkinson1975algorithm"
 \end_inset
 
 .
- For imprimitive
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-defined?
-\end_layout
-
-\end_inset
-
- groups, this algorithm is able to compute a minimal block system which
- contains a block that contains 
+ For imprimitive groups, this algorithm is able to compute a minimal block
+ system which contains a block that contains 
 \begin_inset Formula $\{1,\omega\}$
 \end_inset
 
