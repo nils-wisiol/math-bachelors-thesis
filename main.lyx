@@ -4104,45 +4104,7 @@ We call a finite group
 2-group
 \emph default
 , if every element has a power of 2 as its order.
- More generally, we call a finite group 
-\begin_inset Formula $G$
-\end_inset
-
  
-\begin_inset Formula $p$
-\end_inset
-
--group, if every element has a power of 
-\begin_inset Formula $p$
-\end_inset
-
- as its order.
-\end_layout
-
-\begin_layout Lemma
-A group 
-\begin_inset Formula $G$
-\end_inset
-
- is a 2-group if and only if 
-\begin_inset Formula $|G|$
-\end_inset
-
- is a power of 2.
-\end_layout
-
-\begin_layout Proof
-TODO.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4315,6 +4277,12 @@ primitive
 \end_layout
 
 \begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:exactly-p-blocks"
+
+\end_inset
+
 Let 
 \begin_inset Formula $P$
 \end_inset
@@ -5170,23 +5138,6 @@ For any
 .
 \end_layout
 
-\begin_layout Lemma
-\begin_inset Formula $\Aut_{e}(X)\leq\Aut(X)$
-\end_inset
-
-.
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-TODO remove?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Definition
 The 
 \emph on
@@ -5846,6 +5797,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Graphs/transitive-hull.eps
 
@@ -6855,18 +6808,43 @@ name "thm:algo-stabilizing-subgroup-polytime"
 
 \end_inset
 
-We can find a subgroup that stabilizes a block in polynomial time.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-doublecheck and rephrase
-\end_layout
-
+ If 
+\begin_inset Formula $G$
 \end_inset
 
+ acts transitively on 
+\begin_inset Formula $B$
+\end_inset
 
+, we can determine a subgroup 
+\begin_inset Formula $H$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau\in G$
+\end_inset
+
+ such that 
+\begin_inset Formula $G=H\cup\tau H$
+\end_inset
+
+ and 
+\begin_inset Formula $H$
+\end_inset
+
+ stabilizes given 
+\begin_inset Formula $G$
+\end_inset
+
+-blocks 
+\begin_inset Formula $B'$
+\end_inset
+
+ and 
+\begin_inset Formula $B''$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -9572,11 +9550,11 @@ For each
 \begin_inset Formula $r$
 \end_inset
 
-, 
+, the size of 
 \begin_inset Formula $\Aut_{e}(X_{r})$
 \end_inset
 
- is a 2-group.
+ is a power of 2.
 \end_layout
 
 \begin_layout Proof
@@ -11189,25 +11167,7 @@ C_{B}(\sigma G)=\begin{cases}
 
 \end_inset
 
-We will see later that 
-\begin_inset Formula $B'$
-\end_inset
 
- will actually be at most
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-doublecheck
-\end_layout
-
-\end_inset
-
- half the size of 
-\begin_inset Formula $B$
-\end_inset
-
- in every recursive step.
 \end_layout
 
 \begin_layout Standard
@@ -11371,16 +11331,6 @@ reference "thm:compute-g-orbits-poly"
 \end_inset
 
 )
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-why just two orbits?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Algorithm
@@ -11532,19 +11482,11 @@ If
 \begin_inset Formula $B$
 \end_inset
 
- is not the union of 
+ is not the union of two 
 \begin_inset Formula $G$
 \end_inset
 
--stable subsets 
-\begin_inset Formula $B'$
-\end_inset
-
- and 
-\begin_inset Formula $B''$
-\end_inset
-
-, then there are 
+-stable subsets, then there are 
 \begin_inset Formula $G$
 \end_inset
 
@@ -11589,17 +11531,41 @@ If
 \end_layout
 
 \begin_layout Proof
-TODO
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-todo
-\end_layout
+Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:exactly-p-blocks"
 
 \end_inset
 
+ guarantees the existence of 
+\begin_inset Formula $B'$
+\end_inset
 
+ and 
+\begin_inset Formula $B''$
+\end_inset
+
+, and Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:algo-stabilizing-subgroup-polytime"
+
+\end_inset
+
+ shows the existence and polynomial-time computability of 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ The representation of the result follows from Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:CB-properties"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Theorem
@@ -11849,21 +11815,38 @@ reference "alg:trivalent"
 
 \end_inset
 
- uses less than TODO number of recursive calls.
+ uses less than 
+\begin_inset Formula $4\cdot\log_{2}|A|$
+\end_inset
+
+ number of recursive calls.
 \end_layout
 
 \begin_layout Proof
-TODO 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-todo
-\end_layout
-
+In each recursive step the algorithm splits up the given set 
+\begin_inset Formula $B$
 \end_inset
 
+ into 
+\begin_inset Formula $B'$
+\end_inset
 
+ and 
+\begin_inset Formula $B''$
+\end_inset
+
+, having each half the size of 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ In the transitive case, we have two recursive calls; the intransitive yields
+ four recursive calls.
+ The number of recursive calls is thus bounded by 
+\begin_inset Formula $4\cdot\log_{2}|A|$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Theorem
@@ -11940,14 +11923,8 @@ reference "lem:trivalent-algo-number-of-branches"
 
 \end_inset
 
-, there are less than TODO
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-todo
-\end_layout
-
+, there are less than 
+\begin_inset Formula $4\cdot\log_{2}|A|$
 \end_inset
 
  recursive calls.
