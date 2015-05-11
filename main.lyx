@@ -100,7 +100,7 @@ Definition of algebra operators
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Sym}{\operatorname{Sym}}
 {\mathrm{Sym\text{ }}}
 \end_inset
 
@@ -109,7 +109,7 @@ Definition of algebra operators
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Aut}{\operatorname{Aut}}
 {\mathrm{Aut\text{ }}}
 \end_inset
 
@@ -118,7 +118,7 @@ Definition of algebra operators
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Ker}{\operatorname{Ker}}
 {\mathrm{Ker}}
 \end_inset
 
@@ -127,7 +127,7 @@ Definition of algebra operators
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\Img}{\operatorname{Im}}
+\newcommand{\Img}{\operatorname{Im}}
 {\mathrm{Im}}
 \end_inset
 
@@ -149,7 +149,7 @@ Definition of complexity classes
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\complexityclass}[1]{\mathrm{#1}}
+\newcommand{\complexityclass}[1]{\mathrm{#1}}
 {\mathrm{#1}}
 \end_inset
 
@@ -158,19 +158,19 @@ Definition of complexity classes
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\DTIME}{\complexityclass{DTIME}}
+\newcommand{\DTIME}{\complexityclass{DTIME}}
 {\complexityclass{DTIME}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\renewcommand{\NTIME}{\complexityclass{NTIME}}
+\newcommand{\NTIME}{\complexityclass{NTIME}}
 {\complexityclass{NTIME}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\renewcommand{\coNTIME}{\complexityclass{coNTIME}}
+\newcommand{\coNTIME}{\complexityclass{coNTIME}}
 {\complexityclass{coNTIME}}
 \end_inset
 
@@ -179,19 +179,19 @@ Definition of complexity classes
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\P}{\complexityclass P}
+\newcommand{\P}{\complexityclass P}
 {\complexityclass P}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\renewcommand{\NP}{\complexityclass{NP}}
+\newcommand{\NP}{\complexityclass{NP}}
 {\complexityclass{NP}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\renewcommand{\coNP}{\complexityclass{coNP}}
+\newcommand{\coNP}{\complexityclass{coNP}}
 {\complexityclass{coNP}}
 \end_inset
 
@@ -200,13 +200,13 @@ Definition of complexity classes
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\GI}{\complexityclass{GI}}
+\newcommand{\GI}{\complexityclass{GI}}
 {\complexityclass{GI}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\renewcommand{\GNI}{\complexityclass{GNI}}
+\newcommand{\GNI}{\complexityclass{GNI}}
 {\complexityclass{GNI}}
 \end_inset
 
@@ -215,13 +215,13 @@ Definition of complexity classes
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\AM}{\complexityclass{AM}}
+\newcommand{\AM}{\complexityclass{AM}}
 {\complexityclass{AM}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\renewcommand{\coAM}{\complexityclass{coAM}}
+\newcommand{\coAM}{\complexityclass{coAM}}
 {\complexityclass{coAM}}
 \end_inset
 
@@ -560,7 +560,32 @@ zeitalgorithmus gibt, der Isomorphie für zwei beliebige Graphen feststellen
 \begin_layout Abstract
 
 \lang ngerman
-In der vorliegenden Arbeit geben wir eine kurze Einführung in das Graphen-Isomor
+In der vorliegenden Arbeit geben wir eine kurze Einführung in das Graphen-Iso
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+-
+\end_layout
+
+\end_inset
+
+mor
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+-
+\end_layout
+
+\end_inset
+
 phie-Problem und seine Verbindung zur Komplexitätstheorie.
  Wir zeigen dass Permutationsgruppen, obwohl von großer Ordnung, in kurzer
  Darstellung in digitalen Computern gespeichert werden können.
@@ -2257,6 +2282,10 @@ The adjacency matrix of
 
 
 \begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset space \enskip{}
 \end_inset
 
 
@@ -7349,16 +7378,6 @@ status open
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: als einzelne Absätze formatieren
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7555,16 +7574,6 @@ status open
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: als einzelne Absätze formatieren
 \end_layout
 
 \end_inset
@@ -8452,6 +8461,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Graphs/trivalent-connect-aut.eps
 	width 80text%
@@ -8922,20 +8933,6 @@ reference "lem:group-size-representation"
 \end_inset
 
 , we can verify this condition in polynomial time.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-shouldn't this be a reduction from a decision problem to a decision problem?
- ...
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -10391,6 +10388,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Drawings/venn-color-presering-partitions.eps
 	width 50text%
@@ -10887,16 +10886,6 @@ status open
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO einzelne Absätze
 \end_layout
 
 \end_inset
@@ -11813,24 +11802,14 @@ reference "thm:algo-blocksystem-polytime"
 \begin_inset Formula $H$
 \end_inset
 
- according to our needs with Algorithm 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-insert reference
-\end_layout
-
-\end_inset
-
- (Theorem 
+ according to our needs with Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:algo-stabilizing-subgroup-polytime"
 
 \end_inset
 
-).
+.
  To make the recursive calls, we compute 
 \begin_inset Formula $\sigma\tau$
 \end_inset
