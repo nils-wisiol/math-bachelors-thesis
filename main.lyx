@@ -6788,17 +6788,61 @@ Determine a Subgroup that Stabilizes
 \end_layout
 
 \begin_layout Standard
-With a similar approach, we can find a subgroup that TODO 
-\begin_inset Note Note
-status open
+For a given subgroup 
+\begin_inset Formula $H$
+\end_inset
 
-\begin_layout Plain Layout
-continue...
-\end_layout
+ of 
+\begin_inset Formula $G$
+\end_inset
+
+, the chain of subgroups from the previous chapter can be altered to
+\begin_inset Formula 
+\[
+\{1\}=H_{n}\subseteq H_{n-1}\subseteq...\subseteq H_{1}\subseteq H\subseteq G,
+\]
 
 \end_inset
 
+in order to use Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:order"
 
+\end_inset
+
+ to compute generators for this subgroup.
+ If there is a polynomial-time membership test available, and the group
+ has polynomial index in 
+\begin_inset Formula $G$
+\end_inset
+
+, analysis of the algorithm above shows that this process completes in polynomia
+l time as well.
+\end_layout
+
+\begin_layout Lemma
+Given a set of generators for a subgroup 
+\begin_inset Formula $G$
+\end_inset
+
+ of 
+\begin_inset Formula $\Sym A$
+\end_inset
+
+, we can, in polynomial time, determine generators for any subgroup 
+\begin_inset Formula $H$
+\end_inset
+
+ of 
+\begin_inset Formula $G$
+\end_inset
+
+ which is known to have polynomially bounded index in 
+\begin_inset Formula $G$
+\end_inset
+
+ and for which a polynomial-time membership test is available.
 \end_layout
 
 \begin_layout Theorem
@@ -6842,6 +6886,61 @@ name "thm:algo-stabilizing-subgroup-polytime"
 
  and 
 \begin_inset Formula $B''$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+For any given 
+\begin_inset Formula $\sigma\in\Sym A$
+\end_inset
+
+, we can check membership of 
+\begin_inset Formula $H$
+\end_inset
+
+ by checking if 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ stabilizes 
+\begin_inset Formula $B'$
+\end_inset
+
+ and 
+\begin_inset Formula $B''$
+\end_inset
+
+.
+ This is possible in polynomial time by computing 
+\begin_inset Formula $\sigma(B')$
+\end_inset
+
+.
+ We write 
+\begin_inset Formula $G_{(i)}$
+\end_inset
+
+ for the subgroup of 
+\begin_inset Formula $G$
+\end_inset
+
+ that stabilizes the first 
+\begin_inset Formula $i$
+\end_inset
+
+ blocks.
+ The subgroup 
+\begin_inset Formula $H$
+\end_inset
+
+ as polynomial index in 
+\begin_inset Formula $G$
+\end_inset
+
+, because 
+\begin_inset Formula $[G_{(i)}:G_{(i+1)}]\leq\text{number of blocks}-i$
 \end_inset
 
 .
